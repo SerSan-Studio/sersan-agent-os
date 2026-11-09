@@ -1,0 +1,337 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>SerSan Infra Board</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: Miro-style infinite board — dotted canvas, framed zones, sticky notes, pan & zoom */
+:root{
+  --bg:#eef0f4; --dot:#c9cdd8; --frame:#ffffff; --frame-line:#d7dbe4; --ink:#1b2130; --muted:#5d6577;
+  --accent:#2f5bea; --sticky:#ffe27a; --sticky-ink:#3a3000; --chip:#f4f6fb; --chip-line:#dfe3ec;
+  --ok:#1f9d60; --warn:#d08a00; --crit:#d23b3b; --out:#8b5cf6; --lane:#fafbfd;
+  --f-display:"Archivo", "Helvetica Neue", Arial, sans-serif;
+  --f-body:"IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12151c; --dot:#2a303d; --frame:#1b2029; --frame-line:#2e3542; --ink:#e7eaf1; --muted:#9aa3b5;
+  --accent:#7b9bff; --sticky:#e9cf5e; --sticky-ink:#2b2400; --chip:#232936; --chip-line:#333b4a; --lane:#1f2530;
+  --ok:#3ccf8a; --warn:#f0b43c; --crit:#ff6b6b; --out:#a78bfa; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12151c; --dot:#2a303d; --frame:#1b2029; --frame-line:#2e3542; --ink:#e7eaf1; --muted:#9aa3b5;
+  --accent:#7b9bff; --sticky:#e9cf5e; --sticky-ink:#2b2400; --chip:#232936; --chip-line:#333b4a; --lane:#1f2530;
+  --ok:#3ccf8a; --warn:#f0b43c; --crit:#ff6b6b; --out:#a78bfa; color-scheme:dark}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);display:flex;flex-direction:column;overflow:hidden}
+header{display:flex;flex-wrap:wrap;gap:10px 20px;align-items:center;justify-content:space-between;
+  padding-block:12px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  background:var(--frame);border-bottom:1px solid var(--frame-line);z-index:5}
+header h1{font-family:var(--f-display);font-weight:800;font-size:20px;margin:0;letter-spacing:-.01em}
+header p{margin:2px 0 0;color:var(--muted);font-size:12.5px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:10px;height:10px;border-radius:3px;display:inline-block}
+.tools{display:flex;gap:6px}
+.tools button{font:500 13px var(--f-body);color:var(--ink);background:var(--chip);border:1px solid var(--chip-line);border-radius:8px;padding:6px 10px;cursor:pointer}
+.tools button:hover{border-color:var(--accent)}
+.tools button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+#viewport{flex:1;position:relative;overflow:hidden;cursor:grab;touch-action:none;
+  background-color:var(--bg);background-image:radial-gradient(var(--dot) 1.2px, transparent 1.2px);background-size:22px 22px}
+#viewport.drag{cursor:grabbing}
+#board{position:absolute;left:0;top:0;width:1960px;height:2080px;transform-origin:0 0}
+.frame{position:absolute;background:var(--frame);border:1px solid var(--frame-line);border-radius:14px;box-shadow:0 1px 2px rgba(0,0,0,.05);padding:16px 18px}
+.frame>h2{font-family:var(--f-display);font-weight:700;font-size:16px;margin:0 0 2px;display:flex;align-items:center;gap:8px}
+.frame>h2 svg{width:18px;height:18px;flex:none;color:var(--accent)}
+.frame>.sub{font-size:12px;color:var(--muted);margin:0 0 12px}
+.ftag{position:absolute;top:-11px;left:16px;font:600 10.5px var(--f-mono);letter-spacing:.06em;text-transform:uppercase;background:var(--ink);color:var(--frame);padding:3px 8px;border-radius:5px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:12px;background:var(--chip);border:1px solid var(--chip-line);border-radius:7px;padding:4px 8px;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.chip b{font-weight:600}
+.chip.gpu{border-color:var(--warn)}
+.chip.new{border-color:var(--accent)}
+.chip .dot{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.mono{font-family:var(--f-mono);font-size:11.5px}
+.node{background:var(--lane);border:1px solid var(--chip-line);border-radius:10px;padding:10px 12px;font-size:12.5px}
+.node h3{font:700 13px var(--f-display);margin:0 0 4px;display:flex;align-items:center;gap:7px}
+.node h3 svg{width:16px;height:16px;color:var(--accent);flex:none}
+.node p{margin:0;color:var(--muted);line-height:1.45}
+.stack{display:flex;flex-direction:column;gap:10px}
+.sticky{position:absolute;background:var(--sticky);color:var(--sticky-ink);border-radius:4px;padding:12px 14px;font-size:12.5px;line-height:1.45;box-shadow:0 6px 14px rgba(0,0,0,.12);transform:rotate(-1.2deg)}
+.sticky:nth-of-type(2n){transform:rotate(1deg)}
+.sticky b{display:block;font:700 12.5px var(--f-display);margin-bottom:4px}
+/* VLAN lanes */
+.lanes{display:flex;flex-direction:column;gap:6px}
+.lane{display:grid;grid-template-columns:200px 150px 1fr;gap:10px;align-items:center;background:var(--lane);border:1px solid var(--chip-line);border-left:5px solid var(--c);border-radius:9px;padding:7px 10px}
+.lane .nm{font:700 13px var(--f-display)}
+.lane .nm small{display:block;font:400 11px var(--f-mono);color:var(--muted);margin-top:1px}
+.lane .pol{font-size:11.5px;color:var(--muted);line-height:1.3}
+.lane.out{background:repeating-linear-gradient(135deg,var(--lane),var(--lane) 8px,var(--chip) 8px,var(--chip) 16px)}
+.pill{display:inline-block;font:600 10px var(--f-mono);letter-spacing:.04em;text-transform:uppercase;padding:2px 6px;border-radius:4px;color:var(--frame);background:var(--c,var(--muted));margin-top:3px}
+/* pipeline */
+.pipe{display:flex;flex-wrap:wrap;align-items:stretch;gap:8px}
+.step{flex:1 1 120px;min-width:0;background:var(--lane);border:1px solid var(--chip-line);border-radius:9px;padding:9px 10px;font-size:12px;position:relative}
+.step b{display:block;font:700 12.5px var(--f-display);margin-bottom:3px}
+.step span{color:var(--muted);line-height:1.4;display:block}
+.arrow{align-self:center;color:var(--muted);font-size:16px}
+/* roadmap */
+.road{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.col{background:var(--lane);border:1px solid var(--chip-line);border-radius:9px;padding:10px;font-size:12px}
+.col h4{font:700 12.5px var(--f-display);margin:0 0 6px}
+.col h4 .mono{color:var(--accent);margin-right:6px}
+.col ul{margin:0;padding-left:16px;color:var(--muted);line-height:1.5}
+/* resources */
+table.res{width:100%;border-collapse:collapse;font-size:12px;font-variant-numeric:tabular-nums}
+table.res td{padding:4px 0;border-bottom:1px dashed var(--chip-line)}
+table.res td:last-child{text-align:right;font-family:var(--f-mono)}
+.bar{height:10px;border-radius:5px;background:var(--chip);border:1px solid var(--chip-line);overflow:hidden;display:flex;margin:8px 0 4px}
+.bar i{display:block;height:100%}
+svg#wires{position:absolute;left:0;top:0;width:1960px;height:2080px;z-index:2;pointer-events:none;overflow:visible}
+svg#wires path{fill:none;stroke:var(--muted);stroke-width:1.6}
+svg#wires path.dash{stroke-dasharray:6 5;stroke:var(--accent)}
+svg#wires text{font:500 11px var(--f-mono);fill:var(--muted)}
+.hint{position:absolute;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));font-size:11.5px;color:var(--muted);background:var(--frame);border:1px solid var(--frame-line);border-radius:8px;padding:5px 9px}
+@media (prefers-reduced-motion: no-preference){#board{transition:transform .18s ease-out}#board.nofx{transition:none}}
+</style>
+
+<header>
+  <div>
+    <h1>SerSan Infra Board</h1>
+    <p>Nodo 1 · DL380 Gen10 · OPNsense · VLAN, servizi, pipeline e roadmap — trascina per muoverti, rotella o pulsanti per lo zoom</p>
+  </div>
+  <div class="legend" aria-label="Legenda">
+    <span><i class="sw" style="background:var(--crit)"></i>Isolato / no internet</span>
+    <span><i class="sw" style="background:var(--accent)"></i>Interno</span>
+    <span><i class="sw" style="background:var(--warn)"></i>GPU / esposto via tunnel</span>
+    <span><i class="sw" style="background:var(--out)"></i>Fuori perimetro CE</span>
+  </div>
+  <div class="tools">
+    <button id="zin" type="button" aria-label="Zoom avanti">＋</button>
+    <button id="zout" type="button" aria-label="Zoom indietro">－</button>
+    <button id="fit" type="button">Adatta</button>
+  </div>
+</header>
+
+<div id="viewport">
+  <div id="board">
+    
+    <!-- CLOUD -->
+    <section class="frame" style="left:40px;top:40px;width:700px;height:260px">
+      <span class="ftag">Cloud</span>
+      <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 18h10a4 4 0 0 0 .5-7.97A6 6 0 0 0 6 9.5 4.25 4.25 0 0 0 7 18Z"/></svg>Cloud &amp; SaaS che restano</h2>
+      <p class="sub">Solo i servizi verticali: tutto l'IaaS generico (Azure) esce</p>
+      <div class="chips">
+        <span class="chip"><b>M365 / Entra ID</b> identità, MFA, posta</span>
+        <span class="chip"><b>Claude Team</b> ragiona sul RAG via MCP</span>
+        <span class="chip"><b>API Anthropic</b> crediti · dietro LiteLLM</span>
+        <span class="chip"><b>Cloudflare</b> DNS</span>
+        <span class="chip"><b>GitHub</b> repo · runner in casa</span>
+        <span class="chip"><b>Supabase</b> DB del prodotto</span>
+        <span class="chip"><b>Vercel</b> deploy clienti</span>
+        <span class="chip"><b>Jira</b></span>
+        <span class="chip"><b>Instantly</b> outreach</span>
+        <span class="chip"><b>S3 offsite</b> opzionale (B2 / Hetzner)</span>
+      </div>
+    </section>
+
+    <!-- ACCESS -->
+    <section class="frame" style="left:780px;top:40px;width:520px;height:260px">
+      <span class="ftag">Accesso</span>
+      <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Zero-trust · nessuna porta aperta</h2>
+      <p class="sub">Si entra solo con identità verificata</p>
+      <div class="stack">
+        <div class="node"><h3>NetBird mesh</h3><p>Team e admin · SSO Entra + chiave FIDO2 · ACL per gruppo. Funziona anche dietro il CGNAT di Starlink.</p></div>
+        <div class="node"><h3>Pangolin + Traefik</h3><p>App web verso i clienti e endpoint MCP per Claude Team, con autenticazione davanti. In alternativa Claude Desktop via mesh.</p></div>
+      </div>
+    </section>
+
+    <!-- HOME SITE -->
+    <section class="frame" style="left:1340px;top:40px;width:580px;height:260px">
+      <span class="ftag">Sede 2 · casa</span>
+      <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/></svg>Copia fuori sede</h2>
+      <p class="sub">Starlink (CGNAT) · rete mesh Deco · accumulatori</p>
+      <div class="stack">
+        <div class="node"><h3>PBS · Lenovo M920t <span class="mono" style="color:var(--muted)">(da comprare)</span></h3><p>Proxmox Backup Server, 2× HDD SATA in mirror, cifratura lato client, utente "solo scrittura". Si accende di notte con Home Assistant.</p></div>
+        <div class="node"><h3>i7 6700K · server di casa</h3><p>Immich, Jellyfin, Frigate · separato dall'azienda. Home Assistant resta sul Raspberry Pi 5.</p></div>
+      </div>
+    </section>
+
+    <!-- PHYSICAL -->
+    <section class="frame" style="left:40px;top:340px;width:520px;height:870px">
+      <span class="ftag">Rete fisica</span>
+      <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v6M5 21v-4h14v4M12 9v8M5 17l7-8 7 8"/></svg>Rack VEVOR 12U · salotto</h2>
+      <p class="sub">FTTH 2,5G · tutto dietro un solo firewall</p>
+      <div class="stack">
+        <div class="node"><h3>Internet FTTH 2,5G</h3><p>IP fisso da richiedere · chiedere PPPoE o IPoE e la DMZ/bridge sul router del provider</p></div>
+        <div class="node"><h3>Router del provider</h3><p>Sul ripiano del rack · solo modem, in DMZ verso OPNsense</p></div>
+        <div class="node" style="border-color:var(--accent)">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16v10H4z"/><path d="M8 11h.01M12 11h.01M16 11h.01"/></svg>OPNsense · Pentium 4417U</h3>
+          <p>4× i226-V 2,5G · 16GB (ex iMac) · NVMe · /var in RAM · RSS on · EEE off</p>
+          <div class="chips" style="margin-top:8px">
+            <span class="chip mono">igc0 · WAN</span>
+            <span class="chip mono">igc1 · TRUNK → DL380 (VLAN 10–99)</span>
+            <span class="chip mono">igc2 · OOB → iLO</span>
+            <span class="chip mono">igc3 · LAN ufficio</span>
+          </div>
+          <p style="margin-top:8px">Fa anche: WireGuard/NetBird peer · Unbound + blocklist · NTP · NUT (UPS) · CrowdSec · NetFlow</p>
+        </div>
+        <div class="node"><h3>HPE DL380 Gen10</h3><p>561FLR-T porta 1 = trunk (1G verso il firewall, 10G pronta per lo switch futuro) · iLO sulla porta dedicata · frontalino</p></div>
+        <div class="node"><h3>UPS attuale → NUT</h3><p>USB al firewall, che spegne Proxmox in modo pulito. Più avanti: UPS rack 2U (APC SMT1500 o Eaton 5PX)</p></div>
+      </div>
+    </section>
+
+    <!-- DL380 / PROXMOX -->
+    <section class="frame" style="left:600px;top:340px;width:1320px;height:870px">
+      <span class="ftag">Nodo 1</span>
+      <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="7" rx="1.5"/><rect x="3" y="13" width="18" height="7" rx="1.5"/><path d="M7 7.5h.01M7 16.5h.01"/></svg>DL380 Gen10 · Proxmox VE · VLAN</h2>
+      <p class="sub">2× Gold 5218 (64 thread) · 192GB ECC · rpool 2× SSD 800GB mirror · tank 3× mirror HDD 1,8TB (~5,4TB) · Quadro RTX 4000 · TPM 2.0 · default-deny tra VLAN, routing su OPNsense</p>
+      <div class="lanes" id="lanes"></div>
+    </section>
+
+    <!-- RAG PIPELINE -->
+    <section class="frame" style="left:40px;top:1250px;width:1000px;height:300px">
+      <span class="ftag">Pipeline AI</span>
+      <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.2-4.2"/></svg>Sirius → conoscenza ricercabile → Claude Team</h2>
+      <p class="sub">Il server cerca e prepara, Claude ragiona. Password e chiavi non entrano mai nell'indice</p>
+      <div class="pipe">
+        <div class="step"><b>Export</b><span>Fiscale, clienti, documenti da Sirius · incrementale</span></div><div class="arrow">→</div>
+        <div class="step"><b>Docling</b><span>PDF, scansioni, tabelle → testo strutturato</span></div><div class="arrow">→</div>
+        <div class="step"><b>Filtro</b><span>Segreti e chiavi scartati · PII marcate</span></div><div class="arrow">→</div>
+        <div class="step"><b>Blocchi + metadati</b><span>Qwen3-4B Q5: cliente, anno, tipo, riassunto</span></div><div class="arrow">→</div>
+        <div class="step"><b>Embedding</b><span>Qwen3-Embedding 0.6B FP16 → Qdrant + BM25</span></div><div class="arrow">→</div>
+        <div class="step"><b>Reranker</b><span>Qwen3-Reranker 0.6B</span></div><div class="arrow">→</div>
+        <div class="step" style="border-color:var(--warn)"><b>MCP RAG</b><span>Permessi per utente · log delle query → Claude Team</span></div>
+      </div>
+    </section>
+
+    <!-- BANDI PIPELINE -->
+    <section class="frame" style="left:1080px;top:1250px;width:840px;height:300px">
+      <span class="ftag">Automazione</span>
+      <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg>Bandi · Firecrawl self-hosted</h2>
+      <p class="sub">Ogni notte, senza servizi a pagamento</p>
+      <div class="pipe">
+        <div class="step"><b>n8n · cron</b><span>Lista fonti bandi</span></div><div class="arrow">→</div>
+        <div class="step"><b>Firecrawl</b><span>Scraping → markdown pulito</span></div><div class="arrow">→</div>
+        <div class="step"><b>LLM 4B</b><span>Riassunto · scadenza · punteggio di pertinenza</span></div><div class="arrow">→</div>
+        <div class="step"><b>RAG + DB</b><span>Bandi indicizzati, ricercabili da Claude</span></div><div class="arrow">→</div>
+        <div class="step"><b>Notifica</b><span>Teams o mail con i migliori del giorno</span></div>
+      </div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section class="frame" style="left:40px;top:1590px;width:1340px;height:280px">
+      <span class="ftag">Roadmap</span>
+      <h2>Cosa costruiamo, in ordine</h2>
+      <p class="sub">Ogni fase parte quando la precedente è validata</p>
+      <div class="road">
+        <div class="col"><h4><span class="mono">F0</span>Arrivi</h4><ul><li>Pagare Bargain</li><li>Export completo da Azure</li><li>Montaggio, test RAM</li><li>Firmware, TPM clear</li></ul></div>
+        <div class="col"><h4><span class="mono">F1</span>Fondamenta</h4><ul><li>OPNsense + VLAN</li><li>Proxmox su ZFS</li><li>NetBird + Traefik</li><li>PBS a casa</li></ul></div>
+        <div class="col"><h4><span class="mono">F2</span>Via da Azure</h4><ul><li>ci → apps → mesh</li><li>MT bridge</li><li>Spegnere le VM Azure</li></ul></div>
+        <div class="col"><h4><span class="mono">F3</span>Sicurezza</h4><ul><li>Wazuh, NetBox</li><li>Authentik, CrowdSec</li><li>Log + avvisi</li><li>Doc ISO / CE</li></ul></div>
+        <div class="col"><h4><span class="mono">F4</span>AI + bandi</h4><ul><li>LXC GPU</li><li>Pipeline Sirius → MCP</li><li>Firecrawl + n8n</li><li>LiteLLM con budget</li></ul></div>
+        <div class="col"><h4><span class="mono">F5</span>Lab e dopo</h4><ul><li>Experimental 1 e 2</li><li>Minecraft (Pelican)</li><li>A2000, UPS rack</li><li>Nodo 2 (2027–28)</li></ul></div>
+      </div>
+    </section>
+
+    <!-- RESOURCES -->
+    <section class="frame" style="left:1420px;top:1590px;width:500px;height:280px">
+      <span class="ftag">Capacità</span>
+      <h2>RAM · 192GB</h2>
+      <div class="bar" role="img" aria-label="RAM allocata circa 139 su 192 gigabyte">
+        <i style="width:8.3%;background:var(--muted)"></i>
+        <i style="width:36%;background:var(--accent)"></i>
+        <i style="width:12.5%;background:var(--warn)"></i>
+        <i style="width:12.5%;background:var(--ok)"></i>
+        <i style="width:3.1%;background:var(--out)"></i>
+      </div>
+      <table class="res">
+        <tr><td>Host + ZFS ARC</td><td>16 GB</td></tr>
+        <tr><td>Servizi core (edge, apps, data, ci, vault, obsrv)</td><td>~69 GB</td></tr>
+        <tr><td>AI, Firecrawl, Qdrant, LiteLLM</td><td>~24 GB</td></tr>
+        <tr><td>Experimental 1 + 2</td><td>24 GB</td></tr>
+        <tr><td>Minecraft</td><td>6 GB</td></tr>
+        <tr><td><b>Libera per crescere</b></td><td><b>~53 GB</b></td></tr>
+      </table>
+    </section>
+
+    <!-- STICKY NOTES -->
+    <div class="sticky" style="left:60px;top:1900px;width:300px">
+      <b>Experimental 1 e 2 = lavoro</b>
+      Quindi dentro il perimetro Cyber Essentials: patch entro 14 giorni, account non admin, software supportato.
+    </div>
+    <div class="sticky" style="left:400px;top:1900px;width:300px">
+      <b>Minecraft fuori perimetro</b>
+      Solo su VLAN 99 isolata, in un LXC suo e non dentro Experimental-2. L'hypervisor resta in perimetro.
+    </div>
+    <div class="sticky" style="left:740px;top:1900px;width:330px">
+      <b>Regole chiave del firewall</b>
+      Default-deny ovunque · LAB e PERSONAL non vedono DATA · APPS → AI solo sulle API dei modelli · AI → DATA solo Qdrant · MGMT e OOB solo dal gruppo admin della mesh.
+    </div>
+    <div class="sticky" style="left:1110px;top:1900px;width:300px">
+      <b>Lavagne self-hosted</b>
+      draw.io per gli schemi di rete (icone Cisco, server, cloud) · Excalidraw per i brainstorming stile Miro · NetBox come fonte di verità di IP e asset.
+    </div>
+    <svg id="wires" viewBox="0 0 1960 2080" aria-hidden="true">
+      <path class="dash" d="M1040 300 L1040 340"/>
+      <path class="dash" d="M1630 300 L1630 340"/>
+      <path class="dash" d="M520 300 L520 340"/>
+      <path d="M560 700 L600 700"/>
+      <path class="dash" d="M520 1210 L520 1250"/>
+    </svg>
+  </div>
+  <div class="hint">Trascina per muoverti · rotella per lo zoom</div>
+</div>
+
+<script>
+const lanes=[
+ {n:"OOB · iLO",s:"10.10.11.0/24 · igc2",p:"porta fisica dedicata · nessun internet",c:"var(--crit)",t:"isolata",chips:["iLO 5 Standard","solo via mesh admin"]},
+ {n:"10 · MGMT",s:"10.10.10.0/24",p:"solo update dal proxy",c:"var(--crit)",t:"isolata",chips:["Proxmox host · UI","SDN + firewall","switch 10G (futuro)"]},
+ {n:"20 · EDGE",s:"10.10.20.0/24",p:"in ingresso solo dal tunnel",c:"var(--warn)",t:"esposta",chips:["Traefik (TLS wildcard)","Pangolin","NetBird mgmt + relay"]},
+ {n:"30 · APPS",s:"10.10.30.0/24",p:"uscita su allowlist",c:"var(--accent)",t:"interna",chips:["n8n","mcp-enrich","mcp-memory","openoutreach","runner-dash","Homepage","LiteLLM","Open WebUI","MCP RAG*","Firecrawl*","bandi-watcher*","draw.io*","Excalidraw*","BookStack"]},
+ {n:"40 · DATA",s:"10.10.40.0/24",p:"nessun internet",c:"var(--crit)",t:"isolata",chips:["PostgreSQL 16","MinIO (S3)","Qdrant*","Vaultwarden","Infisical"]},
+ {n:"50 · CICD",s:"10.10.50.0/24",p:"uscita: GitHub e registry",c:"var(--accent)",t:"interna",chips:["4× runner GitHub","staging on-demand"]},
+ {n:"60 · VAULT",s:"10.10.60.0/24",p:"uscita solo verso i broker MT",c:"var(--crit)",t:"isolata",chips:["MT bridge · Windows · vTPM + BitLocker"]},
+ {n:"70 · OBSRV",s:"10.10.70.0/24",p:"legge da tutte, nessun internet",c:"var(--accent)",t:"interna",chips:["Prometheus","Grafana","Loki","Uptime Kuma","Wazuh","NetBox"]},
+ {n:"80 · AI",s:"10.10.80.0/24",p:"uscita solo per scaricare modelli",c:"var(--warn)",t:"gpu",gpu:true,chips:["ai-gpu-01 (LXC)","Ollama · Qwen3-4B Q5_K_M","Infinity · Embedding + Reranker 0.6B","Docling","worker indicizzazione"]},
+ {n:"90 · LAB",s:"10.10.90.0/24",p:"internet sì · nessun accesso a DATA",c:"var(--accent)",t:"in perimetro",gpu:true,chips:["Experimental-1 · Win 11 + RTX 4000 + DP dummy + Sunshine","Experimental-2 · Linux sandbox + Docker"]},
+ {n:"99 · PERSONAL",s:"10.10.99.0/24",p:"solo internet · nessuna rotta verso le altre",c:"var(--out)",t:"fuori CE",out:true,chips:["mc-01 (LXC)","Pelican Panel + Wings","Paper MC","unica eccezione: Exp-1 → 25565 (da validare)"]},
+ {n:"LAN UFFICIO",s:"192.168.50.0/24 · igc3",p:"internet · verso i server solo via mesh",c:"var(--muted)",t:"client",chips:["PC scrivania","access point Wi-Fi","stampante"]}
+];
+const L=document.getElementById("lanes");
+lanes.forEach(l=>{
+  const d=document.createElement("div");d.className="lane"+(l.out?" out":"");d.style.setProperty("--c",l.c);
+  const chips=l.chips.map(c=>{const isNew=c.endsWith("*");const txt=isNew?c.slice(0,-1):c;
+    return `<span class="chip${l.gpu&&/RTX|Ollama|Infinity|Qwen/.test(txt)?" gpu":""}${isNew?" new":""}">${isNew?'<i class="dot"></i>':''}${txt}</span>`}).join("");
+  d.innerHTML=`<div class="nm">${l.n}<small>${l.s}</small></div><div class="pol">${l.p}<br><span class="pill" style="--c:${l.c}">${l.t}</span></div><div class="chips">${chips}</div>`;
+  L.appendChild(d);
+});
+const note=document.createElement("p");note.className="sub";note.style.margin="10px 0 0";
+note.innerHTML='<i class="dot" style="display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent);margin-right:6px"></i>Nuovi rispetto al blueprint · La RTX 4000 di giorno serve l\'AI (VLAN 80), la sera passa a Experimental-1 con uno script; la A2000 futura resterà fissa sull\'AI';
+L.appendChild(note);
+
+/* pan & zoom */
+const vp=document.getElementById("viewport"),bd=document.getElementById("board");
+let s=1,x=0,y=0;const W=1960,H=2080;
+function apply(){bd.style.transform=`translate(${x}px,${y}px) scale(${s})`}
+function fit(){const r=vp.getBoundingClientRect();s=Math.min(r.width/(W+40),r.height/(H+40));s=Math.max(s,.18);x=(r.width-W*s)/2;y=Math.max(10,(r.height-H*s)/2);apply()}
+function zoomAt(f,cx,cy){const ns=Math.min(2.2,Math.max(.15,s*f));x=cx-(cx-x)*(ns/s);y=cy-(cy-y)*(ns/s);s=ns;apply()}
+vp.addEventListener("wheel",e=>{e.preventDefault();const r=vp.getBoundingClientRect();bd.classList.add("nofx");zoomAt(e.deltaY<0?1.1:1/1.1,e.clientX-r.left,e.clientY-r.top)},{passive:false});
+let drag=null;const pts=new Map();
+vp.addEventListener("pointerdown",e=>{pts.set(e.pointerId,{x:e.clientX,y:e.clientY});vp.setPointerCapture(e.pointerId);bd.classList.add("nofx");
+  if(pts.size===1){drag={x:e.clientX-x,y:e.clientY-y};vp.classList.add("drag")}});
+vp.addEventListener("pointermove",e=>{if(!pts.has(e.pointerId))return;const prev=pts.get(e.pointerId);pts.set(e.pointerId,{x:e.clientX,y:e.clientY});
+  if(pts.size===2){const [a,b]=[...pts.values()];const r=vp.getBoundingClientRect();
+    const others=[...pts.entries()].filter(([k])=>k!==e.pointerId)[0][1];
+    const dPrev=Math.hypot(prev.x-others.x,prev.y-others.y),dNow=Math.hypot(a.x-b.x,a.y-b.y);
+    if(dPrev>0)zoomAt(dNow/dPrev,(a.x+b.x)/2-r.left,(a.y+b.y)/2-r.top);return}
+  if(drag){x=e.clientX-drag.x;y=e.clientY-drag.y;apply()}});
+function up(e){pts.delete(e.pointerId);if(pts.size===0){drag=null;vp.classList.remove("drag")}else if(pts.size===1){const p=[...pts.values()][0];drag={x:p.x-x,y:p.y-y}}}
+vp.addEventListener("pointerup",up);vp.addEventListener("pointercancel",up);
+function btnZoom(f){const r=vp.getBoundingClientRect();bd.classList.remove("nofx");zoomAt(f,r.width/2,r.height/2)}
+document.getElementById("zin").onclick=()=>btnZoom(1.2);
+document.getElementById("zout").onclick=()=>btnZoom(1/1.2);
+document.getElementById("fit").onclick=()=>{bd.classList.remove("nofx");fit()};
+window.addEventListener("resize",fit);fit();
+</script>
+
+</body></html>

@@ -1,0 +1,323 @@
+{
+ "rev:lettore-ceo": [
+  {
+   "gravita": "alta",
+   "testo_attuale": "Sette architetture sono state scritte da architetti indipendenti e valutate da quattro giudici, con quattro punti di vista: la fedeltà alla visione, il CEO (valore, tempi, costi), il CPTO (affidabilità e manutenzione), un consulente privacy.",
+   "problema": "(c) È un'affermazione che cade alla prima domanda. Dai file di ricerca/20-23 risulta che «architetti», «giudici» e il «critico indipendente» dell'appendice B sono agenti AI: i file delle sette proposte sono stati salvati tra le 22:58 e le 23:05 del 24/10, e il giudizio CEO si intitola «con la lente di Alessandro». Se Alessandro o Michele chiedono «chi sono questi architetti?», la risposta toglie credibilità a tutto il confronto. In più, un «giudice CEO» e un «giudice CPTO» che parlano a nome dei due lettori suonano presuntuosi. La stessa correzione serve nell'appendice B: le etichette «CEO:» e «CPTO:» dei dissensi diventano «Lente commerciale:» e «Lente tecnica:», e «un critico indipendente» diventa «una revisione AI separata».",
+   "testo_proposto": "Sette architetture sono state scritte da agenti AI separati, uno per proposta, e valutate da quattro revisori AI, ciascuno con un punto di vista: la fedeltà alla visione, la lente commerciale (valore, tempi, costi), la lente tecnica (affidabilità e manutenzione), la privacy. È un metodo per mettere alla prova la scelta, non un verdetto: i fatti su cui poggia sono nella cartella `ricerca`.",
+   "fonte": "Sezione 5.7 e appendice B; ricerca/20-proposta-*.md, ricerca/21-giudizio-ceo.md (titolo), ricerca/23-critica-completezza.md"
+  },
+  {
+   "gravita": "alta",
+   "testo_attuale": "stanno dentro i crediti che abbiamo già, con un tetto a 250 €.",
+   "problema": "(d)+(c) La sintesi dà le API per gratuite, ma altrove il documento le dà per incerte. Lo fanno il rischio «Crediti API incerti» della sezione 13, la riga 11 della sezione 14 («se i crediti non sono 800 $ al mese») e la verifica del bundle, che è tra le cose «che verifichiamo noi nella prima settimana». Secondo ricerca/14 §1.4, gli 800 $ al mese vengono «dal contesto di Alberto», mentre le fonti terze parlano di 1.000 $ che scadono in 6 mesi. La tabella del costo «in più» esclude le API: se i crediti non bastano, le settimane 1-8 passano da circa 290 a circa 490 € al mese. Meglio dirlo qui che farlo scoprire a Michele. Inoltre la cifra di 800 $ compare per la prima volta solo nella riga 11 della sezione 14, come se fosse già nota.",
+   "testo_proposto": "dovrebbero stare dentro i crediti che abbiamo (800 $ al mese, circa 715 €; importo e scadenza li confermiamo nella Console nella prima settimana). Se non bastano, diventano una spesa in più con un tetto di 250 € al mese.",
+   "fonte": "Sezione 1 (Cosa costa); sezioni 13 e 14 (riga 11 e paragrafo finale); ricerca/14-costi-abbonamenti-e-api.md §1.4"
+  },
+  {
+   "gravita": "alta",
+   "testo_attuale": "3. Il budget una tantum per mettere il server in sicurezza: UPS e accessori HPE, con un tetto che fissiamo dopo l'inventario.",
+   "problema": "(c)+(d) Si chiede un sì a una cifra che non c'è, mentre la sezione 12.3 e la riga 2 della sezione 14 fissano già il tetto degli accessori a 1.000 € e l'UPS a 1.163-1.293 €. Il documento non dà mai il totale delle spese una tantum. Il parere legale (tetto 2.500 €, la voce più grossa) resta fuori dalle decisioni di oggi, ma la fase 0 ne ha bisogno: «decisione sull'email con il legale», nelle sezioni 7.4 e 11. Le sezioni 9.4 e 14 (riga 10) invece lo mettono «prima della fase 2». Per allinearle, la riga 10 della sezione 14 diventa «Sì, da chiedere subito: la parte sull'email serve nella fase 0, il resto prima della fase 2». Un CEO approva più volentieri un numero unico con un massimo.",
+   "testo_proposto": "3. Il budget una tantum delle prime otto settimane: UPS (1.163-1.293 €), accessori HPE e due dischi (tetto 1.000 €), il deposito API se serve (circa 223 €) e il parere legale unico (tetto 2.500 €, con due preventivi), da chiedere subito perché la parte sull'email serve già nella fase 0. In tutto, al massimo 5.016 €.",
+   "fonte": "Sezione 1 (Cosa vi chiediamo oggi); sezioni 7.4, 9.4, 11, 12.3 e 14 (righe 2 e 10)"
+  },
+  {
+   "gravita": "alta",
+   "testo_attuale": "| 3 | Aggiornare la GPU | Non ora; si rivede dopo 4-6 settimane di misure | 2.438-2.555 € |",
+   "problema": "(a) È una scelta di compute, che per regola spetta ad Alberto, eppure sta nella tabella che si apre con «Solo decisioni di budget e di abbonamento». Chiedere ai CEO se aggiornare la GPU apre una discussione tecnica (quale scheda, per quali modelli) e contraddice la frase con cui si apre la sezione. Come possibile spesa futura va bene; come decisione di oggi no.",
+   "testo_proposto": "| 3 | Nessuna spesa per la GPU in questa proposta | — | Se dopo 4-6 settimane di misure servirà una scheda più potente, torniamo da voi con un preventivo (oggi 2.438-2.555 €) |",
+   "fonte": "Sezione 14, riga 3; sezione 6.2"
+  },
+  {
+   "gravita": "alta",
+   "testo_attuale": "| 14 | Dati sensibili in UE | Chiedere subito la conservazione zero ad Anthropic (gratis); Claude su AWS in UE solo se un cliente lo chiede | da preventivare se serve |",
+   "problema": "(a)+(b) Dove gira il modello e quanto a lungo il fornitore conserva i dati sono scelte tecniche e di privacy. Per un lettore commerciale, poi, «conservazione zero» e «Claude su AWS in UE» non sono spiegati. La richiesta ad Anthropic è gratuita e non ha bisogno del sì dei CEO. Va spostata nel paragrafo «Cosa verifichiamo noi nella prima settimana», aggiungendo «e chiediamo ad Anthropic di non conservare i nostri dati, gratis». Ai CEO resta solo l'eventuale spesa.",
+   "testo_proposto": "| 14 | Budget per usare Claude su server in Europa, solo se un cliente lo chiede per contratto | Non ora; il preventivo ve lo portiamo insieme al contratto del cliente | da preventivare se serve |",
+   "fonte": "Sezione 14, riga 14 e paragrafo finale"
+  },
+  {
+   "gravita": "media",
+   "testo_attuale": "Il sistema è l'addetto che manca, e non si stanca.",
+   "problema": "(c) La sintesi non risponde all'obiezione più prevedibile. Con 11 lead, 1 risposta e 0 meeting, Alessandro chiederà perché costruire trenta agenti invece di far girare il funnel. È lo stesso dissenso della lente commerciale riportato nell'appendice B: «il problema commerciale oggi non è l'orchestrazione, è che il funnel non c'è». La risposta c'è («Prima il funnel»), ma arriva solo nella sezione 11.",
+   "testo_proposto": "Il sistema è l'addetto che manca, e non si stanca. Per questo partiamo da ciò che rende già con i numeri di oggi (post, follow-up delle call, decisione sull'email), mentre \"Andrea\" e la pipeline pesata aspettano che ci siano lead vere (sezione 11).",
+   "fonte": "Sezione 1 (Perché ora); sezione 11 (Prima il funnel); appendice B (dissensi)"
+  },
+  {
+   "gravita": "media",
+   "testo_attuale": "1. Il via alle fasi 0 e 1: otto settimane, circa 53 giorni-persona (Alberto quasi a tempo pieno, Mattia un giorno e mezzo a settimana), con una verifica alla settimana 8 su criteri tecnici e commerciali.",
+   "problema": "(b)+(c) Mancano due cose che un CEO cerca prima di firmare. Primo, il tempo chiesto a loro due. Michele qui non compare, e nel paragrafo «Il costo vero è il tempo» la sua «mezza giornata» non dice se è a settimana o in tutto. Il tempo di Alessandro non compare mai, anche se le sezioni 10 e 11 gli chiedono assessment, regole in Notion, la mezz'ora del venerdì e le approvazioni. Secondo, cosa succede se alla settimana 8 i risultati commerciali non arrivano: per i criteri tecnici la conseguenza è scritta (si cambia motore), per quelli commerciali no. Dire il rischio massimo e che restano comunque risultati utili alza la probabilità del sì. Per coerenza, nel paragrafo «Il costo vero è il tempo» va scritto «Michele per mezza giornata a settimana».",
+   "testo_proposto": "1. Il via alle fasi 0 e 1: otto settimane, circa 53 giorni-persona (Alberto quasi a tempo pieno, Mattia un giorno e mezzo e Michele mezza giornata a settimana; ad Alessandro chiediamo l'assessment di mezz'ora, le sue regole in Notion, la mezz'ora del venerdì e le approvazioni dal telefono), con una verifica alla settimana 8 su criteri tecnici e commerciali. Alla settimana 8 decidete voi se finanziare la fase 2: se ci fermiamo, restano il server in sicurezza, SersanOutreach sistemato e il calendario dei post, e gli abbonamenti mensili si disdicono.",
+   "fonte": "Sezione 1 (Cosa costa, Cosa vi chiediamo oggi); sezioni 10 e 11; ricerca/22-architettura-scelta.md (compiti di Alessandro per fase)"
+  },
+  {
+   "gravita": "media",
+   "testo_attuale": "La lista completa delle funzionalità, voce per voce, è nell'appendice A: il progetto le copre tutte.",
+   "problema": "(c)+(d) È una promessa che l'appendice stessa smentisce. Le «Lacune dichiarate» ammettono che la pipeline pesata non ha storico (0 deal vinti) e che il brief non ha le aperture delle mail. Ammettono anche che fit score e apprendimento dai rifiuti non hanno i volumi, che Andrea parte senza voce clonata e che il coaching al responsabile resta aggregato. Michele, che legge le appendici, vedrà il contrasto. Lo stesso eccesso è nella tabella 2.3, che promette la «Probabilità di chiusura pesata sullo storico», mentre l'appendice dice che finché le chiusure non sono 30-50 si usano i pesi dichiarati da Alessandro.",
+   "testo_proposto": "La lista completa delle funzionalità, voce per voce, è nell'appendice A: il progetto le copre tutte, e in fondo all'appendice diciamo dove alcune partono ridotte, soprattutto perché oggi lead e call sono poche.",
+   "fonte": "Sezione 2.1; tabella 2.3; appendice A (Lacune dichiarate)"
+  },
+  {
+   "gravita": "media",
+   "testo_attuale": "i to-do sono in Notion e la bozza della mail di follow-up aspetta il vostro sì sul telefono.",
+   "problema": "(d) La promessa delle 8 settimane non segue il piano. Il risultato della fase 1 (sezione 11) è «bozza di follow-up in carta», mentre «invio dei follow-up dopo il sì» arriva nella fase 2 (settimane 9-13), come anche in ricerca/22. Letta insieme alla giornata della sezione 3 («Lui corregge una frase e approva. La mail parte.»), la frase fa credere che alla settimana 8 il sì spedisca la mail. Se non succede, è una delusione evitabile proprio sul flusso di punta.",
+   "testo_proposto": "i to-do sono in Notion e la bozza della mail di follow-up arriva sul telefono, pronta da correggere e inviare; dalla fase 2 basterà il vostro sì e partirà da sola.",
+   "fonte": "Sezione 1 (Cosa vedete in 8 settimane); sezione 11 (fasi 1 e 2); ricerca/22-architettura-scelta.md (fase 2)"
+  },
+  {
+   "gravita": "media",
+   "testo_attuale": "| **Rivendita**: il Cancello nasce da codice personale di Alberto | Un accordo scritto su come SerSan lo usa e lo rivende, prima di offrirlo ai clienti |",
+   "problema": "(c) Un'obiezione prevedibile resta aperta proprio al momento della firma. Il porting del codice personale di Alberto su Linux costa circa 21 giorni-persona di tempo SerSan, in gran parte nella fase 1 (sezione 5.4). L'accordo su proprietà e uso, però, arriva solo «prima di offrirlo ai clienti». Un CEO commerciale chiederà subito «di chi è il Cancello che paghiamo noi?». Non è una domanda tecnica né di budget, ma se resta senza risposta frena il sì.",
+   "testo_proposto": "| **Rivendita**: il Cancello nasce da codice personale di Alberto | Un accordo scritto su come SerSan lo usa, lo modifica e lo rivende, firmato prima della fase 1, cioè prima che SerSan ci investa tempo |",
+   "fonte": "Sezione 13; sezione 5.4"
+  },
+  {
+   "gravita": "media",
+   "testo_attuale": "Sono tra metà e tre quarti di una persona a tempo pieno, per 140-310 € al mese in più oltre al nostro tempo di costruzione.",
+   "problema": "(c) Il confronto è troppo favorevole, e Alessandro lo misurerà con un'assunzione vera. La tabella 12.4 si dice «prudente» ma presuppone 10-15 call e 5 incontri a settimana, mentre oggi i meeting sono 0 (sezioni 1 e 7.1). La riga del marketing conta 6-10 ore «restituite» per un lavoro che oggi non fa nessuno: è lavoro nuovo, non tempo restituito. E i 140-310 € valgono solo finché durano il bundle Claude Team e i crediti API. Anche «Una stima prudente», all'inizio del 12.4, andrebbe scritta «Una stima».",
+   "testo_proposto": "Quando avremo questi volumi (oggi call e incontri sono molti meno) sono tra metà e tre quarti di una persona a tempo pieno, per 140-310 € al mese in più finché valgono i crediti API e l'anno gratuito di Claude Team (dopo, fino a circa 760 € con cinque posti premium, più le API se i crediti finiscono), oltre al nostro tempo di costruzione.",
+   "fonte": "Sezione 12.4; sezioni 1, 7.1 e 12.1"
+  },
+  {
+   "gravita": "media",
+   "testo_attuale": "spesa nel tetto; carte decise entro 24 ore. Se un criterio fallisce, passiamo al motore nostro sull'Agent SDK senza buttare il resto.",
+   "problema": "(d) Il criterio che decide l'orchestratore ha un'incoerenza logica. «Carte decise entro 24 ore» misura quanto in fretta approviamo noi quattro, non se Hermes funziona. Così com'è scritto, se i CEO approvano in ritardo il piano cambia motore, con 15-20 giorni-persona in più (sezione 5.3), per un motivo che con la tecnica non c'entra. Inoltre «Agent SDK» non è spiegato per un lettore commerciale.",
+   "testo_proposto": "spesa nel tetto. Se uno di questi criteri fallisce, passiamo a un motore nostro costruito con gli strumenti di Anthropic (Agent SDK), senza buttare il resto. Le carte decise entro 24 ore le misuriamo invece tra i criteri commerciali, perché dipendono da noi e non dall'orchestratore.",
+   "fonte": "Sezione 11 (La verifica della settimana 8); sezione 5.3"
+  },
+  {
+   "gravita": "media",
+   "testo_attuale": "| 7 | Hermes Cloud come palestra per 2 mesi, poi riserva ferma | Sì | circa 19 € al mese (47 € con l'istanza accesa) |",
+   "problema": "(a)+(b)+(d) È una scelta tecnica (ambiente di prova e riserva in caso di guasto), detta in gergo («palestra», «riserva ferma», «istanza»). Anche i conti non tornano. Hermes Cloud si paga per il tempo in cui è acceso (ricerca/10), quindi nei due mesi di prova costa fino a 47 €, non i 18,67 € contati negli «Abbonamenti nuovi (≈ 189)». In quei 189 c'è anche Proxmox (20 €), che la riga 12 fa partire solo dalla fase 2. Per questo nella sezione 1 la tabella (≈ 189) e la decisione 2 («circa 170 € al mese») non coincidono, e le settimane 1-8 costano in più circa 300 € al mese, non 290. Vanno corrette le tabelle delle sezioni 1 e 12.1 («≈ 300», «Abbonamenti nuovi (≈ 197)») e la decisione 2 («circa 170 € al mese, fino a 197 € nei due mesi di prova di Hermes Cloud»).",
+   "testo_proposto": "| 7 | Versione in cloud di Hermes: la usiamo per le prove nei primi 2 mesi, poi resta spenta come riserva se il server si ferma | Sì | fino a circa 47 € al mese nei 2 mesi di prova (si paga il tempo in cui è accesa), poi circa 19 € |",
+   "fonte": "Sezione 14, righe 7 e 12; sezione 1 (tabella e decisione 2); sezione 12.1; ricerca/10-hermes-agent.md (Hermes Cloud)"
+  },
+  {
+   "gravita": "bassa",
+   "testo_attuale": "| 12 | Proxmox con il repository stabile, dalla fase 2 | Sì | 20 € al mese |",
+   "problema": "(a)+(b) «Repository stabile» è una scelta tecnica, con un termine che un lettore commerciale non conosce. Ai CEO basta sapere che cosa compra la spesa.",
+   "testo_proposto": "| 12 | Abbonamento agli aggiornamenti collaudati del software che divide il server in macchine separate (Proxmox), dalla fase 2 | Sì | 20 € al mese |",
+   "fonte": "Sezione 14, riga 12; ricerca/22-architettura-scelta.md (Proxmox Community)"
+  },
+  {
+   "gravita": "bassa",
+   "testo_attuale": "| 17 | Un mese di prova di Grok Bot su dati verdi, per confrontarlo con Hermes sul campo | Sì, 2 posti | circa 54 € una volta |",
+   "problema": "(a) Confrontare due orchestratori sul campo è una scelta tecnica. La riga invita anche una domanda scomoda: perché pagare la prova della proposta arrivata sesta su sette (113 su 240), che la sezione 5.7 esclude per i dati di clienti e lead? Scritta come voce di budget, non apre la discussione tecnica.",
+   "testo_proposto": "| 17 | Budget per provare per un mese un secondo strumento di agenti (Grok Bot), solo su dati non personali | Sì | circa 54 € una volta |",
+   "fonte": "Sezione 14, riga 17; sezione 5.7"
+  }
+ ],
+ "rev:copertura": [
+  {
+   "gravita": "alta",
+   "testo_attuale": "SersanOutreach sul server, con la nuova operazione che crea un deal",
+   "problema": "La squadra Outbound (Operatore outbound, Sentinella segnali e Risponditore, tutti in fase 2 secondo il §4.4) non compare in nessuna fase della sezione 11 e manca anche tra i risultati di fine fase. Eppure sono le «mani» del funnel promesse in §1 e §7.1, la parte che interessa di più ad Alessandro. Manca anche il lavoro per collegarle. Secondo 01 §1.4 e §5.10 il server MCP di lettura installato non si avvia e l'operatore non è installato, mentre il §7.3 dice «Le prese per gli agenti sono già pronte»; 22 §5 metteva «MCP collegati» in fase 2. Nessun agente gestisce nemmeno il passaggio da commenti qualificati a contatti promesso nel §8.3 (05 §5.6). Nella stessa riga, colonna «Cosa vedete alla fine», va aggiunto: «ogni mattina bozze, segnali e risposte di SersanOutreach pronti da approvare».",
+   "testo_proposto": "SersanOutreach sul server, con la nuova operazione che crea un deal e i due server MCP installati accanto a Hermes; i tre agenti outbound al lavoro: l'operatore sulla coda di approvazione, la sentinella sui segnali e sui commenti qualificati ai post, il risponditore sull'inbox",
+   "fonte": "PRESENTAZIONE-CEO.md §4.4, §7.3, §11; ricerca/01-sersanoutreach.md §1.4, §5.10; ricerca/05-marketing-e-post.md §5.6; ricerca/22-architettura-scelta.md §5"
+  },
+  {
+   "gravita": "alta",
+   "testo_attuale": "Prima della fase 2 chiediamo un parere unico su:",
+   "problema": "Il parere legale arriva «prima della fase 2», e lo ripetono la decisione 10 («Sì, prima della fase 2») e la tabella dei rischi. Ma già nella fase 1 il sistema registra le call con i clienti tramite Recall.ai, che sta negli USA, e già nella fase 0 chiude la decisione sull'email «con il legale». Il pilota tratterebbe quindi proprio i dati (registrazioni delle call, trasferimenti verso gli USA, email B2B) per cui il documento stesso dice che serve il parere. Un CEO lo legge come un rischio corso prima di essere coperto. Nella sezione 11 manca anche la valutazione d'impatto prima della prima call registrata (regola 9; 22 §3: «DPIA prima del primo post-call con un cliente»). Vanno corretti allo stesso modo la decisione 10 («Sì, nella fase 0: i punti del pilota entro la settimana 3») e la riga del rischio.",
+   "testo_proposto": "Nella fase 0 chiediamo un parere unico, in due consegne: entro la settimana 3 i punti che servono al pilota (email B2B verso l'Italia, registrazione delle call, trasferimenti verso gli USA), prima della fase 2 tutto il resto. I punti sono:",
+   "fonte": "PRESENTAZIONE-CEO.md §5.6, §9.1 regola 9, §9.4, §11, §13, §14 decisione 10; ricerca/22-architettura-scelta.md §3"
+  },
+  {
+   "gravita": "media",
+   "testo_attuale": "Prepara le bozze sullo scheduler, le programma dopo il sì, controlla che siano uscite e aggiorna calendario e registro",
+   "problema": "Questa frase contraddice tre punti. Il primo è la regola che lo stesso §8.2 riporta: «sulle piattaforme si scrive solo da una sessione presidiata» (05 §5 vincoli 1 e 5; §5.4: «Una Routine o un task non può pubblicare»). Il secondo è il §9.2, per cui ogni pubblicazione passa dal Cancello: gli esecutori del Cancello nel §5.2 sono «Gmail, Slack, Notion, SersanOutreach, voce» e Metricool non c'è. Il terzo è l'architettura scelta (22 §3 e §4, voce I4), che prevede «Metricool in sola lettura» e «pubblica solo la sessione presidiata». Anche creare una bozza su Metricool è una scrittura. La stessa correzione va fatta nella riga Pubblicatore del §8.2. Se si vuole automatizzare la programmazione, bisogna aggiungere al Cancello un esecutore Metricool, aggiornare la direttiva GESTIONE_POST e dirlo nel documento.",
+   "testo_proposto": "Prepara la lista da approvare (data, ora, rete, testo esatto, file); dopo il sì Alberto la programma su Metricool in una sessione presidiata, come chiedono le direttive; poi l'agente controlla che i post siano usciti e aggiorna calendario e registro",
+   "fonte": "PRESENTAZIONE-CEO.md §4.5, §5.2, §8.2, §9.2; ricerca/05-marketing-e-post.md §5 (vincoli), §5.4; ricerca/22-architettura-scelta.md §3, §4"
+  },
+  {
+   "gravita": "media",
+   "testo_attuale": "Dopo una call: riassunto, to-do e bozza di follow-up in carta.",
+   "problema": "Nella fase 1 la mail di follow-up resta una bozza: l'invio dopo il sì arriva solo con la fase 2 (sezione 11, fase 2; appendice A, voce B3 «1-2»; 22 §4, voce B3 «1 bozza, 2 invio»). Però il §1 promette per le prime 8 settimane la bozza che «aspetta il vostro sì sul telefono», il §3 mostra «approva. La mail parte» e il criterio commerciale della settimana 8 chiede il follow-up «inviato entro 24 ore». Se il documento non dice chi manda la mail dopo il sì, i CEO si aspettano un invio automatico che nella fase 1 non esiste.",
+   "testo_proposto": "Dopo una call: riassunto, to-do e bozza di follow-up in carta; fino alla fase 2, dopo il sì la mail la invia dalla sua casella chi ha fatto la call, poi la invia il Cancello.",
+   "fonte": "PRESENTAZIONE-CEO.md §1, §3, §11 (fasi 1-2 e verifica della settimana 8), appendice A voce B3; ricerca/22-architettura-scelta.md §4"
+  },
+  {
+   "gravita": "media",
+   "testo_attuale": "Ogni agente che parla o scrive a un esterno **si dichiara AI** dalla prima frase (AI Act, art. 50, in vigore dal 2 agosto 2026)",
+   "problema": "Letta alla lettera, la regola vale anche per follow-up, offerte e post che gli agenti scrivono e una persona approva: ogni mail di Alessandro dovrebbe aprirsi con «sono un'AI». Contrasta con la regola di casa del marketing «mai etichette AI» (05 §5, vincolo 2, scelta del 22/10), che il §8.2 non riporta. Contrasta anche con il §3, dove Alessandro approva una mail che parte a suo nome. 22 §6 segnala già il conflitto «art. 50 contro mai etichette AI». La regola deve distinguere l'agente che parla da solo (Andrea) dal testo che una persona rivede e firma; la distinzione va fatta confermare nel parere legale del §9.4.",
+   "testo_proposto": "Ogni agente che parla o scrive **da solo** a un esterno, come \"Andrea\", **si dichiara AI** dalla prima frase (AI Act, art. 50, in vigore dal 2 agosto 2026); mail, offerte e post che una persona rivede e approva escono a nome di quella persona",
+   "fonte": "PRESENTAZIONE-CEO.md §3, §8.2, §9.1; ricerca/05-marketing-e-post.md §5 vincolo 2; ricerca/22-architettura-scelta.md §6"
+  },
+  {
+   "gravita": "media",
+   "testo_attuale": "Nelle prime due settimane: calendario riempito fino a Natale con proposte in regola, le 22 caption pronte programmate dopo il sì, i registri creati e tenuti, i numeri del lunedì compilati.",
+   "problema": "Tre sezioni danno tempi diversi per le stesse cose. Il §8.4 dice due settimane. La sezione 11 chiude la fase 0 con «Prima settimana di post pronta» e mette i numeri del lunedì in fase 1. Il §1 promette in 8 settimane il calendario pieno fino a Natale e i numeri del lunedì che «si compilano da soli». Inoltre il §4.5 mette Analista metriche e Pubblicatore in fase 1. I numeri dei profili LinkedIn dei founder arrivano solo quando i profili sono collegati (05 §5.5), e il §8.4 lascia il collegamento ai founder. Vanno allineati anche la sezione 11, fase 0 («Calendario proposto fino a Natale e 22 caption programmate dopo il sì»), e il §1 («i numeri del lunedì arrivano compilati, con i dati grezzi»).",
+   "testo_proposto": "Nella fase 0, con Claude in Slack e la sessione presidiata di Alberto: calendario proposto fino a Natale e le 22 caption pronte programmate dopo il sì. Dalla fase 1, con gli agenti: registri tenuti e numeri del lunedì compilati con i dati grezzi; quelli dei profili dei founder arrivano quando i profili sono collegati.",
+   "fonte": "PRESENTAZIONE-CEO.md §1, §4.5, §8.4, §11; ricerca/05-marketing-e-post.md §5.5; ricerca/22-architettura-scelta.md §5"
+  },
+  {
+   "gravita": "media",
+   "testo_attuale": "\"Andrea\"; fit score; coaching privato; pipeline pesata",
+   "problema": "Nei §3, §7.3 e §8.3 Andrea parte dal modulo del sito, ma nessuna fase costruisce il modulo con il consenso né il suo collegamento a SersanOutreach. Le lead dal sito entrano da un percorso che esiste nel codice ma, secondo 01 §1.4 e §5.5, non è mai stato usato in produzione. Il tunnel del §6.2 espone solo i webhook di Instantly e l'estensione Chrome, e la pulizia del sito resta «a noi» senza una data (§8.4). Nel piano di 22 §5 la fase 4 comprendeva il «testo del consenso nel modulo». Da questo pezzo dipende anche il percorso dal sito al CRM di 05 §5.6, dove il sito promette che un founder legge e risponde entro un giorno lavorativo.",
+   "testo_proposto": "modulo del sito con il consenso alla chiamata, collegato a SersanOutreach come lead in ingresso (il percorso esiste ma non è mai stato usato in produzione); \"Andrea\"; fit score; coaching privato; pipeline pesata",
+   "fonte": "PRESENTAZIONE-CEO.md §3, §6.2, §7.3, §8.3, §8.4, §11 fase 4; ricerca/01-sersanoutreach.md §1.4, §5.5; ricerca/05-marketing-e-post.md §5.6; ricerca/22-architettura-scelta.md §5"
+  },
+  {
+   "gravita": "media",
+   "testo_attuale": "approva o rifiuta un messaggio solo se il testo è quello letto",
+   "problema": "L'operazione compare nell'elenco delle «prese standard a cui un agente si collega», quindi sembra che un agente possa approvare da solo un messaggio di outreach. Questo smentisce «Nessun agente manda niente a un cliente senza il sì di una persona» (§1) e il §5.1, punto 3. In SersanOutreach approvare un messaggio apre la strada all'invio (01 §5.2, §5.4). L'architettura scelta risolve il problema con «lettura libera … scritture solo tramite gli esecutori» (22 §2), ma il documento non lo dice ed è una delle prime cose che il CPTO verificherà.",
+   "testo_proposto": "approva o rifiuta un messaggio solo se il testo è quello letto (questa operazione la chiama solo il Cancello, dopo il sì di una persona su una carta: gli agenti leggono liberamente e scrivono solo attraverso il Cancello)",
+   "fonte": "PRESENTAZIONE-CEO.md §1, §5.1, §7.3; ricerca/01-sersanoutreach.md §5.2, §5.4; ricerca/22-architettura-scelta.md §2"
+  },
+  {
+   "gravita": "media",
+   "testo_attuale": "Lo fa solo dopo il sì di una persona, una volta sola, e registra tutto.",
+   "problema": "La frase vale per tutto ciò che il Cancello fa, compreso il CRM. Altrove però CRM e to-do si aggiornano senza carta. Nel §3, alle 11:55, «Nel CRM il meeting è registrato e il deal ha un valore stimato» prima dell'unica carta, quella della mail. Il §7.3 fa registrare meeting e deal all'agente Post-call. Il §5.4, punto 3, manda in carta solo «le azioni delicate». 22 §4 (voce B4) parla di una classe «scrittura interna». Le due versioni vanno ridotte a una.",
+   "testo_proposto": "Le azioni verso l'esterno le fa solo dopo il sì di una persona, una volta sola; le scritture interne (meeting e deal nel CRM, to-do in Notion) le fa secondo regole scritte, a nome della persona responsabile. In entrambi i casi registra tutto.",
+   "fonte": "PRESENTAZIONE-CEO.md §3, §5.1, §5.4, §7.3; ricerca/01-sersanoutreach.md §5.5; ricerca/22-architettura-scelta.md §4"
+  },
+  {
+   "gravita": "media",
+   "testo_attuale": "Blocca per default ciò che invia, pubblica, paga o cancella; chiede il sì sul telefono; stop di emergenza",
+   "problema": "Lo stop di emergenza del Cancello ferma gli agenti, ma non gli invii che SersanOutreach fa con le sue code: messaggi già approvati e campagne su Instantly. 01 §5.5 elenca il kill switch tra le entità pronte per gli agenti e avverte che «un'emergenza email richiede kill switch e pausa Instantly». Il §9.2 promette lo «stop di emergenza dal telefono» senza questo collegamento, e nessuna fase lo prevede.",
+   "testo_proposto": "Blocca per default ciò che invia, pubblica, paga o cancella; chiede il sì sul telefono; stop di emergenza, che dalla fase 2 ferma anche gli invii di SersanOutreach (kill switch e pausa delle campagne Instantly)",
+   "fonte": "PRESENTAZIONE-CEO.md §4.7, §9.2; ricerca/01-sersanoutreach.md §5.5"
+  },
+  {
+   "gravita": "bassa",
+   "testo_attuale": "agenti editoriale, copy e metriche",
+   "problema": "La sezione 4 mette in fase 1 anche il Capo di gabinetto (§4.7, «L'unico a cui scriviamo»), Visual e video e il Pubblicatore (§4.5). La sezione 11 non li elenca, quindi non rientrano nei 25-33 giorni-persona della fase 1, e nemmeno 22 §5 li prevedeva. Per Visual e video, 05 §5.3 avverte che montaggio e versioni finali restano sul PC di Alberto con After Effects. Le strade sono due: aggiungerli qui, oppure spostarli nel §4 alla fase in cui sono stimati.",
+   "testo_proposto": "Capo di gabinetto; agenti editoriale, copy, visual, pubblicatore e metriche",
+   "fonte": "PRESENTAZIONE-CEO.md §4.5, §4.7, §11 fase 1; ricerca/05-marketing-e-post.md §5.3; ricerca/22-architettura-scelta.md §5"
+  },
+  {
+   "gravita": "bassa",
+   "testo_attuale": "`#agenti` in Slack, un bot per agente, freno ai giri | 3",
+   "problema": "L'appendice A colloca la chat fra agenti (voce A7) solo in fase 3. La sezione 11 invece mette in fase 1 «almeno tre agenti, ognuno con il suo bot Slack», e la verifica della settimana 8 si basa su «almeno tre agenti attivi». La fase indicata nell'appendice non coincide con il piano.",
+   "testo_proposto": "`#agenti` in Slack: tre agenti con il loro bot nelle settimane 7-8, poi un bot per ogni agente, freno ai giri | 1-3",
+   "fonte": "PRESENTAZIONE-CEO.md §11 (fase 1 e verifica della settimana 8), appendice A voce A7; ricerca/00-visione-funzionalita.md A7"
+  },
+  {
+   "gravita": "bassa",
+   "testo_attuale": "Skill scritte dagli agenti; un revisore settimanale propone, una persona approva",
+   "problema": "Il «revisore settimanale» non è tra gli agenti della sezione 4, e la sezione 10 non dice chi approva le skill. Le voci F3-F4 hanno lo stesso difetto: «Analista mensile» non corrisponde a nessun agente, perché nel §4.6 si chiama Mappatore processi. Per F3-F4 si propone: «Mappatore processi, aggiornato ogni mese, con la classifica delle automazioni».",
+   "testo_proposto": "Skill che gli agenti propongono dai processi che si ripetono (sezione 4.9); ogni venerdì, nella mezz'ora \"cosa ho automatizzato\", una persona le approva o le scarta",
+   "fonte": "PRESENTAZIONE-CEO.md §4, §4.6, §4.9, §10 punto 4, appendice A voci A6 e F3-F4"
+  },
+  {
+   "gravita": "bassa",
+   "testo_attuale": "Il fit score (G2) e il ciclo sui rifiuti (G6) hanno bisogno di volumi che oggi non ci sono.",
+   "problema": "L'analisi vinto/perso (voce G8, fase 2 nel §4.3, nella sezione 11 e nell'appendice A) promette al marketing i motivi delle chiusure (§8.3, teardown), ma SersanOutreach oggi ha 0 deal vinti e 0 persi (01 §1.4). La critica 23 §2 lo segnalava insieme a D1, G2 e G6, e il documento ha dichiarato la lacuna solo per questi ultimi tre. Senza dirlo, il risultato della fase 2 promette qualcosa che i dati non possono dare.",
+   "testo_proposto": "Il fit score (G2), il ciclo sui rifiuti (G6) e l'analisi vinto/perso (G8, oggi 0 deal chiusi) hanno bisogno di volumi che oggi non ci sono.",
+   "fonte": "PRESENTAZIONE-CEO.md §4.3, §8.3, §11 fase 2, appendice A (lacune dichiarate); ricerca/01-sersanoutreach.md §1.4; ricerca/23-critica-completezza.md §2"
+  },
+  {
+   "gravita": "bassa",
+   "testo_attuale": "100+ agenti in organigramma",
+   "problema": "L'appendice A dice di riportare ogni voce della visione e il §2.1 afferma che «il progetto le copre tutte». Manca però la voce G10 della lista di controllo, il superpotere a livello individuale, organizzativo e aziendale: è l'unica delle voci A1-I4 senza riga. La riga proposta va aggiunta subito dopo quella di G9, che resta invariata.",
+   "testo_proposto": "| G10 | Un superpotere individuale, organizzativo e aziendale | Il risultato dell'insieme: debrief e regole per ciascuno, squadre con un responsabile, memoria e Cancello per l'azienda | 1-5 |",
+   "fonte": "PRESENTAZIONE-CEO.md §2.1, appendice A; ricerca/00-visione-funzionalita.md G10"
+  }
+ ],
+ "rev:numeri-e-fatti": [
+  {
+   "gravita": "alta",
+   "testo_attuale": "Le **API di Claude** per gli agenti (stima 90-200 € al mese) stanno dentro i crediti che abbiamo già, con un tetto a 250 €.",
+   "problema": "La frase dà i crediti per certi, ma nei rapporti non sono confermati. Gli \"800 $ al mese\" vengono solo dal contesto di Alberto e non compaiono in nessun file. Le fonti terze parlano di 1.000 $ una tantum che scadono dopo 6 mesi. La pagina del piano Team dice \"fino a 500 $ al mese\" di crediti in comune, con condizioni illeggibili. I file del marketing parlano di 100 $ per posto Premium, con un tetto di 500 $ e la maturazione sui posti gratuiti ancora da verificare. Se i crediti finiscono, l'esborso sale di circa 196 € al mese. Il documento stesso lo ammette nei rischi, nella decisione 11 e nelle verifiche della prima settimana, quindi la frase di pagina 1 contraddice il resto.",
+   "testo_proposto": "Le **API di Claude** per gli agenti (stima 90-200 € al mese) dovrebbero stare dentro i crediti del bundle startup, di cui verifichiamo importo e scadenza nella prima settimana; se non bastano le paghiamo noi, con un tetto a 250 €.",
+   "fonte": "14 §1.4 e §12 (bundle startup); 05 §4.5 riga 317 (Premio Claude); 22 §6, nota sui crediti"
+  },
+  {
+   "gravita": "alta",
+   "testo_attuale": "**Esborso reale a regime** | Meno le API coperte dai crediti e la VM Azure spenta | **≈ 623**",
+   "problema": "L'etichetta \"a regime\" è sbagliata. I 623 € valgono solo nel primo anno, con Claude Team gratuito e i crediti API attivi. Nel rapporto 14 \"a regime\" vuol dire senza bundle (1.226,90 € di soli fissi). La sezione 12.2 del documento scrive che \"a regime cinque posti premium costano circa 447 €\". Ricalcolo: 623 + 447 (Team) + 196 (API senza crediti) ≈ 1.265 € al mese. Il valore coincide con 22 §6 (1.284,51 €) meno i 19,40 € di UPS ammortizzato, che il documento ha spostato negli una tantum.",
+   "testo_proposto": "**Esborso nel primo anno** | Meno le API coperte dai crediti e la VM Azure spenta, con Claude Team ancora gratuito | **≈ 623** (a regime, senza bundle né crediti: ≈ 1.265)",
+   "fonte": "22 §6, nota «Senza bundle né crediti il consigliato costa 1.284,51 €»; 14 §11.1, riga «Totale fisso a regime, senza bundle»"
+  },
+  {
+   "gravita": "alta",
+   "testo_attuale": "Quando finisce l'anno gratuito di Claude Team | 543 | 1.069 | 2.060",
+   "problema": "Le somme della riga tornano (97+447, 623+447, 1.613+447, a meno degli arrotondamenti). La riga però tiene i crediti API anche dopo la fine del bundle: 22 §6 lo dice esplicitamente (\"l'ultima tiene i crediti\"). Secondo le fonti terze i crediti scadono 6 mesi dopo l'assegnazione, cioè prima della fine dell'anno gratuito di Team. Manca quindi lo scenario senza crediti, il più probabile a regime. Il ricalcolo parte da 22 §6: riga «Senza crediti API» più 446,70 €, meno l'UPS ammortizzato (19,40, 19,40 e 21,50 €). Risultato: Minimo 598, Consigliato 1.265, Completo 2.547.",
+   "testo_proposto": "Quando finisce l'anno gratuito di Claude Team, se i crediti API restano | 543 | 1.069 | 2.060 |\n| Senza bundle né crediti API | 598 | 1.265 | 2.547",
+   "fonte": "22 §6, tabella e note; 14 §1.4"
+  },
+  {
+   "gravita": "alta",
+   "testo_attuale": "Sette architetture sono state scritte da architetti indipendenti e valutate da quattro giudici, con quattro punti di vista: la fedeltà alla visione, il CEO (valore, tempi, costi), il CPTO (affidabilità e manutenzione), un consulente privacy.",
+   "problema": "Le proposte 20 e i giudizi 21 li hanno prodotti agenti di ricerca, tutti il 24/10 (LEGGIMI, «Come sono stati fatti i rapporti»). I giudici \"CEO\" e \"CPTO\" sono lenti che simulano Alessandro e Michele: lo dicono le intestazioni di 21-giudizio-ceo e 21-giudizio-cpto. Scritto così, i due destinatari leggono che \"il CEO\" e \"il CPTO\" hanno già dato voti e frasi che non hanno mai detto (appendice B, «I dissensi»). Leggono anche che hanno lavorato architetti e un consulente umani. Michele lo scopre appena apre la cartella ricerca, ed è il rischio più alto per la fiducia nel documento. La stessa correzione serve per \"un critico indipendente\" nell'appendice B. Le etichette dei dissensi CEO, CPTO e Privacy diventano \"lente CEO\", \"lente CPTO\" e \"lente privacy\".",
+   "testo_proposto": "Sette architetture sono state scritte da agenti di ricerca separati, ognuno con una consegna diversa, e valutate da quattro agenti giudici, ognuno con una lente: la fedeltà alla visione, la lente commerciale di Alessandro (valore, tempi, costi), quella tecnica di Michele (affidabilità e manutenzione), la privacy.",
+   "fonte": "LEGGIMI.md, «Come sono stati fatti i rapporti»; 21-giudizio-ceo.md e 21-giudizio-cpto.md, intestazioni"
+  },
+  {
+   "gravita": "media",
+   "testo_attuale": "Il **kit commerciale e marketing** (Instantly, Apollo, Metricool e gli altri, circa 311 € al mese a regime) serve al funnel con o senza agenti, e in parte lo paghiamo già.",
+   "problema": "\"In parte lo paghiamo già\" non è verificato. I costi attuali di Instantly, Apify e Supabase non sono nei file. Google Workspace risulta \"forse già pagato: non trovato\" e Apollo risulta \"unavailable\". Higgsfield aziendale è una spesa nuova, perché oggi Alberto usa un Ultra personale. Metricool Advanced e il workspace Higgsfield Team sono nell'elenco di ciò che manca. Così la tabella \"€ al mese in più\" (290, 140, 310) lascia fuori fino a 311 € che in gran parte sono spesa nuova. Eppure tre agenti della squadra Marketing (Visual, Pubblicatore, Analista) lavorano proprio con Higgsfield, moda.app e Metricool. È la riga che la critica 23 chiedeva.",
+   "testo_proposto": "Il **kit commerciale e marketing** (Instantly, Apollo, Metricool e gli altri, circa 311 € al mese a regime) serve al funnel con o senza agenti; quanto ne paghiamo già oggi lo verifichiamo nella prima settimana, e la parte nuova la aggiungiamo alla spesa in più.",
+   "fonte": "14 §6 (ultima riga) e §11.1 (Google Workspace, Higgsfield); 01 §2 (Apollo) e §3.4; 05 §4.4 e §4.5; 23 §4 «Perimetro»"
+  },
+  {
+   "gravita": "media",
+   "testo_attuale": "Matteo è assente dal 30 settembre",
+   "problema": "Il documento dice \"noi siamo quattro\" e conta Alessandro, Michele, Alberto e Mattia, a cui affida 1,5 giorni a settimana, il ruolo di secondo amministratore e quello di ambassador. Nei file del marketing invece il quarto membro è \"Matteo\", assente dal 30/09. Il sito mostra Mattia Scattu come Software Engineer. La decisione su chi togliere o aggiungere era attesa entro il 9/10 e non risulta presa. Se Matteo e Mattia sono la stessa persona, il documento dà lavoro a chi dichiara assente; se sono due persone, il team è di cinque. I CEO lo notano subito.",
+   "testo_proposto": "il marketing operativo è senza titolare dal 30 settembre",
+   "fonte": "05 §2.7, righe 137-139; 22 §5 (capacità assunta); 16 §0"
+  },
+  {
+   "gravita": "media",
+   "testo_attuale": "SersanOutreach è la nostra piattaforma outbound (LinkedIn ed email) con approvazione umana prima di ogni invio",
+   "problema": "Non è più vero. Dal 14-15/10 esistono i modi di approvazione auto_blank_invites e auto_linkedin: un autopilot che scrive e approva da solo inviti e DM, entro tetti giornalieri. La lane li-autopilot gira ogni 30 minuti. Il documento stesso lo ammette in 7.4 («Se volete tenere l'autopilot acceso…»), quindi le due sezioni si contraddicono.",
+   "testo_proposto": "SersanOutreach è la nostra piattaforma outbound (LinkedIn ed email) con approvazione umana prima di ogni invio, tranne l'autopilot LinkedIn attivato a metà ottobre, che redige e approva da solo inviti e DM entro tetti giornalieri",
+   "fonte": "01 §1.2, §5.4 e §6 riga 2; 23 §5"
+  },
+  {
+   "gravita": "media",
+   "testo_attuale": "Usiamo l'orchestratore della visione, Hermes Agent di Nous Research (open source, licenza MIT), installato sul server che abbiamo appena comprato.",
+   "problema": "La frase dà la scelta per scontata e non dice su cosa si regge, e la critica 23 mette «perché Hermes» tra le domande di un CEO scettico. Per il rapporto 10 Hermes Agent è l'orchestratore scelto per la visione. Serve la stessa correzione in 5.1 e in 5.3. Dirlo in modo esatto rafforza la scelta, che si regge sulle funzioni.",
+   "testo_proposto": "Usiamo Hermes Agent di Nous Research (open source, licenza MIT), installato sul server che abbiamo appena comprato: è l'orchestratore scelto per la visione, e lo abbiamo scelto per le sue funzioni.",
+   "fonte": "10 §1 punto 1; 22 §1; 23 §7 domanda 3"
+  },
+  {
+   "gravita": "media",
+   "testo_attuale": "Kit ventole e dissipatori HPE per la GPU, cavi, 2 dischi SSD con protezione da blackout",
+   "problema": "I CEO approvano questo elenco con un tetto di 1.000 €, ma mancano pezzi che i rapporti 15 e 22 danno per necessari. Servono 2 alimentatori da 800 W, perché con la GPU \"un alimentatore da 500 W non basta\". Servono anche le guide del rack e i DIMM blank, obbligatori negli slot RAM vuoti. Se il cavo comprato non passa il tester, serve il cavo GPU HPE. Nessun rapporto dà i prezzi di questi pezzi, quindi il tetto di 1.000 € non ha una base: almeno va scritto cosa copre.",
+   "testo_proposto": "Kit ventole e dissipatori HPE per la GPU, cavo GPU HPE, 2 alimentatori da 800 W (se oggi sono da 500 W), guide del rack, coperture per gli slot RAM vuoti, 2 dischi SSD con protezione da blackout",
+   "fonte": "15 §1, §2.2, §2.3, §2.4 e §7 passo 2; 22 §7; 23 §4 «Senza cifra»"
+  },
+  {
+   "gravita": "media",
+   "testo_attuale": "il calendario marketing ha 96 slot e 3 pezzi pubblicati",
+   "problema": "Il dato dei 3 pezzi è verificato al 13/10. Dopo quella data altri 5 pezzi erano programmati su Metricool fino al 22/10: TD1 e TD3 come caroselli il 14 e 16/10, poi TD2, TD1 e TD3 in PDF sulla Pagina il 15, 20 e 22/10. Il loro esito non è nei file. Al 24/10 i pezzi pubblicati possono essere 8: Alberto, che pubblica, e i CEO lo sanno, e un numero vecchio indebolisce l'argomento. Stessa correzione in 8.1 («**tre pezzi pubblicati**»).",
+   "testo_proposto": "il calendario marketing ha 96 slot, 3 pezzi pubblicati verificati al 13 ottobre e altri 5 programmati fino al 22 ottobre",
+   "fonte": "05 §0 (riga 17) e §4.1"
+  },
+  {
+   "gravita": "media",
+   "testo_attuale": "è nell'appendice A: il progetto le copre tutte.",
+   "problema": "L'affermazione va oltre i fatti. La stessa appendice A chiude con le «Lacune dichiarate»: la pipeline pesata non ha storico, fit score e ciclo sui rifiuti non hanno volumi, la voce clonata è rinviata. La critica 23 conta circa venti voci coperte solo a parole. Alla settimana 16 gli agenti sono 15-25, non più di 100, e la voce G10 non compare nella tabella. Un lettore attento trova la contraddizione due pagine dopo.",
+   "testo_proposto": "è nell'appendice A: il progetto prevede un componente per ognuna, e in fondo all'appendice dichiara le lacune che restano (pipeline pesata, fit score, voce clonata di Andrea).",
+   "fonte": "23 §1 e §2; appendice A del documento, «Lacune dichiarate»; 00 voce G10"
+  },
+  {
+   "gravita": "media",
+   "testo_attuale": "Oltre 250.000 stelle su GitHub, una release a settimana",
+   "problema": "Il numero è sbagliato. A ottobre sono uscite cinque release in dieci giorni: v0.22.1 il 14/10, v0.22.2 il 15/10, v0.22.3 e v0.22.4 il 21/10, v0.22.5 il 22-23/10. Le note di rilascio sono \"volutamente incomplete\". Il ritmo di rilascio è proprio ciò che il CPTO controllerà su GitHub. Va allineata anche la riga dei rischi «cambia ogni settimana».",
+   "testo_proposto": "Oltre 250.000 stelle su GitHub, cinque release in dieci giorni a ottobre",
+   "fonte": "10 §1 punto 2, §3 e §6; 22 §8"
+  },
+  {
+   "gravita": "bassa",
+   "testo_attuale": "Settimane 9-16 (fasi 2-3) | ≈ 140 | SersanOutreach passa sul server e la VM Azure si spegne (≈ 150 in meno)",
+   "problema": "La riga conta il risparmio di 150 € da subito. Il documento stesso però dice che la VM Azure si spegne \"solo dopo una settimana di funzionamento stabile\", e mette «Azure spenta» come risultato di fine fase 2, cioè alla settimana 13. Nelle settimane 9-13 la spesa in più resta circa 290 € (189 + 102); i 140 € valgono dalla settimana 14. In tutto la differenza è di circa 750 €. La stessa riga va corretta in 12.1.",
+   "testo_proposto": "Settimane 9-13 (fase 2) | ≈ 290 | SersanOutreach passa sul server; la VM Azure resta accesa fino a una settimana di funzionamento stabile |\n| Settimane 14-16 (fase 3) | ≈ 140 | La VM Azure è spenta (≈ 150 in meno)",
+   "fonte": "documento §7.2 e §11 (fase 2); 01 §4.11 passo 10; 22 §5"
+  },
+  {
+   "gravita": "bassa",
+   "testo_attuale": "≈ 290 | Abbonamenti nuovi (≈ 189) e corrente del server (≈ 102); la VM Azure resta accesa",
+   "problema": "Nella stessa pagina la decisione 2 dice che gli abbonamenti della prima fase costano \"circa 170 € al mese\". La differenza è Proxmox (20 €), che la decisione 12 fa partire dalla fase 2. Inoltre nelle settimane 1-8 Hermes Cloud fa da palestra con l'istanza accesa, quindi costa 47 € e non 18,67 € (decisione 7). Ricalcolo per le settimane 1-8: 27 + 35,74 + 44,67 + 47,08 + 3,10 + 22,29 + 17,42 = 197,30 €, più 102 € di corrente, cioè circa 300 €. I 189 € valgono dalla fase 2, con Hermes fermo e Proxmox attivo. La stessa riga va corretta in 12.1, e nella decisione 2 \"circa 170 €\" diventa \"circa 200 € finché Hermes Cloud è acceso\".",
+   "testo_proposto": "≈ 300 | Abbonamenti nuovi (≈ 197, con Hermes Cloud acceso come palestra; Proxmox parte dalla fase 2) e corrente del server (≈ 102); la VM Azure resta accesa",
+   "fonte": "documento §1 decisione 2 e §14 decisioni 7 e 12; 22 §6 e §9; 18 §2.4"
+  },
+  {
+   "gravita": "bassa",
+   "testo_attuale": "la usiamo come palestra nelle prime settimane e poi come riserva se il server si ferma.",
+   "problema": "Hermes Cloud può ricevere solo dati verdi: lo dicono la tabella dei tre colori del documento e 22 §2 («Hermes Cloud (Londra, solo dati verdi)»). Il motivo è che DPA e trattamento dei dati sono \"non trovati\". Se il server si ferma, questa riserva non può far girare post-call, CRM, memoria o brief, che lavorano su dati gialli e rossi. Detto così sembra una continuità di servizio che non c'è. Lo stesso vale per «Hermes Cloud come riserva» nella tabella dei rischi.",
+   "testo_proposto": "la usiamo come palestra nelle prime settimane e poi come riserva per i soli lavori su dati verdi, se il server si ferma; per il resto contano i backup fuori sede.",
+   "fonte": "22 §2 (riserve); 18 §2.4, riga «Dati, DPA, addestramento: non trovato»; documento §5.6"
+  }
+ ]
+}

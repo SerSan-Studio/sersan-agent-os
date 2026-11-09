@@ -1,0 +1,12 @@
+# file temporanei di Word e LibreOffice
+~$*
+.~lock.*#
+
+# Python
+__pycache__/
+*.pyc
+
+# file di sistema
+Thumbs.db
+desktop.ini
+.DS_Store

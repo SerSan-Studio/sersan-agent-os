@@ -1,0 +1,202 @@
+# SerSan Infra Board
+
+Nodo 1 · DL380 Gen10 · OPNsense · VLAN, servizi, pipeline e roadmap — trascina per muoverti, rotella o pulsanti per lo zoom
+
+Isolato / no internet Interno GPU / esposto via tunnel Fuori perimetro CE
+
+Cloud
+
+## Cloud & SaaS che restano
+
+Solo i servizi verticali: tutto l'IaaS generico (Azure) esce
+
+**M365 / Entra ID** identità, MFA, posta **Claude Team** ragiona sul RAG via MCP **API Anthropic** crediti · dietro LiteLLM **Cloudflare** DNS **GitHub** repo · runner in casa **Supabase** DB del prodotto **Vercel** deploy clienti **Jira** **Instantly** outreach **S3 offsite** opzionale (B2 / Hetzner)
+
+Accesso
+
+## Zero-trust · nessuna porta aperta
+
+Si entra solo con identità verificata
+
+### NetBird mesh
+
+Team e admin · SSO Entra + chiave FIDO2 · ACL per gruppo. Funziona anche dietro il CGNAT di Starlink.
+
+### Pangolin + Traefik
+
+App web verso i clienti e endpoint MCP per Claude Team, con autenticazione davanti. In alternativa Claude Desktop via mesh.
+
+Sede 2 · casa
+
+## Copia fuori sede
+
+Starlink (CGNAT) · rete mesh Deco · accumulatori
+
+### PBS · Lenovo M920t (da comprare)
+
+Proxmox Backup Server, 2× HDD SATA in mirror, cifratura lato client, utente "solo scrittura". Si accende di notte con Home Assistant.
+
+### i7 6700K · server di casa
+
+Immich, Jellyfin, Frigate · separato dall'azienda. Home Assistant resta sul Raspberry Pi 5.
+
+Rete fisica
+
+## Rack VEVOR 12U · salotto
+
+FTTH 2,5G · tutto dietro un solo firewall
+
+### Internet FTTH 2,5G
+
+IP fisso da richiedere · chiedere PPPoE o IPoE e la DMZ/bridge sul router del provider
+
+### Router del provider
+
+Sul ripiano del rack · solo modem, in DMZ verso OPNsense
+
+### OPNsense · Pentium 4417U
+
+4× i226-V 2,5G · 16GB (ex iMac) · NVMe · /var in RAM · RSS on · EEE off
+
+igc0 · WAN igc1 · TRUNK → DL380 (VLAN 10–99) igc2 · OOB → iLO igc3 · LAN ufficio
+
+Fa anche: WireGuard/NetBird peer · Unbound + blocklist · NTP · NUT (UPS) · CrowdSec · NetFlow
+
+### HPE DL380 Gen10
+
+561FLR-T porta 1 = trunk (1G verso il firewall, 10G pronta per lo switch futuro) · iLO sulla porta dedicata · frontalino
+
+### UPS attuale → NUT
+
+USB al firewall, che spegne Proxmox in modo pulito. Più avanti: UPS rack 2U (APC SMT1500 o Eaton 5PX)
+
+Nodo 1
+
+## DL380 Gen10 · Proxmox VE · VLAN
+
+2× Gold 5218 (64 thread) · 192GB ECC · rpool 2× SSD 800GB mirror · tank 3× mirror HDD 1,8TB (\~5,4TB) · Quadro RTX 4000 · TPM 2.0 · default-deny tra VLAN, routing su OPNsense
+
+Pipeline AI
+
+## Sirius → conoscenza ricercabile → Claude Team
+
+Il server cerca e prepara, Claude ragiona. Password e chiavi non entrano mai nell'indice
+
+**Export**Fiscale, clienti, documenti da Sirius · incrementale
+
+→
+
+**Docling**PDF, scansioni, tabelle → testo strutturato
+
+→
+
+**Filtro**Segreti e chiavi scartati · PII marcate
+
+→
+
+**Blocchi + metadati**Qwen3-4B Q5: cliente, anno, tipo, riassunto
+
+→
+
+**Embedding**Qwen3-Embedding 0.6B FP16 → Qdrant + BM25
+
+→
+
+**Reranker**Qwen3-Reranker 0.6B
+
+→
+
+**MCP RAG**Permessi per utente · log delle query → Claude Team
+
+Automazione
+
+## Bandi · Firecrawl self-hosted
+
+Ogni notte, senza servizi a pagamento
+
+**n8n · cron**Lista fonti bandi
+
+→
+
+**Firecrawl**Scraping → markdown pulito
+
+→
+
+**LLM 4B**Riassunto · scadenza · punteggio di pertinenza
+
+→
+
+**RAG + DB**Bandi indicizzati, ricercabili da Claude
+
+→
+
+**Notifica**Teams o mail con i migliori del giorno
+
+Roadmap
+
+## Cosa costruiamo, in ordine
+
+Ogni fase parte quando la precedente è validata
+
+#### F0Arrivi
+
+- Pagare Bargain
+- Export completo da Azure
+- Montaggio, test RAM
+- Firmware, TPM clear
+
+#### F1Fondamenta
+
+- OPNsense + VLAN
+- Proxmox su ZFS
+- NetBird + Traefik
+- PBS a casa
+
+#### F2Via da Azure
+
+- ci → apps → mesh
+- MT bridge
+- Spegnere le VM Azure
+
+#### F3Sicurezza
+
+- Wazuh, NetBox
+- Authentik, CrowdSec
+- Log + avvisi
+- Doc ISO / CE
+
+#### F4AI + bandi
+
+- LXC GPU
+- Pipeline Sirius → MCP
+- Firecrawl + n8n
+- LiteLLM con budget
+
+#### F5Lab e dopo
+
+- Experimental 1 e 2
+- Minecraft (Pelican)
+- A2000, UPS rack
+- Nodo 2 (2027–28)
+
+Capacità
+
+## RAM · 192GB
+
+| Host + ZFS ARC | 16 GB |
+| --- | --- |
+| Servizi core (edge, apps, data, ci, vault, obsrv) | \~69 GB |
+| AI, Firecrawl, Qdrant, LiteLLM | \~24 GB |
+| Experimental 1 + 2 | 24 GB |
+| Minecraft | 6 GB |
+| **Libera per crescere** | **\~53 GB** |
+
+**Experimental 1 e 2 = lavoro** Quindi dentro il perimetro Cyber Essentials: patch entro 14 giorni, account non admin, software supportato.
+
+**Minecraft fuori perimetro** Solo su VLAN 99 isolata, in un LXC suo e non dentro Experimental-2. L'hypervisor resta in perimetro.
+
+**Regole chiave del firewall** Default-deny ovunque · LAB e PERSONAL non vedono DATA · APPS → AI solo sulle API dei modelli · AI → DATA solo Qdrant · MGMT e OOB solo dal gruppo admin della mesh.
+
+**Lavagne self-hosted** draw.io per gli schemi di rete (icone Cisco, server, cloud) · Excalidraw per i brainstorming stile Miro · NetBox come fonte di verità di IP e asset.
+
+Trascina per muoverti · rotella per lo zoom

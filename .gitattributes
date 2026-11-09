@@ -1,0 +1,6 @@
+# testo con fine riga normalizzati; i formati binari restano come sono
+* text=auto
+*.docx binary
+*.pdf binary
+*.png binary
+*.woff2 binary

@@ -1,0 +1,14 @@
+const lanes=[
+ {n:"OOB · iLO",s:"10.10.11.0/24 · igc2",p:"porta fisica dedicata · nessun internet",c:"var(--crit)",t:"isolata",chips:["iLO 5 Standard","solo via mesh admin"]},
+ {n:"10 · MGMT",s:"10.10.10.0/24",p:"solo update dal proxy",c:"var(--crit)",t:"isolata",chips:["Proxmox host · UI","SDN + firewall","switch 10G (futuro)"]},
+ {n:"20 · EDGE",s:"10.10.20.0/24",p:"in ingresso solo dal tunnel",c:"var(--warn)",t:"esposta",chips:["Traefik (TLS wildcard)","Pangolin","NetBird mgmt + relay"]},
+ {n:"30 · APPS",s:"10.10.30.0/24",p:"uscita su allowlist",c:"var(--accent)",t:"interna",chips:["n8n","mcp-enrich","mcp-memory","openoutreach","runner-dash","Homepage","LiteLLM","Open WebUI","MCP RAG*","Firecrawl*","bandi-watcher*","draw.io*","Excalidraw*","BookStack"]},
+ {n:"40 · DATA",s:"10.10.40.0/24",p:"nessun internet",c:"var(--crit)",t:"isolata",chips:["PostgreSQL 16","MinIO (S3)","Qdrant*","Vaultwarden","Infisical"]},
+ {n:"50 · CICD",s:"10.10.50.0/24",p:"uscita: GitHub e registry",c:"var(--accent)",t:"interna",chips:["4× runner GitHub","staging on-demand"]},
+ {n:"60 · VAULT",s:"10.10.60.0/24",p:"uscita solo verso i broker MT",c:"var(--crit)",t:"isolata",chips:["MT bridge · Windows · vTPM + BitLocker"]},
+ {n:"70 · OBSRV",s:"10.10.70.0/24",p:"legge da tutte, nessun internet",c:"var(--accent)",t:"interna",chips:["Prometheus","Grafana","Loki","Uptime Kuma","Wazuh","NetBox"]},
+ {n:"80 · AI",s:"10.10.80.0/24",p:"uscita solo per scaricare modelli",c:"var(--warn)",t:"gpu",gpu:true,chips:["ai-gpu-01 (LXC)","Ollama · Qwen3-4B Q5_K_M","Infinity · Embedding + Reranker 0.6B","Docling","worker indicizzazione"]},
+ {n:"90 · LAB",s:"10.10.90.0/24",p:"internet sì · nessun accesso a DATA",c:"var(--accent)",t:"in perimetro",gpu:true,chips:["Experimental-1 · Win 11 + RTX 4000 + DP dummy + Sunshine","Experimental-2 · Linux sandbox + Docker"]},
+ {n:"99 · PERSONAL",s:"10.10.99.0/24",p:"solo internet · nessuna rotta verso le altre",c:"var(--out)",t:"fuori CE",out:true,chips:["mc-01 (LXC)","Pelican Panel + Wings","Paper MC","unica eccezione: Exp-1 → 25565 (da validare)"]},
+ {n:"LAN UFFICIO",s:"192.168.50.0/24 · igc3",p:"internet · verso i server solo via mesh",c:"var(--muted)",t:"client",chips:["PC scrivania","access point Wi-Fi","stampante"]}
+];

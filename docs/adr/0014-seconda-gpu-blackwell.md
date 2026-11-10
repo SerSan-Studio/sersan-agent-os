@@ -1,8 +1,8 @@
 # ADR-0014: Seconda GPU: RTX PRO 2000 Blackwell da 16 GB nel riser secondario
 
-**Data**: proposta del 2026-11-08, da decidere (registrata il 2026-11-09)
+**Data**: proposta del 2026-11-08 (registrata il 2026-11-09); rivista il 2026-11-10, da chiudere con Michele
 
-**Stato**: proposta (decisione 12; modello scelto da Michele il 2026-11-07)
+**Stato**: proposta, da chiudere con Michele; rivista il 2026-11-10: non aspetta più i CEO e va confrontata con la scheda da 24 GB ([ADR-0025](0025-un-modello-per-agente.md))
 
 **Chi decide**: Alessandro e Michele approvano l'acquisto con la decisione 12; modello e montaggio sono scelte di Michele, a cui resta l'infrastruttura ([proposta §14](../../PRESENTAZIONE-CEO.md)).
 
@@ -55,6 +55,16 @@ Il server ha una sola GPU, una Quadro RTX 4000 da 8 GB, nel riser principale, ci
 - CTranslate2 e faster-whisper, i motori della trascrizione, sulla Blackwell girano solo con la compilazione al volo; il servizio di trascrizione di Vexa, il bot che entra nelle call dei clienti, va ricostruito su CUDA 12.8 o successivo, la prima versione delle librerie di calcolo NVIDIA che supporta la Blackwell. Si prova tutto prima di spostare la trascrizione ([ricerca/37 §4, Seconda GPU](../../ricerca/37-hardware-risposte-michele.md); [DOMANDE-PER-MICHELE, domanda 18](../../DOMANDE-PER-MICHELE.md)).
 - La staffa potrebbe non chiudere con il fermo della gabbia standard: in quel caso serve la gabbia HPE senza fermo P38515-B21, oggi poco disponibile ([ricerca/37 §4, Riser](../../ricerca/37-hardware-risposte-michele.md)).
 - L'iLO, la console di gestione del server, non conosce la scheda: ventole e temperature vanno controllate prima e dopo il montaggio ([DOMANDE-PER-MICHELE, note](../../DOMANDE-PER-MICHELE.md)).
+
+## Revisione del 10 novembre 2026
+
+- La scelta non aspetta più la decisione 12 dei CEO: il progetto è approvato. Tempi e acquisto li decide il gruppo di progetto con Michele ([ricerca/45](../../ricerca/45-architettura-v3.md), «Decisione del gruppo di progetto»).
+- Con [ADR-0025](0025-un-modello-per-agente.md) gli agenti possono usare anche modelli open-weight sul nostro server, prima nella corsia N. Per questo la scheda da 16 GB va confrontata con la **RTX PRO 4000 Blackwell SFF da 24 GB**, della stessa classe da 70 W ([ricerca/32 §4](../../ricerca/32-hardware-e-upgrade.md)).
+- La scheda da 24 GB ha 24 GB GDDR7 ECC a 192 bit e 432 GB/s, contro 16 GB e 288 GB/s; è a due slot e mezza altezza, senza cavo di alimentazione ([ricerca/32 §4.2](../../ricerca/32-hardware-e-upgrade.md)).
+- Oltre a trascrizione, voce di Andrea e ricerca terrebbe sempre acceso un modello da 8 miliardi di parametri, a circa 54 token/s contro 36 [stima non verificata] ([ricerca/32 §4.6](../../ricerca/32-hardware-e-upgrade.md)).
+- Il prezzo trovato è un listino SHI UE di 3.032,85 €, senza data: **va verificato** prima della scelta, insieme al montaggio nel riser secondario ([ricerca/32 §4.3](../../ricerca/32-hardware-e-upgrade.md)).
+- Il «Perché no» dell'alternativa da 20-24 GB diceva che in casa girano solo modelli piccoli: con [ADR-0025](0025-un-modello-per-agente.md) questo non è più vero, e il confronto torna aperto. Resta vero che con la sola RTX 4000 da 8 GB nessun modello locale regge gli strumenti in catena ([ricerca/26 §4.5](../../ricerca/26-claude-agent-sdk.md)).
+- Il momento consigliato resta dalla fase 3, appena il prezzo scende; all'inizio della fase 3 se Andrea viene anticipato ([ricerca/45 §11](../../ricerca/45-architettura-v3.md)).
 
 ## Fonti
 

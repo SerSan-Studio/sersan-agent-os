@@ -2,7 +2,7 @@
 
 **Data**: 2026-10-25 (registrata il 2026-11-09)
 
-**Stato**: accettata
+**Stato**: accettata; rivista il 2026-11-10 da [ADR-0022](0022-eventi-e-sveglia-nel-motore.md): la sveglia sta nel motore e n8n diventa facoltativo
 
 **Chi decide**: Alberto e Michele, che guidano la costruzione ([proposta §10](../../PRESENTAZIONE-CEO.md)); n8n è già nel board di Michele, e le scelte sull'infrastruttura restano sue ([ricerca/25 §1](../../ricerca/25-board-michele-e-delta.md), [proposta §14](../../PRESENTAZIONE-CEO.md))
 
@@ -60,6 +60,15 @@
 
 - Nel 2026 n8n ha avuto una vulnerabilità grave (CVE-2026-21858, con CVSS 10, il punteggio di gravità massimo, secondo fonti di terzi non verificate): solo webhook firmati e patch entro 14 giorni ([ricerca/36 §4.5](../../ricerca/36-architettura-v2.md)).
 - n8n arriva in casa con le fasi del board: finché non c'è il posto per gli agenti sul server, il pilota gira sul banco di prova del laboratorio ([proposta §11](../../PRESENTAZIONE-CEO.md), [domande per Michele, n. 2](../../DOMANDE-PER-MICHELE.md)).
+
+## Revisione del 10 novembre 2026
+
+- **Orari ed eventi passano al motore**: gli orari stanno in una tabella del motore, gli eventi entrano da `POST /eventi` e finiscono nel registro degli eventi, con una chiave per evento ([ADR-0022](0022-eventi-e-sveglia-nel-motore.md)).
+- **Il delta di Graph lo legge il nostro codice**, e il token delta avanza solo dopo che l'evento è registrato; il testo rosso non passa da n8n ([ADR-0022](0022-eventi-e-sveglia-nel-motore.md)).
+- **n8n diventa facoltativo**: resta nel board di Michele per i collegamenti che servono, ma il sistema di agenti non ne dipende. Se un collegamento passa da n8n, n8n chiama `POST /eventi` e basta ([ADR-0022](0022-eventi-e-sveglia-nel-motore.md)).
+- Regole in più per n8n, quando c'è: versione 2.x fissata, una sola istanza; nessun dato rosso nelle esecuzioni; per gli orari «If Execution Is Missed = Run the Most Recent» ([ricerca/45 §3.1](../../ricerca/45-architettura-v3.md); [ricerca/42, proposta D §4.4](../../ricerca/42-proposta-D-automazione-prima.md)).
+- Le routine di Claude restano per l'uso personale: agiscono come la persona, partono al massimo una volta l'ora, sono in anteprima, dipendono dai limiti d'uso del posto e scavalcano il Cancello ([ricerca/41 §1.4 e §8.2](../../ricerca/41-novita-al-9-novembre.md); [ADR-0022](0022-eventi-e-sveglia-nel-motore.md)).
+- La regola che la logica del motore non dipende da n8n resta, ed è più forte: ora non ne dipende neanche l'avvio.
 
 ## Fonti
 

@@ -2,7 +2,7 @@
 
 **Data**: 2026-10-25 (registrata il 2026-11-09)
 
-**Stato**: accettata; Michele l'ha già recepita ([domande per Michele, "Già recepito"](../../DOMANDE-PER-MICHELE.md))
+**Stato**: accettata; Michele l'ha già recepita ([domande per Michele, "Già recepito"](../../DOMANDE-PER-MICHELE.md)); rivista il 2026-11-10 da [ADR-0021](0021-motore-a-due-corsie.md): l'Agent SDK diventa la corsia S del motore
 
 **Chi decide**: Michele Sanna (CPTO) con Alberto Tuveri per la scelta tecnica ([ricerca/36 §10](../../ricerca/36-architettura-v2.md)); i CEO per il via e il budget di ogni fase ([proposta §14, decisione 1](../../PRESENTAZIONE-CEO.md)).
 
@@ -57,6 +57,16 @@ Il motore lo scriviamo noi sull'Agent SDK di Claude, cioè Claude Code usato com
 - **Il motore non regge**: verifiche alle settimane 8 e 21; se il problema è di struttura, si prova Hermes sullo stesso banco di prova ([proposta §11 e §13](../../PRESENTAZIONE-CEO.md)).
 - **Codice su misura non ancora rivisto**: dieci scenari a ogni aggiornamento, revisione esterna entro la settimana 21 ([proposta §13](../../PRESENTAZIONE-CEO.md)).
 - **Trappole di configurazione**: un hook "a comando", cioè un programma esterno, se scade non blocca; per questo il ponte verso il Cancello è un hook di callback dentro il motore ([ricerca/35, giudizio di sicurezza §2](../../ricerca/35-giudizio-sicurezza.md); [ricerca/36 §5.1](../../ricerca/36-architettura-v2.md)).
+
+## Revisione del 10 novembre 2026
+
+- Il motore resta sull'Agent SDK, ma come **corsia S**, accanto alla **corsia N** delle catene a schema, nello stesso codice TypeScript ([ADR-0021](0021-motore-a-due-corsie.md); [ricerca/45 §1.2 e §3.1](../../ricerca/45-architettura-v3.md)).
+- La milestone 1 usa solo la corsia N. Il runner S, il ponte `propose_action` e il registro dei profili si costruiscono **subito dopo la milestone 1**, non alla settimana 9 ([ricerca/45](../../ricerca/45-architettura-v3.md), «Decisione del gruppo di progetto»).
+- Un solo runner con al massimo 6 sessioni: escono il possesso, il battito e le riserve fra più runner ([ricerca/45 §3.1](../../ricerca/45-architettura-v3.md)).
+- Il ponte verso il Cancello porta in un giro un pacchetto di scritture interne e un solo elemento esterno ([ricerca/45 §6.1](../../ricerca/45-architettura-v3.md)).
+- Nella corsia S resta Claude finché una prova non dimostra che un modello locale regge ([ADR-0025](0025-un-modello-per-agente.md)).
+- Managed Agents non è più solo un'alternativa scartata: è una riserva sui dati verdi, se il server è pieno o fermo ([ADR-0024](0024-abbonamenti-come-riserva.md)).
+- La revisione esterna entro la settimana 21 non è più obbligatoria ([ADR-0023](0023-protezioni-essenziali.md)).
 
 ## Fonti
 

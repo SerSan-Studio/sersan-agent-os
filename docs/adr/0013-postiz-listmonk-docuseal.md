@@ -1,8 +1,8 @@
 # ADR-0013: Postiz, listmonk e DocuSeal in casa per post, newsletter e firme
 
-**Data**: da decidere con le decisioni 9, 15, 21 e 22; proposta il 2026-10-25 (registrata il 2026-11-09)
+**Data**: proposta il 2026-10-25 (registrata il 2026-11-09); accettata il 2026-11-10
 
-**Stato**: proposta
+**Stato**: accettata il 2026-11-10 dal gruppo di progetto, con la carta bianca dei CEO del 10 novembre 2026; Michele ammette i servizi nuovi
 
 **Chi decide**: i due CEO, Alessandro e Michele, con le decisioni 9, 15, 21 e 22 ([proposta §14](../../PRESENTAZIONE-CEO.md)); Michele deve ammettere i servizi nuovi e il servizio esterno di invio della newsletter ([domande per Michele, n. 9 e 10](../../DOMANDE-PER-MICHELE.md))
 
@@ -59,6 +59,14 @@
 - Postiz e listmonk hanno avuto vulnerabilità nel 2026, secondo fonti non verificate: per questo non sono mai pubblici ([ricerca/36 §4.5](../../ricerca/36-architettura-v2.md)).
 - L'accesso via API alla pagina LinkedIn è da verificare; se manca, Metricool resta come eccezione ([proposta, appendice A, L8](../../PRESENTAZIONE-CEO.md)).
 - Restano aperti il valore legale della firma fatta in casa, chi fattura (la Ltd inglese, oppure un soggetto italiano con lo SDI, il sistema delle fatture elettroniche), cos'è Sirius e la licenza di Invoice Ninja ([proposta §9.4 e appendice A, L2](../../PRESENTAZIONE-CEO.md), [domande per Michele, n. 25 e 29](../../DOMANDE-PER-MICHELE.md), [ricerca/36 §9.3](../../ricerca/36-architettura-v2.md)).
+
+## Revisione del 10 novembre 2026
+
+- Le decisioni 9, 15, 21 e 22 non aspettano più i CEO: il progetto è approvato e le prende il gruppo di progetto con Michele ([ricerca/45](../../ricerca/45-architettura-v3.md), «Decisione del gruppo di progetto»).
+- **Postiz** entra prima della fase F4 del board solo con il sì di Michele; fino ad allora i post della pagina aziendale li programma l'**esecutore Metricool** del Cancello ([ricerca/45 §3.1](../../ricerca/45-architettura-v3.md); [ADR-0024](0024-abbonamenti-come-riserva.md)).
+- I post della pagina aziendale partono a L1 e passano a L2; quelli dei founder restano a L1 ([ricerca/45 §4.1](../../ricerca/45-architettura-v3.md); [ADR-0020](0020-autonomia-a-livelli.md)).
+- La **newsletter** va a L2 dalla fase 4, dopo 3 numeri puliti, con un invio di prova alla persona e una finestra di 48 ore ([ricerca/45 §2.6 e §4.1](../../ricerca/45-architettura-v3.md)).
+- Contratti e fatture restano a L1 nella classe «Impegni», ma senza la chiave FIDO2 sulla carta ([ADR-0020](0020-autonomia-a-livelli.md); [ADR-0023](0023-protezioni-essenziali.md)).
 
 ## Fonti
 

@@ -1,8 +1,8 @@
 # ADR-0008: "Andrea": centralino Asterisk e Pipecat con linea italiana, solo richiamate richieste
 
-**Data**: da decidere con la decisione 10; proposta il 2026-10-25 (registrata il 2026-11-09)
+**Data**: proposta il 2026-10-25 (registrata il 2026-11-09); accettata il 2026-11-10
 
-**Stato**: proposta
+**Stato**: accettata il 2026-11-10 dal gruppo di progetto, con la carta bianca dei CEO del 10 novembre 2026; le chiamate vere aspettano il parere legale
 
 **Chi decide**: i due CEO, Alessandro e Michele, con la decisione 10 ([proposta §14](../../PRESENTAZIONE-CEO.md)); Michele deve anche ammettere la rete separata VLAN 25 VOCE e l'operatore telefonico come servizio esterno ([domande per Michele, n. 9 e 10](../../DOMANDE-PER-MICHELE.md))
 
@@ -53,6 +53,14 @@
 - Una sola linea internet: se cade la fibra Andrea non risponde; linea di riserva prima della fase 5 (decisione 13) ([proposta §13](../../PRESENTAZIONE-CEO.md), [ADR-0019](0019-linea-di-riserva.md)).
 - L'offerta "illimitata" dell'operatore potrebbe non valere per un agente: allora si paga a consumo, verso i 90 € al mese ([ricerca/33 §2.3](../../ricerca/33-costi-v2.md)).
 - Consenso nel modulo, Registro delle opposizioni e marcatura dell'audio sintetico vanno chiusi con il parere legale ([proposta §9.4](../../PRESENTAZIONE-CEO.md), [ricerca/31 §9](../../ricerca/31-voce-andrea-self-hosted.md)).
+
+## Revisione del 10 novembre 2026
+
+- La scelta non aspetta più i CEO: il progetto è approvato. Tempi e acquisti li decide il gruppo di progetto con Michele ([ricerca/45](../../ricerca/45-architettura-v3.md), «Decisione del gruppo di progetto»).
+- Andrea lavora a **L3 solo dopo il parere legale, il consenso registrato e 50 chiamate di prova**. Parte dalla fase 5; con lead vere si può anticipare alla fase 3 ([ricerca/45 §4.2](../../ricerca/45-architettura-v3.md); [ADR-0020](0020-autonomia-a-livelli.md)).
+- Le aperture di Andrea partono a L2, con una finestra di 48 ore, poi passano a L3 dentro una banca di frasi approvate; si torna indietro da soli se gli appuntamenti calano ([ricerca/45 §2.6 e §4.2](../../ricerca/45-architettura-v3.md)).
+- Prima una voce sintetica; la voce clonata di un collega solo con la seconda GPU, il suo contratto separato e revocabile e il via del parere ([ricerca/45 §4.2](../../ricerca/45-architettura-v3.md); [ADR-0014](0014-seconda-gpu-blackwell.md)).
+- La linea di riserva va messa prima di Andrea ([ADR-0019](0019-linea-di-riserva.md)).
 
 ## Fonti
 

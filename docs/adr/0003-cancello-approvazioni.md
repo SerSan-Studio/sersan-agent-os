@@ -2,7 +2,7 @@
 
 **Data**: 2026-10-25 (registrata il 2026-11-09)
 
-**Stato**: accettata
+**Stato**: accettata; rivista il 2026-11-10 da [ADR-0020](0020-autonomia-a-livelli.md) e [ADR-0023](0023-protezioni-essenziali.md): livelli al posto della carta per ogni azione
 
 **Chi decide**: Michele Sanna (CPTO) con Alberto Tuveri per il disegno tecnico ([ricerca/36 §10](../../ricerca/36-architettura-v2.md)); i CEO per la revisione esterna di sicurezza ([proposta §14, decisione 5](../../PRESENTAZIONE-CEO.md)) e, dopo il parere legale, per i messaggi ai clienti che possono diventare regole "Sempre" ([proposta, appendice A, B5](../../PRESENTAZIONE-CEO.md)).
 
@@ -60,6 +60,16 @@ Il Cancello è l'unico programma che può mandare una mail, scrivere al cliente,
 
 - **Codice su misura non ancora rivisto**: dieci scenari a ogni aggiornamento e revisione esterna di Cancello, motore e bot entro la settimana 21, circa 3.560-5.940 € ([proposta §13 e §14, decisione 5](../../PRESENTAZIONE-CEO.md)).
 - **Bot di Teams senza Azure e identità di chi approva**: vanno provati nella fase 0; in ultima istanza si approva sulla pagina del Cancello ([proposta §11 e §13](../../PRESENTAZIONE-CEO.md); [ricerca/28 §2.3](../../ricerca/28-chat-di-gruppo-self-hosted.md)).
+
+## Revisione del 10 novembre 2026
+
+- Il Cancello resta **l'unico esecutore** delle azioni esterne, con la classificazione, l'esecuzione una volta sola e il registro.
+- «Una carta per ogni azione esterna» lascia il posto ai **livelli da L0 a L3 per terna** (agente, tipo d'azione, classe di destinatari), con la finestra L2, la promozione confermata dal responsabile e la discesa automatica ([ADR-0020](0020-autonomia-a-livelli.md)).
+- Escono le regole «Sempre» dopo 20 sì per destinazione: le sostituiscono le classi di destinatari calcolate dai dati ([ADR-0020](0020-autonomia-a-livelli.md)).
+- Esce la chiave FIDO2 come secondo passo sulle carte; le chiavi restano per l'accesso al board con NetBird ([ADR-0023](0023-protezioni-essenziali.md)).
+- La macchina separata per il Cancello non è più obbligatoria: può stare sulla stessa VM del motore, decide Michele ([ricerca/45 §3.1](../../ricerca/45-architettura-v3.md)).
+- La revisione esterna diventa facoltativa: restano le prove a ogni modifica e la revisione di Mattia ([ADR-0023](0023-protezioni-essenziali.md)).
+- Approvatore e sostituto per classe stanno nella configurazione ([ricerca/45 §6.2, AC-011](../../ricerca/45-architettura-v3.md)).
 
 ## Fonti
 

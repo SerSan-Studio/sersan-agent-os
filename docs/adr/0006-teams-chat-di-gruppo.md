@@ -2,7 +2,7 @@
 
 **Data**: 2026-10-25 (registrata il 2026-11-09)
 
-**Stato**: accettata per Teams e per Buzz in prova; proposta per i canali in più, che sono la decisione 8 ([proposta §14](../../PRESENTAZIONE-CEO.md))
+**Stato**: accettata per Teams; la parte su Buzz e sulla stanza degli agenti è rivista il 2026-11-10 da [ADR-0026](0026-bacheca-e-gruppi-degli-agenti.md); proposta per i canali in più, che sono la decisione 8 ([proposta §14](../../PRESENTAZIONE-CEO.md))
 
 **Chi decide**: i CEO per i canali in più e per Teams nel piano M365, se oggi manca (decisioni 8 e 18, [proposta §14](../../PRESENTAZIONE-CEO.md)); Michele Sanna (CPTO) per le eccezioni fuori dal board e la registrazione dei bot ([proposta, appendice A, J9](../../PRESENTAZIONE-CEO.md); [domande per Michele, n. 5 e 10](../../DOMANDE-PER-MICHELE.md)).
 
@@ -56,6 +56,14 @@ L'idea vuole una chat di gruppo "come Buzz", con persone e agenti nelle stesse s
 - **Bot di Teams senza Azure**: può dare errori di registrazione; prova nella fase 0, poi una registrazione Azure Bot gratuita o, in ultima istanza, la pagina del Cancello ([proposta §13](../../PRESENTAZIONE-CEO.md)).
 - **WhatsApp**: solo l'API ufficiale di Meta, perché le soluzioni non ufficiali portano al blocco del numero ([proposta §13](../../PRESENTAZIONE-CEO.md)).
 - **Buzz è giovane**: finché resta sul banco di prova, la stanza degli agenti è il canale "Agenti" di Teams ([proposta §13](../../PRESENTAZIONE-CEO.md)).
+
+## Revisione del 10 novembre 2026
+
+- La bacheca degli agenti e i **gruppi di chat** (uno per squadra, uno per cliente, uno comune «Agenti») si costruiscono subito dopo la milestone 1, insieme alla corsia S, non all'inizio della fase 2 ([ADR-0026](0026-bacheca-e-gruppi-degli-agenti.md)).
+- **Buzz** si collega alla stessa bacheca e si prova presto sul banco, con dati verdi, non nella fase 4. Se non perde risposte e ha le approvazioni collegate, diventa la casa degli agenti ([ADR-0026](0026-bacheca-e-gruppi-degli-agenti.md)).
+- **Teams resta per le persone** e per le approvazioni dal telefono; finché Buzz non supera la prova, anche i gruppi degli agenti stanno in Teams ([ADR-0026](0026-bacheca-e-gruppi-degli-agenti.md)).
+- Il freno dei passaggi diventa quello di [ricerca/45 §2.7](../../ricerca/45-architettura-v3.md): 8 passaggi per catena, conteggio dall'ultimo messaggio umano come `max_hops`, stop dei rimbalzi fra due agenti, carta «Continua?».
+- Nei canali condivisi con i clienti, e su Telegram, Slack e WhatsApp, scrive solo il Cancello, al livello della classe del destinatario ([ADR-0020](0020-autonomia-a-livelli.md)).
 
 ## Fonti
 

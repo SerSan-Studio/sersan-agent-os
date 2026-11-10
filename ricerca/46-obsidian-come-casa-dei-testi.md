@@ -21,7 +21,7 @@ Etichette:
 
 1. **Obsidian non entra come casa dei testi.** Da solo non ha permessi, non ha SSO e per più persone richiede Sync, che è un cloud fuori dal board. Il suo punto forte è il formato: file Markdown con YAML [verificato: §2].
 2. **Totali dopo la seconda revisione:** B (Markdown in git) 66,5 · C (misto) 66,0 · A (BookStack) 63,5 · D (Obsidian Sync) 61,0, su 100. La prima stesura dava B 76,0, D 69,5, C 66,0, A 63,5 e contava poco il lavoro non stimato di B. La prima revisione dava A 67,0, ma alzava l'autonomia di A senza sapere che l'API di BookStack non legge né ripristina le revisioni (§3 A, §5).
-3. **Raccomandazione [proposta]:** B è avanti di 3 punti, ma la differenza sta dentro l'incertezza dei voti e il lavoro di B non è stimato. Oggi non serve scegliere: la milestone 1 non ha casa dei testi in nessuna delle due strade. L'ADR-0005 (BookStack) resta in vigore finché non si decide; niente ADR-0027 per ora. La scelta fra A e B si fa prima della fase 2, sulle prove del §9 e sulla stima di B.
+3. **Raccomandazione [proposta]:** B è avanti di 3 punti, ma la differenza sta dentro l'incertezza dei voti e il lavoro di B non è stimato. Oggi non serve scegliere: la milestone 1 non ha casa dei testi in nessuna delle due strade. L'ADR-0005 (BookStack) resta in vigore finché non si decide; niente ADR nuova per ora. La scelta fra A e B si fa prima della fase 2, sulle prove del §9 e sulla stima di B.
 4. **B passa** se la prova con i CEO riesce, se la stima del suo lavoro (sito con permessi per gruppo, MCP «testi», flusso Teams, hook di indicizzazione) resta nell'ordine di BookStack più MCP, cioè circa 2-4 gp [verificato: ricerca/29 righe 345-346; ricerca/36 righe 546 e 928], e se la cancellazione da git e dalle copie è provata. Altrimenti resta A.
 5. **Obsidian non è la casa dei testi** in nessun caso: al massimo un editor facoltativo sul PC, sopra la cartella di B.
 
@@ -265,7 +265,7 @@ I voti sono un giudizio sui fatti raccolti [proposta]. Calcolo: A = (6×35 + 5×
 **Raccomandazione dopo la seconda revisione [proposta]:**
 1. **Obsidian non diventa la casa dei testi.** D (Obsidian Sync) chiede un'eccezione al board e non ha permessi né SSO. Resta solo, eventualmente, un editor facoltativo sul PC sopra la cartella di B.
 2. **Oggi non si sceglie fra A e B.** B è avanti di 3 punti (66,5 contro 63,5) per l'autonomia: file con schema, storia leggibile e annullabile dagli agenti, rifiuto delle scritture vecchie garantito da git. A vince netto sulla sicurezza (9 contro 4), è pronto e ha una stima di lavoro. La differenza sta dentro l'incertezza, perché il lavoro di B non è stimato. La prima revisione dava A avanti perché credeva gli agenti capaci di correggere da soli anche in BookStack: non è così (§3 A).
-3. **Scegliere ora non serve.** La milestone 1 non ha casa dei testi né con A né con B (ricerca/45 §3.2); BookStack arriva in fase 2. L'ADR-0005 resta in vigore finché non si decide. Niente ADR-0027 per ora.
+3. **Scegliere ora non serve.** La milestone 1 non ha casa dei testi né con A né con B (ricerca/45 §3.2); BookStack arriva in fase 2. L'ADR-0005 resta in vigore finché non si decide. Niente ADR nuova per ora.
 4. **Si decide prima della fase 2**, con le prove del §9 fatte nella milestone 2. Si sceglie B se: la prova con i CEO va bene senza wiki; la stima di sito con permessi per gruppo, MCP «testi», flusso Teams e hook resta nell'ordine di BookStack più MCP (circa 2-4 gp); il modo di togliere un dato da git e dalle copie sui PC è provato. Se una delle tre cade, resta A.
 5. **Valgono in tutti e due i casi:**
    - i campi fissi di «Come lavoro» letti dal codice senza copia in PostgreSQL (YAML in B, tag della pagina in A), con lo schema controllato dal motore;
@@ -281,7 +281,7 @@ Questa parte è il piano della prima stesura. Le revisioni lo tengono come piano
 - Fra le «Negative» esce «MariaDB entra nel board».
 - Entra un nuovo rischio: «permessi solo nel codice» e «cancellazione in git».
 - Fra le «Alternative considerate» entrano BookStack (con il motivo dell'uscita) e Obsidian Sync (fuori dal board).
-- Serve un nuovo ADR, il 0027 «Casa dei testi in Markdown e git», che sostituisce in parte l'ADR-0005. Non l'ho scritto: va deciso prima.
+- Serve una nuova ADR, «Casa dei testi in Markdown e git», che sostituisce in parte l'ADR-0005. Non l'ho scritto: va deciso prima.
 
 ### Se B vince le prove: cosa cambierebbe nella milestone 1
 - Le regole «Come lavoro», oggi istruzioni a schema nel codice, passano in `testi/come-lavoro/<id>.md`. L'intestazione YAML viene controllata dallo stesso schema che il motore usa già.

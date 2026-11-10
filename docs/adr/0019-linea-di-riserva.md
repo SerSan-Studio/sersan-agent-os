@@ -1,4 +1,4 @@
-# ADR-0019: Linea internet di riserva 4G/5G prima della fase 5
+# ADR-0019: Linea internet di riserva 4G/5G, prima del primo lavoro L3 esterno fuori orario
 
 **Data**: proposta del 2026-11-08 (registrata il 2026-11-09); accettata il 2026-11-10
 
@@ -59,7 +59,7 @@ L'ufficio ha una sola linea internet, la fibra TIM a 2,5 Gbit ([proposta §6.1](
 ## Revisione del 10 novembre 2026
 
 - La spesa non aspetta più la decisione 13 dei CEO: il progetto è approvato. Tempi e acquisto li decide il gruppo di progetto con Michele ([ricerca/45](../../ricerca/45-architettura-v3.md), «Decisione del gruppo di progetto»).
-- **La linea si anticipa**: va messa prima del primo lavoro L3 verso l'esterno fuori orario e prima di Andrea, cioè in pratica all'inizio della fase 3, non della fase 5 come dice il titolo ([ricerca/45 §9.1 e §11](../../ricerca/45-architettura-v3.md)).
+- **La linea si anticipa**: va messa prima del primo lavoro L3 verso l'esterno fuori orario e prima di Andrea, cioè in pratica all'inizio della fase 3, non della fase 5 come diceva il titolo fino al 10 novembre ([ricerca/45 §9.1 e §11](../../ricerca/45-architettura-v3.md)).
 - Il motivo è l'autonomia: con i livelli di [ADR-0020](0020-autonomia-a-livelli.md) follow-up, richiamate e lavori a orario partono senza nessuno in ufficio, e una caduta della fibra li fermerebbe.
 - Nell'ordine consigliato a Michele per l'autonomia viene quarta: riaccensione automatica dopo un blackout, batterie dell'UPS, backup, linea di riserva ([ricerca/45 §11](../../ricerca/45-architettura-v3.md)).
 

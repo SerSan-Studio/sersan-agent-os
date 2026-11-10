@@ -17,7 +17,7 @@
 1. **Un System One non scrive testo: riceve uno stato e domande tipizzate (sì/no, scelta, punteggio) e restituisce probabilità per ogni opzione.** Jev, di TypeSafe, è il primo secondo il produttore. È proprietario e costa 0,042 $ per milione di token in ingresso, con l'uscita gratuita. È giovane (15/9/2026) e non dichiara le lingue che regge. Non ha SLA, e il contratto vieta di addestrare modelli sulle sue risposte. Il produttore stesso scrive che un testo ostile nello stato può spostare le risposte e che Jev preferisce la prima opzione dell'elenco.
 2. **OpenJev è un server aperto (Apache-2.0) che parla la stessa API di Jev.** Il suo modello principale chiede però una GPU NVIDIA da almeno 24 GB, provata solo su Blackwell. Fra i modelli che serve, quelli piccoli (Laya, Verdict) girano su CPU o in 1-3 GB di GPU; sulla nostra RTX 4000 vanno caricati in FP16, perché è senza BF16. L'italiano non è mai misurato.
 3. **Per SerSan il guadagno non è il risparmio** (poche decine di dollari al mese, stima). Il guadagno sono probabilità vere per far scendere i livelli del Cancello, smistare gli eventi e capire il colore dei dati, con soglie scritte in un file.
-4. **Proposta: un'interfaccia unica, il «decisore», nel nostro codice** (domande tipizzate in ingresso, probabilità in uscita, soglie in `config/decisioni.yaml`). Una regola fissa: una risposta incerta rende il sistema più prudente, mai più autonomo.
+4. **Proposta: un'interfaccia unica, il «decisore», nel nostro codice** (domande tipizzate in ingresso, probabilità in uscita, soglie in `config/decisore.yaml`). Una regola fissa: una risposta incerta rende il sistema più prudente, mai più autonomo.
 5. **Milestone 1**: interfaccia, decisore a copione, regole in codice e registro delle decisioni, senza hardware. **Milestone 2**: prova in italiano su dati verdi fra Haiku 5.5, Jev via LiteLLM, Laya su CPU e, se c'è la GPU, un modello da 4-9B. Servono circa 850 casi, non 400: per dire «richiamo almeno 98%» su una classe critica bisogna vedere almeno 150 casi veri di quella classe senza errori. A Michele si chiede il fornitore, non una scheda nuova.
 
 ---
@@ -234,7 +234,7 @@ Fonte: README e documentazione di https://github.com/mmornati/system-one-router 
   - `serve_strumenti` (sì/no): servono il web, più sistemi o un documento nuovo;
   - `tocca_impegni` (sì/no): chiede prezzi, sconti, tempi di consegna o contratti;
   - `urgente` (sì/no).
-- **Cosa fa il codice**: legge una tabella in `config/decisioni.yaml`. Per esempio:
+- **Cosa fa il codice**: legge una tabella in `config/decisore.yaml`. Per esempio:
   - automatico o spam → regola (archivia);
   - `complessita` ≤ 1 e senza strumenti → catena N;
   - `serve_strumenti`, oppure `complessita` ≥ 2 → sessione S;
@@ -299,7 +299,7 @@ type Domanda =
   | { tipo: 'punteggio'; id: string; istruzioni: string; livelli: string[] };
 
 interface RichiestaDecisione {
-  quesito: string;          // nome del quesito in config/decisioni.yaml, per esempio 'smistamento'
+  quesito: string;          // nome del quesito in config/decisore.yaml, per esempio 'smistamento'
   stato: string | object;   // il testo o i campi da giudicare, già filtrati
   colore: Colore;           // calcolato prima dal codice; se ignoto vale 'rosso'
   chiave: string;           // chiave d'idempotenza, come nei passi della corsia N
@@ -322,7 +322,7 @@ interface EsitoDecisione {
 interface Decisore { decidi(r: RichiestaDecisione): Promise<EsitoDecisione>; }
 ```
 
-**Le domande non stanno nel codice ma nella configurazione** (`config/decisioni.yaml`, in git come `config/livelli.yaml`):
+**Le domande non stanno nel codice ma nella configurazione** (`config/decisore.yaml`, in git come `config/livelli.yaml`):
 
 ```yaml
 quesiti:
@@ -472,7 +472,7 @@ Per il punto d vale solo un motore in casa. Se nessuno passa, resta il rosso per
 
 Dentro lo spec «Cancello a livelli e corsia N», sulle macchine di sviluppo, con dati verdi e modello a copione ([ricerca/45 §6](45-architettura-v3.md)):
 
-- l'interfaccia `Decisore`, il file `config/decisioni.yaml` e la regola «una risposta incerta rende più prudenti»;
+- l'interfaccia `Decisore`, il file `config/decisore.yaml` e la regola «una risposta incerta rende più prudenti»;
 - **DecisoreCopione** e **DecisoreRegole**;
 - il controllo del colore prima di ogni chiamata;
 - il registro delle decisioni in PostgreSQL;

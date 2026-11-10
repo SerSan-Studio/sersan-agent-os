@@ -1,5 +1,7 @@
 # SerSan Agent OS: panoramica
 
+> **Nota del 10 novembre 2026.** Questo documento descrive ancora la versione 2 dell'architettura. Dal 10 novembre vale la versione 3, «Cancello a livelli e motore a due corsie»: la decisione è in [ricerca/45](../ricerca/45-architettura-v3.md) e nelle [ADR da 0020 a 0027](adr/README.md). Dove questo documento e le ADR dicono cose diverse, valgono le ADR. L'allineamento è in corso.
+
 Stato al 9 novembre 2026. Cos'è il progetto, come è fatto, quali scelte lo reggono e a che punto è, con il rimando alla fonte di ogni fatto. La fonte di verità per costi, fasi, decisioni e rischi è la proposta per i CEO, [PRESENTAZIONE-CEO.md](../PRESENTAZIONE-CEO.md), versione 2.1 dell'8 novembre 2026: se qui una cifra sembra diversa, vale la proposta.
 
 ## 1. Cos'è e che problema risolve

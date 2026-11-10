@@ -1,8 +1,8 @@
-# ADR-0019: Linea internet di riserva 4G/5G prima della fase 5
+# ADR-0019: Linea internet di riserva 4G/5G, prima del primo lavoro L3 esterno fuori orario
 
-**Data**: proposta del 2026-11-08, da decidere (registrata il 2026-11-09)
+**Data**: proposta del 2026-11-08 (registrata il 2026-11-09); accettata il 2026-11-10
 
-**Stato**: proposta (decisione 13)
+**Stato**: accettata il 2026-11-10 dal gruppo di progetto, con la carta bianca dei CEO del 10 novembre 2026; operatore e router li sceglie Michele; la linea è anticipata a prima del primo L3 esterno fuori orario
 
 **Chi decide**: Alessandro e Michele con la decisione 13, compreso a chi intestare la SIM; operatore e router li sceglie Michele ([proposta §14](../../PRESENTAZIONE-CEO.md); [DOMANDE-PER-MICHELE, domanda 24](../../DOMANDE-PER-MICHELE.md)).
 
@@ -55,6 +55,13 @@ L'ufficio ha una sola linea internet, la fibra TIM a 2,5 Gbit ([proposta §6.1](
 - TIM chiede una partita IVA italiana e il contratto MultiBusiness, per Iliad il requisito non è verificato, e SerSan è una società inglese; senza partita IVA italiana restano le SIM per privati, intestate a una persona ([proposta §14, decisione 13](../../PRESENTAZIONE-CEO.md); [ricerca/37 §4, Linea di riserva](../../ricerca/37-hardware-risposte-michele.md)).
 - Al passaggio sulla riserva le chiamate in entrata di Andrea si perdono finché il centralino non si registra di nuovo dalla nuova linea ([ricerca/37 §4, Linea di riserva](../../ricerca/37-hardware-risposte-michele.md)).
 - Il segnale mobile vicino al rack non è ancora misurato ([ricerca/37 §4, Linea di riserva](../../ricerca/37-hardware-risposte-michele.md)).
+
+## Revisione del 10 novembre 2026
+
+- La spesa non aspetta più la decisione 13 dei CEO: il progetto è approvato. Tempi e acquisto li decide il gruppo di progetto con Michele ([ricerca/45](../../ricerca/45-architettura-v3.md), «Decisione del gruppo di progetto»).
+- **La linea si anticipa**: va messa prima del primo lavoro L3 verso l'esterno fuori orario e prima di Andrea, cioè in pratica all'inizio della fase 3, non della fase 5 come diceva il titolo fino al 10 novembre ([ricerca/45 §9.1 e §11](../../ricerca/45-architettura-v3.md)).
+- Il motivo è l'autonomia: con i livelli di [ADR-0020](0020-autonomia-a-livelli.md) follow-up, richiamate e lavori a orario partono senza nessuno in ufficio, e una caduta della fibra li fermerebbe.
+- Nell'ordine consigliato a Michele per l'autonomia viene quarta: riaccensione automatica dopo un blackout, batterie dell'UPS, backup, linea di riserva ([ricerca/45 §11](../../ricerca/45-architettura-v3.md)).
 
 ## Fonti
 

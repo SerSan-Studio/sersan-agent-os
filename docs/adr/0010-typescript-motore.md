@@ -1,8 +1,8 @@
 # ADR-0010: TypeScript come linguaggio del motore
 
-**Data**: da decidere con la domanda 28; proposta il 2026-10-25 (registrata il 2026-11-09)
+**Data**: proposta il 2026-10-25 (registrata il 2026-11-09); accettata il 2026-11-10
 
-**Stato**: proposta
+**Stato**: accettata il 2026-11-10 dal gruppo di progetto, con la carta bianca dei CEO del 10 novembre 2026: TypeScript per le due corsie e per il Cancello
 
 **Chi decide**: tutti e quattro, con la risposta di Mattia, che lavora sul codice dal primo giorno ([domande, n. 28, per tutti e quattro](../../DOMANDE-PER-MICHELE.md), [proposta §13](../../PRESENTAZIONE-CEO.md))
 
@@ -53,6 +53,12 @@
 
 - L'SDK TypeScript è ancora 0.3.x, con 333 versioni dal 27/9/2025, e cambia comportamenti: dalla versione 2.1.302 di Claude Code un'app senza modalità esplicita nega ogni strumento che non sia approvato da una regola o da una funzione nostra (hook o callback) ([ricerca/26 §1.1](../../ricerca/26-claude-agent-sdk.md)).
 - Codice nostro conosciuto da poche persone: Mattia secondo manutentore dal primo giorno, una guida operativa e revisioni incrociate ([ricerca/26 §11](../../ricerca/26-claude-agent-sdk.md)).
+
+## Revisione del 10 novembre 2026
+
+- TypeScript è confermato per **tutte e due le corsie** del motore e per il **Cancello** ([ADR-0021](0021-motore-a-due-corsie.md); [ricerca/45 §5](../../ricerca/45-architettura-v3.md), D5).
+- Mattia lo conferma, ma la sua conferma non blocca: con la sola corsia N nella milestone 1 un cambio di linguaggio toccherebbe poco codice. La domanda 28 resta aperta ([ricerca/45 §5](../../ricerca/45-architettura-v3.md)).
+- La milestone 1 gira sulle macchine di sviluppo con Windows e Node 22, senza Docker ([ricerca/45 §6](../../ricerca/45-architettura-v3.md)).
 
 ## Fonti
 

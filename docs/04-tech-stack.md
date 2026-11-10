@@ -1,5 +1,7 @@
 # Tech stack di SerSan Agent OS
 
+> **Nota del 10 novembre 2026.** Questo documento descrive ancora la versione 2 dell'architettura. Dal 10 novembre vale la versione 3, «Cancello a livelli e motore a due corsie»: la decisione è in [ricerca/45](../ricerca/45-architettura-v3.md) e nelle [ADR da 0020 a 0027](adr/README.md). Dove questo documento e le ADR dicono cose diverse, valgono le ADR. L'allineamento è in corso.
+
 Questo documento elenca, area per area, i componenti con cui si costruisce SerSan Agent OS. Per ognuno dice a cosa serve, dove gira, in quale fase entra, che licenza ha o quanto costa, e quale alternativa abbiamo scartato. Serve a chi deve capire il progetto e a chi lo costruisce.
 
 È allineato alla proposta per i CEO, versione 2.1 dell'8 novembre 2026: cifre, fasi e decisioni sono le sue ([proposta](../PRESENTAZIONE-CEO.md)). Il dettaglio tecnico viene dall'architettura v2 ([ricerca/36](../ricerca/36-architettura-v2.md)), dal board dell'infrastruttura di Michele ([board](../allegati/infra/SerSan%20Infra%20Board.md), [VLAN del board](../allegati/infra/board-vlan.txt), [board del rack](../allegati/infra/Rack%20SerSan%2012U.md)), dalle risposte di Michele sull'hardware ([ricerca/37](../ricerca/37-hardware-risposte-michele.md)) e dalle ricerche del secondo giro elencate in fondo.

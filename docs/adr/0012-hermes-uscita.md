@@ -2,7 +2,7 @@
 
 **Data**: 2026-10-25 (registrata il 2026-11-09)
 
-**Stato**: accettata
+**Stato**: accettata; rivista il 2026-11-10 da [ADR-0021](0021-motore-a-due-corsie.md) e [ADR-0023](0023-protezioni-essenziali.md)
 
 **Chi decide**: Alberto e Michele, che guidano la costruzione ([proposta §10](../../PRESENTAZIONE-CEO.md)); alle verifiche delle settimane 8 e 21 si decide sui numeri, e i CEO decidono se finanziare la fase dopo ([proposta §1 e §11](../../PRESENTAZIONE-CEO.md))
 
@@ -51,6 +51,15 @@
 - L'Agent SDK cambia quasi ogni giorno: versione fissata e aggiornamento ogni due settimane dopo i dieci scenari ([proposta §13](../../PRESENTAZIONE-CEO.md)).
 - Hermes potrebbe non chiudere i suoi problemi in tempo: allora resta solo un pilota confinato in laboratorio, con dati verdi ([ricerca/35, giudizio CPTO §5](../../ricerca/35-giudizio-cpto.md)).
 - Cancello, motore e bot sono codice scritto su misura che nessuno ha ancora rivisto: revisione esterna entro la settimana 21 (decisione 5) ([proposta §13 e §14](../../PRESENTAZIONE-CEO.md)).
+
+## Revisione del 10 novembre 2026
+
+- Hermes resta **una via d'uscita già prezzata e un pilota in laboratorio** da 6-8 giorni di sviluppo; non entra nel percorso dei clienti ([ricerca/45 §1.3](../../ricerca/45-architettura-v3.md)).
+- Le quattro condizioni restano; al 9 novembre non sono soddisfatte ([ricerca/41 §3.4](../../ricerca/41-novita-al-9-novembre.md)).
+- Il motore ha ora due corsie, e la corsia S arriva subito dopo la milestone 1 ([ADR-0021](0021-motore-a-due-corsie.md)).
+- Verifica della settimana 8: «nessun effetto senza una carta» diventa «nessun effetto fuori dal suo livello»; «tre agenti senza scambiarsi le sessioni» passa alla milestone della corsia S, con un solo runner ([ricerca/45 §6.2 e §6.4](../../ricerca/45-architettura-v3.md)).
+- Verifica della settimana 21: la revisione esterna esce dai criteri e diventa facoltativa ([ADR-0023](0023-protezioni-essenziali.md)).
+- Cinque idee di Hermes entrano nel nostro disegno: `max_hops`, il blocco delle skill curate a mano, la regola per i turni persi, il Capo di gabinetto che smista il lavoro, la banca di frasi approvate per Andrea ([ricerca/45 §1.3](../../ricerca/45-architettura-v3.md); [ADR-0026](0026-bacheca-e-gruppi-degli-agenti.md)).
 
 ## Fonti
 

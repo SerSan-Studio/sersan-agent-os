@@ -1,5 +1,7 @@
 # Le alternative valutate
 
+> **Nota del 10 novembre 2026.** Questo documento descrive ancora la versione 2 dell'architettura. Dal 10 novembre vale la versione 3, «Cancello a livelli e motore a due corsie»: la decisione è in [ricerca/45](../ricerca/45-architettura-v3.md) e nelle [ADR da 0020 a 0027](adr/README.md). Dove questo documento e le ADR dicono cose diverse, valgono le ADR. L'allineamento è in corso.
+
 Questo documento racconta come siamo arrivati alle scelte di SerSan Agent OS: quali architetture abbiamo confrontato, con quali punteggi, perché una strada ha vinto e cosa resta delle altre. Poi riprende, una per una, le alternative decise lungo il progetto, ognuna con i suoi pro, i suoi contro e l'esito. Serve a chi deve capire il progetto e a chi lo costruisce: per non rifare confronti già fatti e per sapere quali strade restano aperte.
 
 La fonte di verità per cifre, fasi, decisioni e rischi è la [proposta per i CEO, versione 2.1 dell'8 novembre 2026](../PRESENTAZIONE-CEO.md), che qui chiamiamo "proposta". I prezzi sono IVA esclusa salvo dove è scritto, come nella [proposta §12.1](../PRESENTAZIONE-CEO.md).

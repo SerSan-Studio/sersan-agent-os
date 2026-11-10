@@ -1,5 +1,7 @@
 # Sviluppo: fasi, verifiche, giorni e rischi
 
+> **Nota del 10 novembre 2026.** Questo documento descrive ancora la versione 2 dell'architettura. Dal 10 novembre vale la versione 3, «Cancello a livelli e motore a due corsie»: la decisione è in [ricerca/45](../ricerca/45-architettura-v3.md) e nelle [ADR da 0020 a 0027](adr/README.md). Dove questo documento e le ADR dicono cose diverse, valgono le ADR. L'allineamento è in corso.
+
 Questo file è per chi deve capire e costruire SerSan Agent OS, il sistema di 57 agenti AI in nove squadre che gira sul server di SerSan ([proposta §1](../PRESENTAZIONE-CEO.md)). Dice in che ordine si costruisce, come si verifica ogni passo, quanto lavoro serve, cosa può andare storto e cosa resta da decidere.
 
 Cifre, fasi, decisioni e date sono quelle della proposta per i CEO, Alessandro Serratt e Michele Sanna: [PRESENTAZIONE-CEO.md](../PRESENTAZIONE-CEO.md), versione 2.1 dell'8 novembre 2026. Se un numero qui non torna con la proposta, vale la proposta. Il piano tecnico di dettaglio è in [ricerca/36 §7](../ricerca/36-architettura-v2.md).

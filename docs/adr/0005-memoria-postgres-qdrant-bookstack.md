@@ -1,8 +1,8 @@
 # ADR-0005: Memoria aziendale su PostgreSQL 16, Qdrant e BookStack, embedding in casa
 
-**Data**: 2026-10-25 (registrata il 2026-11-09)
+**Data**: 2026-10-25 (registrata il 2026-11-09); rivista il 2026-11-10
 
-**Stato**: accettata
+**Stato**: accettata; la casa dei testi, BookStack o una cartella di file Markdown in git, si decide prima della fase 2 ([ricerca/46](../../ricerca/46-obsidian-come-casa-dei-testi.md))
 
 **Chi decide**: Michele Sanna (CPTO), perché questi servizi sono nel suo board ([ricerca/25 §1](../../ricerca/25-board-michele-e-delta.md)); per i dati rossi verso Claude Team decidono il parere legale, chiesto con la decisione 2 dei CEO, e la valutazione d'impatto, entro la settimana 3 ([proposta §5.6 e §14, decisione 2](../../PRESENTAZIONE-CEO.md)).
 
@@ -66,6 +66,13 @@ Ogni tipo di dato ha una sola fonte di verità ([proposta §5.5](../../PRESENTAZ
 - **Dati rossi verso Claude Team**, che non ha un registro di audit: decisione entro la settimana 3 ([proposta §13](../../PRESENTAZIONE-CEO.md)).
 - **Diritto alla cancellazione**: deve arrivare a PostgreSQL, Qdrant, ai log in Loki e ai backup ([ricerca/36 §5.7](../../ricerca/36-architettura-v2.md)).
 - **Pezzi aperti**: la pipeline arriva con la fase F4 del board ([proposta, appendice A, A3](../../PRESENTAZIONE-CEO.md)); restano da chiarire cos'è Sirius e con cosa sostituire MinIO, l'archivio dei file, non più mantenuto ([domande per Michele, n. 11 e 25](../../DOMANDE-PER-MICHELE.md)).
+
+## Revisione del 10 novembre 2026
+
+- La decisione resta in vigore. Resta aperta una sola domanda: dove vivono i testi che gli agenti leggono e scrivono, cioè playbook, verbali, «Come lavoro» e voce del brand. Le strade sono due: BookStack, come in questa ADR, oppure una cartella di file Markdown in git sul server ([ricerca/46 §3 e §7](../../ricerca/46-obsidian-come-casa-dei-testi.md)).
+- Obsidian non è la casa dei testi: da solo non ha permessi né accesso unico, e per più persone chiede Sync, un cloud fuori dal board. Resta al massimo un editor facoltativo sul PC ([ricerca/46, «In breve»](../../ricerca/46-obsidian-come-casa-dei-testi.md)).
+- Nei voti la cartella Markdown in git è avanti di 3 punti su 100 (66,5 contro 63,5), ma la differenza sta dentro l'incertezza dei voti e il suo lavoro non è stimato. La scelta si fa prima della fase 2, con le prove di [ricerca/46 §9](../../ricerca/46-obsidian-come-casa-dei-testi.md).
+- Intanto il codice non dipende dalla scelta: nella milestone 1 i testi stanno in file Markdown e YAML nella repo del codice, letti attraverso un'interfaccia unica. Cambiare la casa dei testi vuol dire cambiare quell'interfaccia, non le catene.
 
 ## Fonti
 

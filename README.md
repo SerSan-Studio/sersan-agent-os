@@ -1,5 +1,7 @@
 # SerSan Agent OS
 
+> **Aggiornamento del 10 novembre 2026.** I CEO hanno approvato il progetto e lo sviluppo è partito; il codice sta in una repo privata dell'organizzazione. Le decisioni nuove sono in [ricerca/45](ricerca/45-architettura-v3.md) e nelle [ADR da 0020 a 0027](docs/adr/README.md). Questo README e i documenti in `docs/` descrivono ancora la versione 2 e sono in corso di allineamento: dove dicono cose diverse dalle ADR, valgono le ADR.
+
 Proposta e documentazione di progetto di SerSan Agent OS, il «secondo cervello» aziendale di SerSan: nove squadre di agenti AI, 57 in tutto, che lavorano con le persone su una memoria aziendale comune. Il motore lo scriviamo noi sull'Agent SDK di Claude e gira sul server dell'ufficio di Cagliari. Nessun agente manda qualcosa a un cliente senza il sì di una persona o una regola «Sempre» decisa dai CEO.
 
 L'idea è di Alberto Tuveri. La proposta è per i CEO Alessandro Serratt e Michele Sanna ed è alla versione 2.1, dell'8 novembre 2026. Il codice del motore non c'è ancora: questa repo raccoglie la proposta, la ricerca da cui vengono i fatti e la documentazione di progetto.

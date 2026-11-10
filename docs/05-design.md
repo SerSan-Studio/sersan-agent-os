@@ -1,5 +1,7 @@
 # Design del sistema
 
+> **Nota del 10 novembre 2026.** Questo documento descrive ancora la versione 2 dell'architettura. Dal 10 novembre vale la versione 3, «Cancello a livelli e motore a due corsie»: la decisione è in [ricerca/45](../ricerca/45-architettura-v3.md) e nelle [ADR da 0020 a 0027](adr/README.md). Dove questo documento e le ADR dicono cose diverse, valgono le ADR. L'allineamento è in corso.
+
 SerSan Agent OS visto da chi lo usa e da chi lo costruisce: le nove squadre di agenti e chi ne risponde, come si passano il lavoro, come si approva dal telefono, com'è una giornata con il sistema, le regole che valgono sempre e le cose che restano alle persone. L'ultima sezione spiega come sono fatti i documenti del progetto.
 
 Cifre, fasi, decisioni e date sono quelle della proposta per i CEO, versione 2.1 dell'8 novembre 2026 ([proposta, intestazione](../PRESENTAZIONE-CEO.md)). Quando un dettaglio tecnico non è nella proposta, il rimando porta al rapporto di ricerca da cui viene, quasi sempre l'architettura scelta il 25 ottobre 2026 ([ricerca/36, intestazione](../ricerca/36-architettura-v2.md)): quei dettagli sono proposte da confermare durante lo sviluppo.

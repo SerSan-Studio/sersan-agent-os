@@ -2,7 +2,7 @@
 
 **Data**: 2026-10-25 (registrata il 2026-11-09)
 
-**Stato**: accettata
+**Stato**: accettata; rivista il 2026-11-10 da [ADR-0020](0020-autonomia-a-livelli.md) e [ADR-0025](0025-un-modello-per-agente.md): tetti per classe al giorno e un modello per agente
 
 **Chi decide**: Michele Sanna (CPTO), perché LiteLLM è nel suo board, nella fase F4 ([ricerca/25 §1](../../ricerca/25-board-michele-e-delta.md)); i CEO per il tetto mensile delle API e il credito prepagato, se i crediti non bastano ([proposta §14, decisione 3](../../PRESENTAZIONE-CEO.md)).
 
@@ -57,6 +57,13 @@ Ogni chiamata ai modelli passa da LiteLLM, sul nostro server ([proposta §5.1](.
 - **Catena di fornitura**, cioè i pacchetti presi da fuori: a marzo 2026 sono circolate versioni compromesse di LiteLLM. Le difese: versione fissata, uscita solo verso Anthropic, pannello solo dalla rete di gestione, chiave principale con rotazione ([proposta §13](../../PRESENTAZIONE-CEO.md)).
 - **Intestazioni di Anthropic**: LiteLLM deve inoltrare intatte `anthropic-beta` e `anthropic-version`, dove viaggiano le funzioni nuove; la correzione (PR #36736) era aperta al 25 ottobre. Prova nella fase 0 ([ricerca/26 §4.2](../../ricerca/26-claude-agent-sdk.md); [proposta §11](../../PRESENTAZIONE-CEO.md)).
 - **Crediti finiti**: importo e scadenza dei crediti del bundle si verificano nella prima settimana; senza crediti le API costerebbero circa 196 € al mese (forbice 90-250), con un tetto a 250 € e un credito prepagato di 0-223 € ([proposta §1, §12.1 e §14, decisione 3](../../PRESENTAZIONE-CEO.md)).
+
+## Revisione del 10 novembre 2026
+
+- Ai budget di LiteLLM si aggiunge il **tetto per classe al giorno**, che conta il Cancello: per esempio 15 follow-up e 10 inviti per agente, al massimo 2 messaggi per destinatario ([ADR-0020](0020-autonomia-a-livelli.md); [ricerca/45 §2.7](../../ricerca/45-architettura-v3.md)).
+- Ogni agente dichiara il suo modello: Claude via API, un modello open-weight sul nostro server o un modello open-weight di un fornitore. LiteLLM resta **l'unica porta** verso tutti, quindi non esce più solo verso Anthropic. I fornitori terzi ricevono solo dati verdi e gialli ([ADR-0025](0025-un-modello-per-agente.md)).
+- LiteLLM entra davanti alle chiamate della corsia N già nella milestone 2, con un budget per catena ([ricerca/45 §12.2](../../ricerca/45-architettura-v3.md)).
+- Sul banco di prova si usa una chiave per flusso con il limite della Console; se il limite per area di lavoro non c'è, il contatore sta nel Cancello ([ricerca/45 §2.7](../../ricerca/45-architettura-v3.md)).
 
 ## Fonti
 

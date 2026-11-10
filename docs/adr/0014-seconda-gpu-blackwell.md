@@ -1,8 +1,8 @@
 # ADR-0014: Seconda GPU: RTX PRO 2000 Blackwell da 16 GB nel riser secondario
 
-**Data**: proposta del 2026-11-08, da decidere (registrata il 2026-11-09)
+**Data**: proposta del 2026-11-08 (registrata il 2026-11-09); rivista il 2026-11-10, da chiudere con Michele
 
-**Stato**: proposta (decisione 12; modello scelto da Michele il 2026-11-07)
+**Stato**: proposta a Michele; rivista due volte il 2026-11-10: non aspetta più i CEO, e dopo il confronto con la scheda da 24 GB la proposta è comprare la scheda da 16 GB per la milestone 2 ([ricerca/48 §5](../../ricerca/48-modelli-locali-e-gpu.md))
 
 **Chi decide**: Alessandro e Michele approvano l'acquisto con la decisione 12; modello e montaggio sono scelte di Michele, a cui resta l'infrastruttura ([proposta §14](../../PRESENTAZIONE-CEO.md)).
 
@@ -56,8 +56,28 @@ Il server ha una sola GPU, una Quadro RTX 4000 da 8 GB, nel riser principale, ci
 - La staffa potrebbe non chiudere con il fermo della gabbia standard: in quel caso serve la gabbia HPE senza fermo P38515-B21, oggi poco disponibile ([ricerca/37 §4, Riser](../../ricerca/37-hardware-risposte-michele.md)).
 - L'iLO, la console di gestione del server, non conosce la scheda: ventole e temperature vanno controllate prima e dopo il montaggio ([DOMANDE-PER-MICHELE, note](../../DOMANDE-PER-MICHELE.md)).
 
+## Revisione del 10 novembre 2026
+
+- La scelta non aspetta più la decisione 12 dei CEO: il progetto è approvato. Tempi e acquisto li decide il gruppo di progetto con Michele ([ricerca/45](../../ricerca/45-architettura-v3.md), «Decisione del gruppo di progetto»).
+- Con [ADR-0025](0025-un-modello-per-agente.md) gli agenti possono usare anche modelli open-weight sul nostro server, prima nella corsia N. Per questo la scheda da 16 GB va confrontata con la **RTX PRO 4000 Blackwell SFF da 24 GB**, della stessa classe da 70 W ([ricerca/32 §4](../../ricerca/32-hardware-e-upgrade.md)).
+- La scheda da 24 GB ha 24 GB GDDR7 ECC a 192 bit e 432 GB/s, contro 16 GB e 288 GB/s; è a due slot e mezza altezza, senza cavo di alimentazione ([ricerca/32 §4.2](../../ricerca/32-hardware-e-upgrade.md)).
+- Oltre a trascrizione, voce di Andrea e ricerca terrebbe sempre acceso un modello da 8 miliardi di parametri, a circa 54 token/s contro 36 [stima non verificata] ([ricerca/32 §4.6](../../ricerca/32-hardware-e-upgrade.md)).
+- Il prezzo trovato è un listino SHI UE di 3.032,85 €, senza data: **va verificato** prima della scelta, insieme al montaggio nel riser secondario ([ricerca/32 §4.3](../../ricerca/32-hardware-e-upgrade.md)).
+- Il «Perché no» dell'alternativa da 20-24 GB diceva che in casa girano solo modelli piccoli: con [ADR-0025](0025-un-modello-per-agente.md) questo non è più vero, e il confronto torna aperto. Resta vero che con la sola RTX 4000 da 8 GB nessun modello locale regge gli strumenti in catena ([ricerca/26 §4.5](../../ricerca/26-claude-agent-sdk.md)).
+- Il momento consigliato resta dalla fase 3, appena il prezzo scende; all'inizio della fase 3 se Andrea viene anticipato ([ricerca/45 §11](../../ricerca/45-architettura-v3.md)).
+
+## Seconda revisione del 10 novembre 2026: il confronto con la scheda da 24 GB
+
+- Il confronto chiesto dalla prima revisione è in [ricerca/48 §5](../../ricerca/48-modelli-locali-e-gpu.md). **La RTX PRO 2000 Blackwell da 16 GB resta la scelta.**
+- **Prezzi letti il 10 novembre.** La scheda da 16 GB costa 1.100 € su Amazon.it; la mediana degli ultimi 12 mesi è 984 €. La RTX PRO 4000 Blackwell SFF da 24 GB costa £3.139,49 IVA inclusa da Scan UK, in preordine a 7-9 settimane, e 4.088,95 € da LDLC Italia, dove si vende solo dentro un sistema. In euro sono circa 3.750-4.100 €, cioè più di tre volte la scheda da 16 GB; il cambio usato per la sterlina è quello di ottobre [non verificato] ([ricerca/48 §5.3](../../ricerca/48-modelli-locali-e-gpu.md)).
+- **Cosa ci sta.** Con la scheda da 16 GB e la RTX 4000 girano insieme trascrizione, voce di Andrea, ricerca nella memoria, un modello piccolo e un modello da 9 miliardi di parametri che vede le immagini. Quest'ultimo sta sugli 8 GB della RTX 4000 al limite: va misurato [stima] ([ricerca/48 §5.2](../../ricerca/48-modelli-locali-e-gpu.md)).
+- **Quando: proposta nuova.** Comprarla per la milestone 2, anche a 1.100 €, senza aspettare che torni sotto i 1.000 €. La prova dei modelli locali ne ha bisogno, perché la RTX 4000 ha oggi meno di 1 GB libero e alcuni modelli da provare girano solo sulla Blackwell. Serve il sì di Michele ([ricerca/48 §5.5 e §6.2](../../ricerca/48-modelli-locali-e-gpu.md)).
+- **Cosa non comprare ora.** Né la scheda da 24 GB a 70 W, né una scheda più grande con il cavo di alimentazione: con una scheda da 140-230 W un solo alimentatore non basta più, e il server perde la ridondanza [calcolo non verificato] ([ricerca/48 §5.3](../../ricerca/48-modelli-locali-e-gpu.md)).
+- **Se la prova chiede un modello più grande in casa**, le strade sono due: sostituire la RTX 4000 con una RTX PRO 4000 Blackwell da 140 W e 24 GB, a uno slot, oppure un nodo pensato per la GPU, con il suo budget ([ricerca/48 §5.3 e §5.4](../../ricerca/48-modelli-locali-e-gpu.md)).
+
 ## Fonti
 
+- [ricerca/48 §5: confronto fra le schede da 16 e da 24 GB, con i prezzi del 10 novembre](../../ricerca/48-modelli-locali-e-gpu.md)
 - [Proposta per i CEO, §6.1, §6.2, §6.4, §12.1, §12.2, §13 e §14 (decisione 12)](../../PRESENTAZIONE-CEO.md)
 - [ricerca/32 §4: confronto tra le schede, prezzi e montaggio di ottobre](../../ricerca/32-hardware-e-upgrade.md)
 - [ricerca/37 §1 e §4: risposte di Michele del 7 novembre, riser secondario, seconda GPU](../../ricerca/37-hardware-risposte-michele.md)

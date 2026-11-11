@@ -2,7 +2,7 @@
 
 **Data**: 2026-10-25 (registrata il 2026-11-09)
 
-**Stato**: accettata; Michele l'ha già recepita ([domande per Michele, "Già recepito"](../../DOMANDE-PER-MICHELE.md)); rivista il 2026-11-10 da [ADR-0021](0021-motore-a-due-corsie.md): l'Agent SDK diventa la corsia S del motore
+**Stato**: accettata; Michele l'ha già recepita ([domande per Michele, "Già recepito"](../../DOMANDE-PER-MICHELE.md)); rivista il 2026-11-10 da [ADR-0021](0021-motore-a-due-corsie.md): l'Agent SDK diventa la corsia S del motore; rivista il 2026-11-11 da [ADR-0028](0028-instradamento-a-piu-motori.md): i posti Team servono la corsia T, il motore resta sulla chiave API
 
 **Chi decide**: Michele Sanna (CPTO) con Alberto Tuveri per la scelta tecnica ([ricerca/36 §10](../../ricerca/36-architettura-v2.md)); i CEO per il via e il budget di ogni fase ([proposta §14, decisione 1](../../PRESENTAZIONE-CEO.md)).
 
@@ -67,6 +67,12 @@ Il motore lo scriviamo noi sull'Agent SDK di Claude, cioè Claude Code usato com
 - Nella corsia S resta Claude finché una prova non dimostra che un modello locale regge ([ADR-0025](0025-un-modello-per-agente.md)).
 - Managed Agents non è più solo un'alternativa scartata: è una riserva sui dati verdi, se il server è pieno o fermo ([ADR-0024](0024-abbonamenti-come-riserva.md)).
 - La revisione esterna entro la settimana 21 non è più obbligatoria ([ADR-0023](0023-protezioni-essenziali.md)).
+
+## Revisione dell'11 novembre 2026
+
+- Il motore resta sulla chiave API: l'Agent SDK non usa mai il login dei posti Claude Team, come chiede la pagina legale di Anthropic ([ricerca/49 §1.1](../../ricerca/49-instradamento-a-piu-motori.md)).
+- I posti Team servono una corsia nuova, la **corsia T**: il motore avvia, sul posto della persona responsabile, un compito programmato di Claude Code con l'avvio via API, per lo sviluppo di progetti in codice e i lavori lunghi. La consegna è un branch e una pull request ([ADR-0028](0028-instradamento-a-piu-motori.md)).
+- La regola «chiave API, mai i posti di Claude Team» vale quindi per il motore e per i 57 agenti, non per la corsia T. Anche per T il motore non tiene il login di nessuno: tiene solo i token dei compiti, che avviano un solo compito, non leggono nulla e non chiamano il modello ([ricerca/49 §1.2](../../ricerca/49-instradamento-a-piu-motori.md)).
 
 ## Fonti
 

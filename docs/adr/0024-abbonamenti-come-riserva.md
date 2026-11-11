@@ -2,7 +2,7 @@
 
 **Data**: 2026-11-10
 
-**Stato**: accettata
+**Stato**: accettata; rivista il 2026-11-11 da [ADR-0028](0028-instradamento-a-piu-motori.md): i posti Team non sono più solo riserva, servono la corsia T
 
 **Chi decide**: il gruppo di progetto, con la carta bianca dei CEO del 10 novembre 2026 ([ricerca/45, «Decisione del gruppo di progetto»](../../ricerca/45-architettura-v3.md)). Michele dice quando il server è pieno o fermo.
 
@@ -60,6 +60,13 @@
 
 - **Un dato giallo o rosso finisce in riserva**: il motore decide la riserva solo per agenti dichiarati verdi nel registro [proposta].
 - **Spesa**: tetto per sessione di Managed Agents più il tetto per agente ([ricerca/41 §2.2](../../ricerca/41-novita-al-9-novembre.md); [ADR-0004](0004-litellm-banca-token.md)).
+
+## Revisione dell'11 novembre 2026
+
+- Gli abbonamenti non sono più solo una riserva. I posti Claude Team servono la **corsia T**: un compito programmato con l'avvio via API, sul posto della persona responsabile, per lo sviluppo di progetti in codice e i lavori lunghi, con la consegna come pull request ([ADR-0028](0028-instradamento-a-piu-motori.md)).
+- Cambia quindi la regola «i compiti programmati di Claude Team restano per l'uso personale»: valgono anche per i lavori di sviluppo assegnati dal motore alla persona del posto, senza connettori e con il solo avvio API ([ricerca/49 §3](../../ricerca/49-instradamento-a-piu-motori.md)). Gli avvii a orario e da GitHub restano ai compiti personali; la stessa revisione è in [ADR-0022](0022-eventi-e-sveglia-nel-motore.md).
+- Le obiezioni di questa ADR ai compiti programmati restano vere e la corsia T le contiene: agiscono come la persona (la consegna è solo una pull request, unita con il sì di una persona), dipendono dai limiti del posto (conto per posto e ripiego su S), sono in anteprima (adattatore separato), includono i connettori (si tolgono tutti) e sulle macchine di Anthropic stanno fuori dai ganci del Cancello (nessun effetto esterno dentro T) ([ADR-0028](0028-instradamento-a-piu-motori.md)).
+- Managed Agents resta la riserva sui dati verdi; i crediti API inclusi nel piano Team coprono anche Managed Agents ([ricerca/49 §1.3](../../ricerca/49-instradamento-a-piu-motori.md)).
 
 ## Fonti
 

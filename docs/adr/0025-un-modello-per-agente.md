@@ -2,7 +2,7 @@
 
 **Data**: 2026-11-10
 
-**Stato**: accettata; aggiornata il 2026-11-10 dopo [ricerca/47](../../ricerca/47-modelli-system-one.md) e [ricerca/48](../../ricerca/48-modelli-locali-e-gpu.md): il confronto fra le GPU è fatto, e la proposta a Michele è la scheda da 16 GB ([ADR-0014](0014-seconda-gpu-blackwell.md))
+**Stato**: accettata; aggiornata il 2026-11-10 dopo [ricerca/47](../../ricerca/47-modelli-system-one.md) e [ricerca/48](../../ricerca/48-modelli-locali-e-gpu.md): il confronto fra le GPU è fatto, e la proposta a Michele è la scheda da 16 GB ([ADR-0014](0014-seconda-gpu-blackwell.md)); rivista il 2026-11-11 da [ADR-0028](0028-instradamento-a-piu-motori.md): il registro dei modelli serve anche a scegliere la destinazione
 
 **Chi decide**: il gruppo di progetto, con la carta bianca dei CEO del 10 novembre 2026 ([ricerca/45, «Decisione del gruppo di progetto»](../../ricerca/45-architettura-v3.md)). La scheda da comprare e il momento li decide il gruppo di progetto con Michele, a cui resta l'infrastruttura ([ADR-0014](0014-seconda-gpu-blackwell.md)).
 
@@ -94,6 +94,12 @@ Fonti della tabella: [ricerca/32 §4.2, §4.3 e §4.6](../../ricerca/32-hardware
 - **Le decisioni rapide hanno la loro ADR**: [ADR-0027](0027-decisore.md), il «decisore», nato dalla valutazione dei modelli System One ([ricerca/47](../../ricerca/47-modelli-system-one.md)).
 - **La GPU.** Il punto da chiudere con Michele ora ha una proposta: la scheda da 16 GB, da comprare per la milestone 2. Il confronto, con i prezzi del 10 novembre, è in [ADR-0014](0014-seconda-gpu-blackwell.md) e in [ricerca/48 §5](../../ricerca/48-modelli-locali-e-gpu.md). La tabella qui sopra resta come confronto tecnico; i suoi prezzi sono superati.
 - **La prova dei modelli locali** va nella milestone 2, in italiano, con le misure fissate prima: trascrizione, corsia N a schema, lettura dei documenti, revisione visiva ([ricerca/48 §6.2](../../ricerca/48-modelli-locali-e-gpu.md)).
+
+## Revisione dell'11 novembre 2026
+
+- Il registro dei modelli e quello degli agenti servono anche al **router** di [ADR-0028](0028-instradamento-a-piu-motori.md): ogni agente dichiara, oltre al suo modello, le destinazioni che può usare fra le sei (regola, catena N in casa, catena N via API, sessione S, corsia T, persona).
+- La catena N «in casa» e quella «via API» sono la stessa catena: le distingue il modello dell'agente nel registro. Colori ammessi e capacità del registro sono le prime regole fisse del router ([ricerca/49 §2.2 e §2.4](../../ricerca/49-instradamento-a-piu-motori.md)).
+- La corsia T non è una voce del registro dei modelli: usa Claude Code sul posto della persona, fuori da LiteLLM, e la dichiarano solo quattro agenti ([ricerca/49 §2.6](../../ricerca/49-instradamento-a-piu-motori.md)).
 
 ## Fonti
 

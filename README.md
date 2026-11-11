@@ -1,46 +1,65 @@
 # SerSan Agent OS
 
-> **Aggiornamento del 10 novembre 2026.** I CEO hanno approvato il progetto e lo sviluppo è partito; il codice sta in una repo privata dell'organizzazione. Le decisioni nuove sono in [ricerca/45](ricerca/45-architettura-v3.md) e nelle [ADR da 0020 a 0027](docs/adr/README.md). Questo README e i documenti in `docs/` descrivono ancora la versione 2 e sono in corso di allineamento: dove dicono cose diverse dalle ADR, valgono le ADR.
+> **Aggiornato l'11 novembre 2026 all'architettura v3**, «Cancello a livelli e motore a due corsie» ([ricerca/45](ricerca/45-architettura-v3.md); [ADR da 0020 a 0028](docs/adr/README.md)). Cosa è cambiato:
+> - il 10 novembre i CEO hanno approvato il progetto e hanno lasciato al gruppo di progetto le scelte e l'avvio; lo sviluppo è partito lo stesso giorno, e il codice sta in una repo privata dell'organizzazione;
+> - ogni azione verso l'esterno ha un livello di autonomia, da L0 a L3, che le dà il Cancello; il motore ha due corsie e un router che sceglie dove far girare ogni lavoro, anche sui posti Claude Team per lo sviluppo in codice;
+> - la ricerca arriva al rapporto 49 e le decisioni di architettura sono 28.
 
-Proposta e documentazione di progetto di SerSan Agent OS, il «secondo cervello» aziendale di SerSan: nove squadre di agenti AI, 57 in tutto, che lavorano con le persone su una memoria aziendale comune. Il motore lo scriviamo noi sull'Agent SDK di Claude e gira sul server dell'ufficio di Cagliari. Nessun agente manda qualcosa a un cliente senza il sì di una persona o una regola «Sempre» decisa dai CEO.
+Proposta e documentazione di progetto di SerSan Agent OS, il «secondo cervello» aziendale di SerSan: nove squadre di agenti AI, 57 in tutto, che lavorano con le persone su una memoria aziendale comune. Il motore lo scriviamo noi in TypeScript e gira sul server dell'ufficio di Cagliari. Ha due corsie: catene a schema, dove il codice sceglie passi e destinatari, e sessioni dell'Agent SDK di Claude per gli agenti che ragionano a più passi ([ADR-0021](docs/adr/0021-motore-a-due-corsie.md)). Ogni azione verso l'esterno passa dal Cancello, che le dà un livello: da «una persona approva ogni volta» a «parte da sola dentro regole e tetti» ([ADR-0020](docs/adr/0020-autonomia-a-livelli.md)).
 
-L'idea è di Alberto Tuveri. La proposta è per i CEO Alessandro Serratt e Michele Sanna ed è alla versione 2.1, dell'8 novembre 2026. Il codice del motore non c'è ancora: questa repo raccoglie la proposta, la ricerca da cui vengono i fatti e la documentazione di progetto.
+L'idea è di Alberto Tuveri. La proposta, per i CEO Alessandro Serratt e Michele Sanna, è alla versione 2.1 dell'8 novembre 2026. I CEO hanno approvato il progetto il 10 novembre 2026 e lo sviluppo è partito lo stesso giorno, sulle macchine di sviluppo ([ricerca/45, «Decisione del gruppo di progetto»](ricerca/45-architettura-v3.md)). Il codice, con il PRD (il documento dei requisiti), gli spec e i piani di sviluppo, sta in una repo privata dell'organizzazione, `sersan-agent-os-codice`. Questa repo raccoglie la proposta, la ricerca da cui vengono i fatti, la documentazione di progetto e le ADR.
 
 ## Da dove partire
 
-1. [PRESENTAZIONE-CEO.pdf](PRESENTAZIONE-CEO.pdf), anche in [DOCX](PRESENTAZIONE-CEO.docx) e in [Markdown](PRESENTAZIONE-CEO.md): la proposta per i CEO. È la fonte di verità per costi, fasi, decisioni e rischi.
-2. [docs/01-panoramica.md](docs/01-panoramica.md): il progetto in breve, con il rimando alla fonte di ogni fatto.
-3. [docs/adr/](docs/adr/README.md): le 19 decisioni di architettura, ognuna con il suo stato.
-4. [DOMANDE-PER-MICHELE.md](DOMANDE-PER-MICHELE.md): le 30 domande tecniche ancora aperte.
+1. [docs/01-panoramica.md](docs/01-panoramica.md): il progetto in breve, a che punto siamo, con il rimando alla fonte di ogni fatto.
+2. [ricerca/45](ricerca/45-architettura-v3.md): l'architettura v3, la fonte di verità dell'architettura dal 10 novembre 2026. Dove dice una cosa diversa, supera la proposta.
+3. [docs/adr/](docs/adr/README.md): le 28 decisioni di architettura, ognuna con il suo stato.
+4. [PRESENTAZIONE-CEO.pdf](PRESENTAZIONE-CEO.pdf), anche in [DOCX](PRESENTAZIONE-CEO.docx) e in [Markdown](PRESENTAZIONE-CEO.md): la proposta approvata dai CEO, versione 2.1. Resta la base per costi, fasi e rischi dove la v3 non la cambia.
+5. [DOMANDE-PER-MICHELE.md](DOMANDE-PER-MICHELE.md): le 30 domande tecniche ancora aperte.
 
 ## Documentazione di progetto
 
 | Documento | Contenuto |
 |---|---|
 | [Panoramica](docs/01-panoramica.md) | Cos'è il sistema, le nove squadre, le scelte principali, a che punto siamo |
-| [Alternative](docs/02-alternative.md) | Le architetture confrontate nei due giri del 24 e 25 ottobre e perché ha vinto il motore sull'Agent SDK |
-| [Architettura](docs/03-architettura.md) | Schema a livelli, componenti, percorso di un'azione, memoria, reti, infrastruttura, sicurezza |
-| [Tech stack](docs/04-tech-stack.md) | Programmi e servizi per area, versioni, prove da fare prima di costruire |
-| [Design](docs/05-design.md) | Le squadre e come lavorano insieme, approvazioni dal telefono, regole, cosa resta umano, design dei documenti |
-| [Sviluppo](docs/06-sviluppo.md) | Le sette fasi, le verifiche delle settimane 8 e 21, i giorni di sviluppo, i rischi, le decisioni chieste ai CEO |
-| [ADR](docs/adr/README.md) | Le schede di decisione, dal motore alla linea internet di riserva |
+| [Alternative](docs/02-alternative.md) | Le architetture confrontate nei tre giri, del 24 e 25 ottobre e del 9-10 novembre, e perché ha vinto l'unione «Cancello a livelli e motore a due corsie» |
+| [Architettura](docs/03-architettura.md) | Schema a livelli, le due corsie del motore, componenti, percorso di un'azione, memoria, reti, infrastruttura, sicurezza |
+| [Tech stack](docs/04-tech-stack.md) | Programmi, servizi e modelli per area, versioni, prove da fare prima di costruire |
+| [Design](docs/05-design.md) | Le squadre e come si passano il lavoro, livelli e approvazioni dal telefono, regole, cosa resta umano, design dei documenti |
+| [Sviluppo](docs/06-sviluppo.md) | Le sette fasi, le sette milestone del PRD, le verifiche delle settimane 8 e 21, i giorni di sviluppo, i rischi |
+| [ADR](docs/adr/README.md) | Le schede di decisione, dal motore all'instradamento a più motori |
 
 ## Cosa c'è nella repo
 
 | Cartella o file | Contenuto |
 |---|---|
-| [ricerca/](ricerca/) | I rapporti da cui vengono i fatti. 00 le funzioni dell'idea, voce per voce; 01 SersanOutreach; 05 il marketing. 10-24 il primo giro, con sette proposte di architettura e i giudizi; 25-37 il secondo giro, dentro il board di Michele, fino all'architettura v2 e alle risposte sull'hardware |
+| [ricerca/](ricerca/) | I rapporti da cui vengono i fatti. 00 le funzioni dell'idea, voce per voce; 01 SersanOutreach; 05 il marketing. 10-24 il primo giro, con sette proposte di architettura e i giudizi; 25-37 il secondo giro, dentro il board di Michele, fino all'architettura v2 e alle risposte sull'hardware; 38-45 il terzo giro, sull'autonomia; 46-49 le valutazioni fatte dopo (elenco sotto) |
 | [allegati/infra/](allegati/infra/) | Il board dell'infrastruttura di Michele e la board del rack |
 | [allegati/sersanoutreach/](allegati/sersanoutreach/) | Copie di documenti di SersanOutreach: profilo aziendale, mappa delle capacità, architettura, prontezza, backup, compliance, server MCP. I rimandi ai file di quella repo sono testo, non link |
 | [allegati/marketing/](allegati/marketing/) | Il piano marketing di 90 giorni, le direttive dei contenuti, la gestione dei post e il calendario |
 | [strumenti/](strumenti/) | `md_to_docx.py`, che trasforma la proposta in DOCX con lo stile SerSan, il modello di stile e il marchio (`marchio.py` e `brand/`) |
 | [LEGGIMI.md](LEGGIMI.md) | La guida della cartella di lavoro, con il cambio usato nei rapporti |
 
+**Il terzo giro e le valutazioni dopo**, dal 9 all'11 novembre 2026 ([ricerca/45, «I documenti del giro»](ricerca/45-architettura-v3.md)):
+
+- [38](ricerca/38-autonomia-nella-trascrizione.md): i comportamenti autonomi della trascrizione di riferimento, scritti come requisiti.
+- [39](ricerca/39-autonomia-del-disegno-v2.md): quanto lavora da solo il disegno v2, voce per voce, e i suoi 15 colli di bottiglia.
+- [40](ricerca/40-alternative-e-autonomia.md): l'autonomia delle alternative dei primi due giri.
+- [41](ricerca/41-novita-al-9-novembre.md): le novità uscite dopo il 25 ottobre 2026.
+- 42: le quattro proposte del giro: [A, motore a livelli](ricerca/42-proposta-A-motore-a-livelli.md); [B, orchestratore pronto](ricerca/42-proposta-B-orchestratore-pronto.md); [C, ibrido con abbonamenti](ricerca/42-proposta-C-ibrido-abbonamenti.md); [D, automazione prima](ricerca/42-proposta-D-automazione-prima.md).
+- 43: i quattro giudizi, con voti e raccomandazioni: [visione](ricerca/43-giudizio-visione.md), [CEO](ricerca/43-giudizio-ceo.md), [CPTO](ricerca/43-giudizio-cpto.md), [essenziale](ricerca/43-giudizio-essenziale.md).
+- [44](ricerca/44-verifiche-avversarie.md): le tre verifiche avversarie sulla proposta prima in classifica.
+- [45](ricerca/45-architettura-v3.md): la sintesi del giro e la decisione del gruppo di progetto: l'architettura v3.
+- [46](ricerca/46-obsidian-come-casa-dei-testi.md): Obsidian e la «casa dei testi», cioè dove vivono i testi che gli agenti leggono e scrivono, a confronto con BookStack.
+- [47](ricerca/47-modelli-system-one.md): i modelli «System One», che rispondono a domande chiuse con una probabilità, e il «decisore».
+- [48](ricerca/48-modelli-locali-e-gpu.md): i modelli open-weight sul nostro server, la multimodalità e la seconda GPU.
+- [49](ricerca/49-instradamento-a-piu-motori.md): l'instradamento a più motori e la corsia T sui posti Claude Team.
+
 ## Come sono scritti i documenti
 
-- Ogni fatto porta la sua fonte. Nei rapporti di `ricerca/` c'è l'etichetta `[verificato: fonte]` o `[non verificato]`; nei documenti di `docs/` c'è il link alla sezione della proposta o al rapporto.
+- Ogni fatto porta la sua fonte. Nei rapporti di `ricerca/` c'è l'etichetta `[verificato: fonte]` o `[non verificato]`; nei documenti di `docs/` c'è il link alla sezione della proposta, al rapporto o all'ADR.
 - I prezzi sono IVA esclusa, salvo dove è scritto. Il cambio usato è 1 $ = 0,8934 €.
-- Se una cifra di `docs/` sembra diversa da quella della proposta, vale la proposta.
+- Dove la v3 cambia la proposta valgono [ricerca/45](ricerca/45-architettura-v3.md) e le ADR; per il resto vale la proposta. I documenti di `docs/` citano la proposta come storia e accanto scrivono la regola di oggi.
 
 ## Rigenerare DOCX e PDF della proposta
 

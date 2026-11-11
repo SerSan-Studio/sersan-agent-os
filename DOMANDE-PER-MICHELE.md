@@ -17,6 +17,8 @@ Per la proposta SerSan Agent OS (versione 2.1), costruita sul tuo board dell'inf
 - Accesso da fuori: macchina Oracle Cloud a Milano con NetBird (gestione e relay), Pangolin, Uptime Kuma e ntfy.
 - Secondo nodo a dicembre, se c'è il budget (fino a 1.500 €).
 
+**Aggiunte l'11 novembre 2026:** le domande da 31 a 45, nate con l'architettura v3. Sono in fondo, prima delle note.
+
 ## Tempi e posto per gli agenti
 
 1. In quante settimane pensi di chiudere F0-F4? Nel piano ho ipotizzato F0-F1 nelle settimane 1-5, F2-F3 nelle 6-14, F4 nelle 15-18, F5 dalla 19.
@@ -82,6 +84,39 @@ Per la proposta SerSan Agent OS (versione 2.1), costruita sul tuo board dell'inf
 28. TypeScript va bene come linguaggio del motore anche per Mattia?
 29. Chi fattura (Sersan Limited nel Regno Unito o un soggetto italiano) e con quale sistema?
 30. I clienti usano Teams, Slack o WhatsApp? Per quali casi serve WhatsApp e chi approva i modelli di Meta?
+
+## Domande nate con l'architettura v3 (novembre 2026)
+
+Il 10 novembre i CEO hanno approvato il progetto e l'architettura è passata alla versione 3: il Cancello a livelli e il motore a due corsie ([ricerca/45](ricerca/45-architettura-v3.md)). L'11 novembre si è aggiunto l'instradamento a più motori ([ADR-0028](docs/adr/0028-instradamento-a-piu-motori.md)). Le domande da 1 a 30 restano valide; dove una domanda nuova ne aggiorna una vecchia, lo dice. Nessuna di queste scelte ferma lo sviluppo in corso, che gira sulle macchine di sviluppo con dati di prova.
+
+### Dove girano i processi
+
+31. **Cancello, motore e Sala di controllo: una VM o due?** Nella versione 2 il Cancello aveva una macchina sua. Nella versione 3 la macchina separata non è più obbligatoria: i processi possono stare sulla stessa VM, e i ruoli separati del database restano ([ADR-0023](docs/adr/0023-protezioni-essenziali.md)). Quale delle due preferisci, e in quale VLAN (domanda 3)?
+32. **L'ingresso degli eventi.** Il motore riceve tutto su un solo indirizzo, `POST /eventi`: lo chiamano la tabella degli orari, il lettore di Graph e i servizi esterni che ci servono, come il modulo del sito e Instantly, ognuno con il suo token ([ADR-0022](docs/adr/0022-eventi-e-sveglia-nel-motore.md)). Per i servizi esterni questo indirizzo va esposto dietro la porta d'ingresso del server. Lo pubblichi da Pangolin sulla macchina Oracle, come l'MCP RAG della domanda 6, o preferisci che il motore legga quei servizi a intervalli dall'interno, senza niente di esposto?
+33. **n8n.** Orari ed eventi ora stanno nel motore, e il sistema di agenti non dipende più da n8n ([ADR-0022](docs/adr/0022-eventi-e-sveglia-nel-motore.md)). Lo tieni nel board per altri collegamenti? Sul banco di prova della fase 1 ne facciamo a meno, se sei d'accordo.
+34. **Buzz sul banco di prova.** La prova di Buzz è anticipata: si fa con dati verdi appena c'è la bacheca degli agenti ([ADR-0026](docs/adr/0026-bacheca-e-gruppi-degli-agenti.md)). Lo ammetti, e su quale macchina?
+
+### Fornitori e modelli
+
+35. **TypeSafe (Jev) come fornitore per i dati gialli.** Jev è il modello che risponde alle domande chiuse del decisore. Ha un DPA con le clausole UE, ma è un servizio statunitense senza SLA, con la conservazione zero solo per i clienti enterprise ([ricerca/47 §5.3](ricerca/47-modelli-system-one.md)). Senza il tuo sì Jev decide solo sui testi verdi ([ADR-0027](docs/adr/0027-decisore.md)).
+36. **OpenRouter per i modelli open-weight a consumo.** Solo dati verdi e gialli, con le opzioni `data_collection: deny` e `zdr: true` in ogni richiesta. La regione UE chiede il piano Business e non vale per tutti i modelli ([ricerca/48](ricerca/48-modelli-locali-e-gpu.md)). Lo ammetti?
+37. **L'Auto Router di LiteLLM** è marcato «Add-on»: è gratuito o a pagamento ([ricerca/47 §5.3](ricerca/47-modelli-system-one.md))?
+38. **Un decisore in casa.** Quanti core della CPU di `agenti-01` si possono dare a un modello piccolo, e quanta memoria resta libera di giorno nella RTX 4000 ([ricerca/47 §5.3](ricerca/47-modelli-system-one.md))?
+
+### Sessioni di Claude Code sui posti Team (corsia T)
+
+Per i lavori di sviluppo lunghi il motore può far partire una sessione di Claude Code sul posto Team della persona responsabile. Il lavoro torna come pull request in bozza, e il merge su `main` lo approva una persona ([ADR-0028](docs/adr/0028-instradamento-a-piu-motori.md); [ricerca/49 §9](ricerca/49-instradamento-a-piu-motori.md)).
+
+39. **Quali repo entrano**, una per una. Su quelle repo servono queste regole di GitHub, senza eccezioni per gli amministratori: l'app di Claude solo lì; `main` solo con pull request e con l'approvazione di una persona diversa dall'ultima che ha fatto push; la regola di push sui workflow.
+40. **Il runner sul nostro server.** All'inizio le sessioni girano sulle macchine di Anthropic, senza dati rossi. Un runner nostro lo vuoi? Su quale macchina e con quale rete in uscita? Si accende solo dopo la prova.
+41. **La revisione delle pull request.** Automatica, con un workflow di GitHub e la chiave API, oppure solo da parte delle persone?
+
+### Hardware: cosa cambia rispetto alle domande 17-24
+
+42. **Seconda GPU, prima del previsto.** La proposta nuova è comprare la RTX PRO 2000 Blackwell da 16 GB per la milestone 2, anche a 1.100 € (prezzo di Amazon.it del 10 novembre), senza aspettare che scenda sotto i 1.000 €. Serve alla prova dei modelli locali: la RTX 4000 ha meno di 1 GB libero, e alcuni modelli da provare girano solo sulla Blackwell. La scheda da 24 GB della stessa classe costa più di tre volte tanto e non la proponiamo ([ADR-0014](docs/adr/0014-seconda-gpu-blackwell.md); [ricerca/48 §5](ricerca/48-modelli-locali-e-gpu.md)). Ti va bene? Questa domanda aggiorna il punto «Seconda GPU» in testa al file.
+43. **RAM a 384 GB.** All'inizio della fase 3, o prima se il margine misurato con sei sessioni della corsia S scende sotto i 5 GB ([ADR-0015](docs/adr/0015-ram-384-gb.md)). Il margine lo misuriamo appena il runner della corsia S gira sul server. Va bene questa regola?
+44. **Linea di riserva, prima.** La domanda 24 la consigliava prima della fase 5. Ora serve prima del primo lavoro che un agente fa da solo verso l'esterno fuori orario: senza fibra gli agenti si fermano, perché ragionano con Claude via internet ([ADR-0019](docs/adr/0019-linea-di-riserva.md)). Operatore e router restano scelte tue.
+45. **Riaccensione dopo un blackout.** Con la sveglia dentro il motore, se il server resta spento il debrief delle 7:00 salta ([ADR-0022](docs/adr/0022-eventi-e-sveglia-nel-motore.md)). È un motivo in più per chiudere la domanda 22 con «Always Power On» o con la riaccensione dal Sophos.
 
 ## Note dalla ricerca, senza risposta richiesta
 

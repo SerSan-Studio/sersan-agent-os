@@ -2,7 +2,7 @@
 
 **Data**: 2026-11-10
 
-**Stato**: accettata
+**Stato**: accettata; rivista il 2026-11-11 da [ADR-0028](0028-instradamento-a-piu-motori.md): i compiti programmati servono anche la corsia T, avviati dal motore con il solo avvio API
 
 **Chi decide**: il gruppo di progetto, con la carta bianca dei CEO del 10 novembre 2026 ([ricerca/45, «Decisione del gruppo di progetto»](../../ricerca/45-architettura-v3.md)). Se e come tenere n8n nel board lo decide Michele, a cui resta l'infrastruttura ([ADR-0011](0011-n8n-orari-integrazioni.md)).
 
@@ -71,6 +71,13 @@
 - **Blackout di notte**: senza riaccensione automatica il debrief salta. La riaccensione dopo un blackout è il primo acquisto consigliato a Michele, a 0 € ([ricerca/45 §11](../../ricerca/45-architettura-v3.md)).
 - **Un evento fermo** resta «ricevuto»: il compito fisso lo rimette in coda e lo segnala nel debrief ([ricerca/45 §3.1](../../ricerca/45-architettura-v3.md)).
 
+## Revisione dell'11 novembre 2026
+
+- La sveglia resta nel motore: orari e `POST /eventi` non cambiano, e nessun processo aziendale parte da un compito programmato a orario o da un evento di GitHub.
+- Cambia la frase «Nessun processo aziendale e nessun agente del sistema parte da una routine». Per direttiva di Alberto il motore può avviare, sul posto della persona responsabile, un compito programmato di Claude Code con il solo avvio API: è la **corsia T**, per lo sviluppo di progetti in codice e i lavori lunghi di quattro agenti ([ADR-0028](0028-instradamento-a-piu-motori.md)).
+- L'avvio lo decide il motore, dal suo registro, e passa dall'outbox del Cancello. Un'etichetta su una issue arriva come evento su `POST /eventi`, non come avvio da GitHub del compito ([ricerca/49 §1.2 e §3.5](../../ricerca/49-instradamento-a-piu-motori.md)).
+- Le obiezioni scritte sopra restano vere; ADR-0028 dice come la corsia T le contiene: nessun connettore, consegna solo come pull request, conto per posto, ripiego sulla corsia S.
+
 ## Fonti
 
 - [ricerca/45, architettura v3: «Decisione del gruppo di progetto», §1.2, §3.1, §6.3, §9.3, §11](../../ricerca/45-architettura-v3.md)
@@ -78,4 +85,5 @@
 - [ricerca/44, verifiche avversarie, VER2](../../ricerca/44-verifiche-avversarie.md)
 - [ricerca/42, proposta D §4.4](../../ricerca/42-proposta-D-automazione-prima.md)
 - [ricerca/35, giudizio di sicurezza §2 e §3.2](../../ricerca/35-giudizio-sicurezza.md)
-- [ADR-0009](0009-dati-tre-colori.md); [ADR-0011](0011-n8n-orari-integrazioni.md), rivista da questa ADR
+- [ADR-0009](0009-dati-tre-colori.md); [ADR-0011](0011-n8n-orari-integrazioni.md), rivista da questa ADR; [ADR-0028](0028-instradamento-a-piu-motori.md), che rivede questa ADR
+- [ricerca/49, instradamento a più motori, §1.2, §3 e §3.5](../../ricerca/49-instradamento-a-piu-motori.md)

@@ -2,7 +2,7 @@
 
 **Data**: 2026-11-10
 
-**Stato**: accettata; i motori dietro l'interfaccia si scelgono con la prova della milestone 2
+**Stato**: accettata; i motori dietro l'interfaccia si scelgono con la prova della milestone 2; rivista il 2026-11-11 da [ADR-0028](0028-instradamento-a-piu-motori.md): l'italiano non è un freno e Jev è il motore di partenza sui testi verdi e gialli
 
 **Chi decide**: il gruppo di progetto, con la carta bianca dei CEO del 10 novembre 2026 ([ricerca/45, «Decisione del gruppo di progetto»](../../ricerca/45-architettura-v3.md)). Se un fornitore esterno di decisioni può ricevere i dati gialli lo decide Michele ([ricerca/47 §5.3](../../ricerca/47-modelli-system-one.md)).
 
@@ -87,6 +87,13 @@
 - **Un prodotto giovane cambia le risposte fra una versione e l'altra**: la versione è sempre fissata; cambiarla è un cambio di modello, e senza una valutazione le terne che dipendono da quel quesito tornano a L1 ([ricerca/47 §5.4](../../ricerca/47-modelli-system-one.md); [ADR-0020](0020-autonomia-a-livelli.md)).
 - **Il fornitore è fermo o cambia prezzo**: ogni quesito ha almeno due motori; il ripiego sono le regole e una carta a una persona.
 - **L'italiano non è dichiarato da nessun fornitore**: la prova è tutta in italiano, e un motore entra solo se supera le soglie scritte sopra.
+
+## Revisione dell'11 novembre 2026
+
+- **L'italiano non è un freno, per decisione di Alberto.** La prova in italiano resta, ma serve a tarare le soglie di ogni domanda (calibrazione, copertura, negazioni, ordine delle opzioni), non a dire sì o no a Jev. Una misura debole alza una soglia o aggiunge una carta ([ricerca/49 §1.4](../../ricerca/49-instradamento-a-piu-motori.md)). Jev 1.14 dichiara «Better multilingual support», senza elenco delle lingue.
+- **I criteri del punto «Un motore entra per un quesito» cambiano ruolo.** Per Jev non sono più un esame d'ingresso: i due criteri di sicurezza (almeno il 98% dei casi critici trovati, al massimo il 2% dei casi difficili verso una strada più economica) diventano l'obiettivo delle soglie, domanda per domanda. Se per una domanda nessuna soglia li raggiunge, quella domanda la decidono le regole o una carta, e Jev resta per le altre. Gli altri criteri (accuratezza rispetto a Haiku, calibrazione, copertura, tempi) si misurano e si registrano. Vale lo stesso per il rischio «L'italiano non è dichiarato da nessun fornitore» scritto sopra.
+- **Jev è il motore di partenza del decisore** sui testi verdi, e sui gialli quando Michele ammette TypeSafe come fornitore. Per i testi rossi o di colore ignoto restano un modello in casa o le regole.
+- Il decisore ha un quesito nuovo, «instradamento», con sei domande, che serve il router di [ADR-0028](0028-instradamento-a-piu-motori.md). Una sua risposta non manda mai da sola un lavoro in corsia T: la sceglie la tabella, con soglie alte e solo per gli agenti che la dichiarano. Un dubbio non porta mai in T. In T e in S il codice ha lo stesso tetto, una pull request che entra in `main` solo con il sì di una persona, quindi la regola «una risposta può solo rendere il sistema più prudente» resta intera.
 
 ## Fonti
 

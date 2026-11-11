@@ -2,7 +2,7 @@
 
 **Data**: 2026-10-25 (registrata il 2026-11-09)
 
-**Stato**: accettata; rivista il 2026-11-10 da [ADR-0020](0020-autonomia-a-livelli.md) e [ADR-0025](0025-un-modello-per-agente.md): tetti per classe al giorno e un modello per agente
+**Stato**: accettata; rivista il 2026-11-10 da [ADR-0020](0020-autonomia-a-livelli.md) e [ADR-0025](0025-un-modello-per-agente.md): tetti per classe al giorno e un modello per agente; rivista il 2026-11-11 da [ADR-0028](0028-instradamento-a-piu-motori.md): Jev passa da LiteLLM, la corsia T no
 
 **Chi decide**: Michele Sanna (CPTO), perché LiteLLM è nel suo board, nella fase F4 ([ricerca/25 §1](../../ricerca/25-board-michele-e-delta.md)); i CEO per il tetto mensile delle API e il credito prepagato, se i crediti non bastano ([proposta §14, decisione 3](../../PRESENTAZIONE-CEO.md)).
 
@@ -64,6 +64,12 @@ Ogni chiamata ai modelli passa da LiteLLM, sul nostro server ([proposta §5.1](.
 - Ogni agente dichiara il suo modello: Claude via API, un modello open-weight sul nostro server o un modello open-weight di un fornitore. LiteLLM resta **l'unica porta** verso tutti, quindi non esce più solo verso Anthropic. I fornitori terzi ricevono solo dati verdi e gialli ([ADR-0025](0025-un-modello-per-agente.md)).
 - LiteLLM entra davanti alle chiamate della corsia N già nella milestone 2, con un budget per catena ([ricerca/45 §12.2](../../ricerca/45-architettura-v3.md)).
 - Sul banco di prova si usa una chiave per flusso con il limite della Console; se il limite per area di lavoro non c'è, il contatore sta nel Cancello ([ricerca/45 §2.7](../../ricerca/45-architettura-v3.md)).
+
+## Revisione dell'11 novembre 2026
+
+- LiteLLM resta l'unica porta verso i modelli delle corsie N e S e del decisore. Jev si chiama da LiteLLM con il passaggio `/typesafe` o con `/v1/systemone`, con una chiave virtuale e i modelli ammessi ([ricerca/49 §1.4](../../ricerca/49-instradamento-a-piu-motori.md)).
+- **La corsia T non passa da LiteLLM**: le sessioni di Claude Code sui posti Team chiamano il modello dall'infrastruttura di Anthropic e consumano l'uso del posto, non la chiave API. Il loro conto lo tiene il motore, per posto: avvii, lavori aperti, consegne mancate ([ADR-0028](0028-instradamento-a-piu-motori.md)).
+- Il piano Team include fino a 500 $ al mese di crediti API, validi per l'API e l'Agent SDK. Se il nostro piano ne ha diritto, l'organizzazione della Console collegata è quella della chiave dietro LiteLLM ([ricerca/49 §1.3](../../ricerca/49-instradamento-a-piu-motori.md)).
 
 ## Fonti
 

@@ -51,7 +51,7 @@
   - una risposta del decisore non alza mai un livello: in T e in S il codice ha lo stesso tetto, una pull request che entra in `main` solo con il sì di una persona;
   - l'avvio di T passa dall'outbox e non si ripete da solo, perché l'avvio non ha una chiave contro i doppioni.
 - **A uso finito**: il motore tiene un conto per posto (al massimo 2 lavori T aperti e 4 consegne al giorno per persona). Un lavoro T ha una scadenza; se la consegna manca, il lavoro torna in coda dopo 5 ore oppure, se è urgente, ripiega sulla corsia S con un tetto di spesa per lavoro. Tutti questi numeri sono [proposta].
-- **Milestone**: la milestone 1 non cambia. Il router e l'adattatore T di prova entrano nella milestone 2; T sui progetti veri nella milestone 3 ([ricerca/49 §8](../../ricerca/49-instradamento-a-piu-motori.md)).
+- **Milestone**: la milestone 1 non cambia. Il router e l'adattatore T di prova entrano nella milestone 2; T sui progetti veri nella milestone 3 ([ricerca/49 §8](../../ricerca/49-instradamento-a-piu-motori.md)). In questa ADR le milestone si contano come in ricerca/49, cioè come in ricerca/45: nel PRD sono la 3, con le prove di LiteLLM, e la 4. La tabella con i due conti è nell'[indice delle ADR](README.md).
 
 ## Alternative considerate
 

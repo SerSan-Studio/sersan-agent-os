@@ -34,3 +34,27 @@ Il 10 novembre 2026 i CEO hanno approvato il progetto e hanno lasciato al gruppo
 | [ADR-0026](0026-bacheca-e-gruppi-degli-agenti.md) | Bacheca e gruppi di chat degli agenti, anticipati; Buzz provato presto | accettata | 2026-11-10 |
 | [ADR-0027](0027-decisore.md) | Il «decisore»: domande tipizzate e soglie in un file, e un dubbio rende il sistema più prudente | accettata; i motori si scelgono con la prova della milestone 2; rivista da ADR-0028: l'italiano non è un freno, Jev motore di partenza sui testi verdi e gialli | 2026-11-10; rivista il 2026-11-11 |
 | [ADR-0028](0028-instradamento-a-piu-motori.md) | Instradamento a più motori, con la corsia T sui posti Claude Team | accettata dal gruppo di progetto; la corsia T entra dopo la prova e la conferma di Anthropic | 2026-11-11 |
+
+## Come si contano le milestone
+
+Le milestone in vigore sono le sette del PRD, elencate in [docs/06-sviluppo.md](../06-sviluppo.md). [ricerca/45 §6.4](../../ricerca/45-architettura-v3.md) le contava in un altro modo, perché la corsia S non era ancora stata anticipata. Le ricerche restano come sono state scritte; questa tabella mette i due conti uno accanto all'altro.
+
+| Nel PRD, in vigore | Cosa porta | In ricerca/45 §6.4 |
+|---|---|---|
+| 1 | Cancello a livelli e corsia N, con la Sala di controllo | 1 |
+| 2 | Corsia S, bacheca e gruppi degli agenti, prova di Buzz, primo modello open-weight | 7 e 8, allora nella fase 2 |
+| 3 | Prove con Microsoft e LiteLLM | 2 |
+| 4 | Telefono e posta | 3 |
+| 5 | Dalla call al riassunto | 4 |
+| 6 | Tre agenti sul banco | 5 |
+| 7 | Collaudo della settimana 8 | 6 |
+
+Dove un'ADR o una ricerca usa il conto vecchio:
+
+- **[ADR-0020](0020-autonomia-a-livelli.md)**: gli invii veri ai clienti cominciano con la milestone di telefono e posta, la 4 del PRD. Il testo riporta tutti e due i conti.
+- **[ADR-0028](0028-instradamento-a-piu-motori.md)** e [ricerca/49 §8](../../ricerca/49-instradamento-a-piu-motori.md): «milestone 2», quella del router e dell'adattatore di prova della corsia T, è la 3 del PRD; «milestone 3», quella della corsia T sui progetti veri, è la 4. Se il router si possa anticipare alla milestone 2 del PRD si decide con lo spec di quella milestone: serve LiteLLM, perché Jev si chiama da lì.
+- **[ricerca/46](../../ricerca/46-obsidian-come-casa-dei-testi.md)**: «milestone 2 (prove con Teams e LiteLLM)» è la 3 del PRD.
+
+Dove il conto è già quello del PRD:
+
+- **[ADR-0014](0014-seconda-gpu-blackwell.md), [ADR-0025](0025-un-modello-per-agente.md), [ADR-0027](0027-decisore.md), [ricerca/47](../../ricerca/47-modelli-system-one.md) e [ricerca/48](../../ricerca/48-modelli-locali-e-gpu.md)**: la «milestone 2» della prova dei modelli locali, della prova del decisore e della seconda GPU è la 2 del PRD, dove entra il primo modello open-weight. La parte che passa da LiteLLM, come Jev, si chiude con le prove di LiteLLM della milestone 3.

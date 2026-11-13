@@ -2,7 +2,7 @@
 
 **Data**: 2026-11-11
 
-**Stato**: accettata dal gruppo di progetto; la corsia T entra solo dopo la prova di [ricerca/49 §7](../../ricerca/49-instradamento-a-piu-motori.md) e la conferma scritta di Anthropic prima della milestone 3
+**Stato**: accettata dal gruppo di progetto; la corsia T entra solo dopo la prova di [ricerca/49 §7](../../ricerca/49-instradamento-a-piu-motori.md) e la conferma scritta di Anthropic prima della milestone 3; rivista il 2026-11-12, con le milestone contate come nel PRD: il router entra nella milestone 2 sul decisore che c'è, l'adattatore che avvia davvero la corsia T si scrive dopo la prova dal vivo di Alberto, Jev con LiteLLM resta nella milestone 3
 
 **Chi decide**: il gruppo di progetto, con la carta bianca dei CEO del 10 novembre 2026 ([ricerca/45, «Decisione del gruppo di progetto»](../../ricerca/45-architettura-v3.md)), su direttiva di Alberto dell'11 novembre. Michele decide i fornitori ammessi per i dati gialli, le repo che entrano in corsia T e il runner sul nostro server ([ricerca/49 §9](../../ricerca/49-instradamento-a-piu-motori.md)).
 
@@ -120,6 +120,17 @@
 - **Doppio avvio o avvio perso**: outbox con esito «incerto» e ricerca del branch su GitHub.
 - **Dati sul cloud di Anthropic**: niente rosso; elenco delle repo ammesse; runner nostro dalla milestone 3.
 - **La funzione cambia o sparisce**: adattatore separato e ripiego sulla corsia S senza toccare le catene.
+
+## Revisione del 12 novembre 2026
+
+In questa revisione le milestone si contano come nel PRD. Il resto dell'ADR conta come ricerca/49; la tabella con i due conti è nell'[indice delle ADR](README.md).
+
+- **Il router entra nella milestone 2 del PRD, sul decisore che c'è**: i tre passi, la tabella in `config/instradamento.yaml`, le sei destinazioni, le corsie ammesse per agente nel registro, le due scale dei dubbi e il conto per posto. Il punto «Milestone» della Decisione lo metteva nella milestone 2 di ricerca/49, cioè nella 3 del PRD: per il router questo non vale più. Il motivo: il router non ha bisogno di LiteLLM, ne ha bisogno solo Jev; e la direttiva di Alberto dell'11 novembre e l'elenco delle attività (repo del codice) lo chiedono adesso. Il quesito «instradamento» gira sul copione, su un modello a schema o sul decisore in casa ([ADR-0027](0027-decisore.md), revisione del 12 novembre 2026; lo spec della milestone 2, repo del codice).
+- **La corsia T è una destinazione che il router conosce**, con le sue regole fisse: mai nel dubbio, mai dati rossi, solo gli agenti ammessi. Fino alla prova dal vivo è una destinazione di prova, che registra «partirebbe» e non avvia nulla.
+- **L'adattatore che avvia davvero la corsia T si scrive dopo la prova dal vivo** dei passi di [ricerca/49 §7](../../ricerca/49-instradamento-a-piu-motori.md), che fa Alberto dal suo account: prima si guarda che cosa fa davvero l'avvio via API, poi si scrive l'adattatore. La prova passa se l'avvio parte e consegna una pull request in bozza. Il lavoro sull'adattatore sta nello spec della milestone 2 (repo del codice), ma si apre solo dopo la prova.
+- **Jev con LiteLLM resta nella milestone 3 del PRD.** Nella tabella la riga di Jev c'è, spenta. Il punto «Il motore del decisore» vale da quella milestone.
+- **Un evento con testo di terzi non va mai diretto a una sessione S.** Per lui la destinazione «sessione» vuol dire: una catena N che estrae campi a schema, poi un passaggio, poi la sessione ([ADR-0029](0029-corsia-s-sessioni-a-giri.md)).
+- Le altre «milestone 3» di questa ADR (la corsia T sui progetti veri, il runner nostro, i ganci sul runner, la conferma scritta di Anthropic) restano nel conto di ricerca/49: sono la 4 del PRD.
 
 ## Fonti
 

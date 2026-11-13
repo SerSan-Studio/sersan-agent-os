@@ -2,7 +2,7 @@
 
 **Data**: 2026-11-10
 
-**Stato**: accettata; i motori dietro l'interfaccia si scelgono con la prova della milestone 2; rivista il 2026-11-11 da [ADR-0028](0028-instradamento-a-piu-motori.md): l'italiano non è un freno e Jev è il motore di partenza sui testi verdi e gialli
+**Stato**: accettata; i motori dietro l'interfaccia si scelgono con la prova della milestone 2; rivista il 2026-11-11 da [ADR-0028](0028-instradamento-a-piu-motori.md): l'italiano non è un freno e Jev è il motore di partenza sui testi verdi e gialli; rivista il 2026-11-12 con le scelte della milestone 2: la prova ombra si sposta alle milestone 5-6 del PRD, la correzione della persona resta nella milestone 2, la taratura della milestone 2 riguarda il controllo del contenuto e le risposte degli esterni, Jev entra nella milestone 3 con LiteLLM
 
 **Chi decide**: il gruppo di progetto, con la carta bianca dei CEO del 10 novembre 2026 ([ricerca/45, «Decisione del gruppo di progetto»](../../ricerca/45-architettura-v3.md)). Se un fornitore esterno di decisioni può ricevere i dati gialli lo decide Michele ([ricerca/47 §5.3](../../ricerca/47-modelli-system-one.md)).
 
@@ -94,6 +94,16 @@
 - **I criteri del punto «Un motore entra per un quesito» cambiano ruolo.** Per Jev non sono più un esame d'ingresso: i due criteri di sicurezza (almeno il 98% dei casi critici trovati, al massimo il 2% dei casi difficili verso una strada più economica) diventano l'obiettivo delle soglie, domanda per domanda. Se per una domanda nessuna soglia li raggiunge, quella domanda la decidono le regole o una carta, e Jev resta per le altre. Gli altri criteri (accuratezza rispetto a Haiku, calibrazione, copertura, tempi) si misurano e si registrano. Vale lo stesso per il rischio «L'italiano non è dichiarato da nessun fornitore» scritto sopra.
 - **Jev è il motore di partenza del decisore** sui testi verdi, e sui gialli quando Michele ammette TypeSafe come fornitore. Per i testi rossi o di colore ignoto restano un modello in casa o le regole.
 - Il decisore ha un quesito nuovo, «instradamento», con sei domande, che serve il router di [ADR-0028](0028-instradamento-a-piu-motori.md). Una sua risposta non manda mai da sola un lavoro in corsia T: la sceglie la tabella, con soglie alte e solo per gli agenti che la dichiarano. Un dubbio non porta mai in T. In T e in S il codice ha lo stesso tetto, una pull request che entra in `main` solo con il sì di una persona, quindi la regola «una risposta può solo rendere il sistema più prudente» resta intera.
+
+## Revisione del 12 novembre 2026
+
+Le milestone qui si contano come nel PRD.
+
+- **Le due settimane di prova ombra si spostano a quando ci sono eventi veri**, nelle milestone 5 e 6 del PRD (dalla call al riassunto; tre agenti sul banco). Per questa parte il punto «Milestone 2» della Decisione non vale più. Nella milestone 2 la prova ombra girerebbe solo su eventi di prova: sarebbe codice da tenere per mesi senza dati che lo misurino. Lo spec della milestone 2 (repo del codice) ne scrive il disegno e i criteri, senza codice.
+- **La correzione della persona nel registro resta nella milestone 2**, come dice il punto «Ogni chiamata si registra». La scrivono «Continua», «Scarta» e «sbagliato» su ciò che il decisore ha toccato.
+- **Nella milestone 2 si tarano solo due usi**: il controllo del contenuto prima di un'uscita e la lettura delle risposte degli esterni. I testi dei casi si possono generare con un modello; le etichette le mettono due persone, con metà dei casi messa da parte ([ricerca/47 §4.4](../../ricerca/47-modelli-system-one.md)). La proposta è Alberto e Mattia; lo conferma Alberto. Lo strumento di taratura si scrive dopo i primi 100 casi. Se a fine milestone i casi mancano, il punto «soglie tarate» del PRD si chiude come importante, con il motivo scritto.
+- **Un decisore in casa che legge la probabilità della prima parola.** È un terzo motore: chiede a un modello open-weight la prima parola fra opzioni fisse e ne legge la probabilità dai token, invece di quella che il modello dichiara ([ricerca/51 §4 e §7](../../ricerca/51-modelli-open-weight-sul-computer-di-sviluppo.md); [ricerca/13 §2.3](../../ricerca/13-modelli-open-source-sul-server.md)). La prova sui casi etichettati confronta questo decisore, un modello piccolo su CPU e Haiku 5.5 quando c'è la chiave API, con le soglie di [ricerca/47 §4.4](../../ricerca/47-modelli-system-one.md).
+- **Jev entra nella milestone 3 del PRD, con LiteLLM.** La revisione dell'11 novembre, che lo fa motore di partenza sui testi verdi e gialli, vale da lì. Fino ad allora il decisore gira sul copione, su un modello a schema e sul decisore in casa; su questi gira anche il quesito «instradamento» ([ADR-0028](0028-instradamento-a-piu-motori.md), revisione del 12 novembre 2026). Fino ad allora, come la corsia N, il decisore chiama i fornitori direttamente: la frase «Tutte le chiamate passano da LiteLLM» vale dalla milestone 3 ([ADR-0021](0021-motore-a-due-corsie.md), nota del 12 novembre 2026).
 
 ## Fonti
 

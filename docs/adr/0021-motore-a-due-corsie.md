@@ -2,7 +2,7 @@
 
 **Data**: 2026-11-10
 
-**Stato**: accettata
+**Stato**: accettata; nota del 2026-11-12 da [ADR-0029](0029-corsia-s-sessioni-a-giri.md) e [ADR-0030](0030-bacheca-gruppi-specchi.md): le stesse regole valgono per le azioni delle due corsie, non per i passaggi fra agenti; la corsia S chiama l'API direttamente fino alla milestone 3 del PRD
 
 **Chi decide**: il gruppo di progetto, con la carta bianca dei CEO del 10 novembre 2026 ([ricerca/45, «Decisione del gruppo di progetto»](../../ricerca/45-architettura-v3.md)). Dove girano i processi lo decide Michele, a cui resta l'infrastruttura ([ricerca/45 §3.1](../../ricerca/45-architettura-v3.md)).
 
@@ -66,6 +66,12 @@
 
 - **L'Agent SDK cambia quasi ogni giorno**: versione fissata e prove a ogni aggiornamento; la corsia N non ne dipende ([ricerca/45 §10](../../ricerca/45-architettura-v3.md)).
 - **Capacità della fase 1**: la settimana 8 può slittare alla 9 o alla 10; to-do in Jira ed evento in calendario entrano solo se c'è margine ([ricerca/45 §10](../../ricerca/45-architettura-v3.md)).
+
+## Nota del 12 novembre 2026
+
+- **«Le due corsie hanno le stesse regole» resta.** A ogni giro una sessione S carica le regole «Come lavoro» della persona, come una catena N. Ogni proposta di una sessione passa dal Cancello al livello della sua terna, attraverso lo strumento che propone ([ADR-0029](0029-corsia-s-sessioni-a-giri.md); [ADR-0001](0001-motore-agent-sdk.md), revisione del 12 novembre 2026).
+- **I passaggi fra agenti non passano dal Cancello**, in tutte e due le corsie. Un passaggio è una riga della bacheca più un evento, scritti insieme dal motore. La frase «ogni azione passa dal Cancello» vale per le azioni che un agente propone, non per i passaggi. Così non si può più abbassare la terna dei passaggi di un agente ([ADR-0020](0020-autonomia-a-livelli.md)): al suo posto ci sono «Ferma» sul passaggio, il freno delle catene e lo stop ([ADR-0030](0030-bacheca-gruppi-specchi.md)).
+- **Fino alla milestone 3 del PRD, quella delle prove con Microsoft e LiteLLM, le sessioni S chiamano l'API direttamente.** La corsia N fa già così, per una differenza dichiarata nello spec della milestone 1 (repo del codice); ora la stessa differenza vale anche per la corsia S ([ADR-0004](0004-litellm-banca-token.md); lo spec della milestone 2, repo del codice).
 
 ## Fonti
 

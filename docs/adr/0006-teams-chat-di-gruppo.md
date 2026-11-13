@@ -2,7 +2,7 @@
 
 **Data**: 2026-10-25 (registrata il 2026-11-09)
 
-**Stato**: accettata per Teams; la parte su Buzz e sulla stanza degli agenti è rivista il 2026-11-10 da [ADR-0026](0026-bacheca-e-gruppi-degli-agenti.md); proposta per i canali in più, che sono la decisione 8 ([proposta §14](../../PRESENTAZIONE-CEO.md))
+**Stato**: accettata per Teams; la parte su Buzz e sulla stanza degli agenti è rivista il 2026-11-10 da [ADR-0026](0026-bacheca-e-gruppi-degli-agenti.md); il 2026-11-12, con la revisione di ADR-0026 e con [ADR-0030](0030-bacheca-gruppi-specchi.md), i gruppi degli agenti stanno nella Sala di controllo finché non c'è il bot di Teams o Buzz, e Buzz si prova quando Michele lo ammette e c'è una macchina Linux; proposta per i canali in più, che sono la decisione 8 ([proposta §14](../../PRESENTAZIONE-CEO.md))
 
 **Chi decide**: i CEO per i canali in più e per Teams nel piano M365, se oggi manca (decisioni 8 e 18, [proposta §14](../../PRESENTAZIONE-CEO.md)); Michele Sanna (CPTO) per le eccezioni fuori dal board e la registrazione dei bot ([proposta, appendice A, J9](../../PRESENTAZIONE-CEO.md); [domande per Michele, n. 5 e 10](../../DOMANDE-PER-MICHELE.md)).
 

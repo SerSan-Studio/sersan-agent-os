@@ -2,7 +2,7 @@
 
 **Data**: 2026-11-10
 
-**Stato**: accettata
+**Stato**: accettata; rivista il 2026-11-12 da [ADR-0030](0030-bacheca-gruppi-specchi.md): i passaggi non sono azioni del Cancello, i gruppi stanno nella Sala finché non c'è Teams o Buzz, Buzz si prova quando Michele lo ammette e c'è una macchina Linux
 
 **Chi decide**: il gruppo di progetto, con la carta bianca dei CEO del 10 novembre 2026 ([ricerca/45, «Decisione del gruppo di progetto»](../../ricerca/45-architettura-v3.md)). Michele ammette Buzz sul banco di prova e decide dove gira ([ADR-0006](0006-teams-chat-di-gruppo.md)).
 
@@ -76,6 +76,14 @@
 - **Catene che girano in tondo**: il freno e la carta «Continua?» le fermano ([ricerca/45 §2.7](../../ricerca/45-architettura-v3.md)).
 - **Buzz perde risposte**: resta in prova e i gruppi restano in Teams ([ricerca/45 §10](../../ricerca/45-architettura-v3.md)).
 - **Dati di un cliente nel gruppo sbagliato**: ogni gruppo per cliente vede solo i passaggi di quel cliente; un errore così è un incidente serio e riporta a L1 tutte le classi esterne dell'agente ([ricerca/45 §2.4](../../ricerca/45-architettura-v3.md)).
+
+## Revisione del 12 novembre 2026
+
+- **I passaggi fra agenti non sono azioni del Cancello.** Il punto «I passaggi fra agenti sono azioni interne a L3» non vale più. Un passaggio è una riga della bacheca più un evento, scritti insieme dal motore; chi riceve si legge dalla tabella d'instradamento al momento del passaggio. I passaggi si vedono nel registro dei lavori e nella linea del tempo ([ADR-0030](0030-bacheca-gruppi-specchi.md)).
+- **Che cosa si perde, e che cosa lo sostituisce.** Non si può più abbassare la terna dei passaggi di un agente ([ADR-0020](0020-autonomia-a-livelli.md)), e il passaggio non ha più una voce nel registro del Cancello. Al loro posto ci sono «Ferma» sul passaggio, il freno e lo stop. Ciò che esce verso l'esterno passa ancora dal Cancello al livello della sua terna ([ADR-0021](0021-motore-a-due-corsie.md), nota del 12 novembre 2026).
+- **I gruppi stanno nella Sala finché non c'è il bot di Teams o Buzz.** Il punto «Dove stanno i gruppi all'inizio: in Teams» non vale più. I tre tipi di gruppo restano: per squadra, per cliente, «Agenti». Nella Sala ogni persona vede tutti i gruppi: i gruppi letti solo da chi li segue arrivano con gli specchi. La vista dei gruppi mostra anche gli esiti del Cancello per le proposte del compito. Una persona scrive su un compito o su un passaggio con «Ferma», «Correggi» o «Rilancia»; nella milestone 2 non c'è lo smistamento dei messaggi a testo libero ([ADR-0030](0030-bacheca-gruppi-specchi.md)).
+- **Buzz si prova quando Michele lo ammette e c'è una macchina Linux con Docker**, e non più appena c'è la bacheca. La prova chiede 200 messaggi in 5 giorni lavorativi, nessuno perso e nessuno doppio, e una carta decisa da Buzz che arriva al Cancello con l'identità giusta. Su Buzz vanno solo dati verdi. Lo spec della milestone 2 (repo del codice) scrive già i prerequisiti, senza codice ([ADR-0030](0030-bacheca-gruppi-specchi.md)).
+- Il rischio «Dati di un cliente nel gruppo sbagliato» resta. La strada per dichiararlo come incidente al Cancello arriva con i gruppi rispecchiati in Buzz o in Teams.
 
 ## Fonti
 

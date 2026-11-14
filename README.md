@@ -35,14 +35,14 @@ L'idea è di Alberto Tuveri. La proposta, per i CEO Alessandro Serratt e Michele
 
 | Cartella o file | Contenuto |
 |---|---|
-| [ricerca/](ricerca/) | I rapporti da cui vengono i fatti. 00 le funzioni dell'idea, voce per voce; 01 SersanOutreach; 05 il marketing. 10-24 il primo giro, con sette proposte di architettura e i giudizi; 25-37 il secondo giro, dentro il board di Michele, fino all'architettura v2 e alle risposte sull'hardware; 38-45 il terzo giro, sull'autonomia; 46-49 le valutazioni fatte dopo; 50-51 le prove per le scelte della milestone 2 (elenco sotto) |
+| [ricerca/](ricerca/) | I rapporti da cui vengono i fatti. 00 le funzioni dell'idea, voce per voce; 01 SersanOutreach; 05 il marketing. 10-24 il primo giro, con sette proposte di architettura e i giudizi; 25-37 il secondo giro, dentro il board di Michele, fino all'architettura v2 e alle risposte sull'hardware; 38-45 il terzo giro, sull'autonomia; 46-49 le valutazioni fatte dopo; 50-51 le prove per le scelte della milestone 2; 52 gli strumenti che l'azienda ha già (elenco sotto) |
 | [allegati/infra/](allegati/infra/) | Il board dell'infrastruttura di Michele e la board del rack |
 | [allegati/sersanoutreach/](allegati/sersanoutreach/) | Copie di documenti di SersanOutreach: profilo aziendale, mappa delle capacità, architettura, prontezza, backup, compliance, server MCP. I rimandi ai file di quella repo sono testo, non link |
 | [allegati/marketing/](allegati/marketing/) | Il piano marketing di 90 giorni, le direttive dei contenuti, la gestione dei post e il calendario |
 | [strumenti/](strumenti/) | `md_to_docx.py`, che trasforma la proposta in DOCX con lo stile SerSan, il modello di stile e il marchio (`marchio.py` e `brand/`) |
 | [LEGGIMI.md](LEGGIMI.md) | La guida della cartella di lavoro, con il cambio usato nei rapporti |
 
-**Il terzo giro e le valutazioni dopo**, dal 9 al 12 novembre 2026 ([ricerca/45, «I documenti del giro»](ricerca/45-architettura-v3.md)):
+**Il terzo giro e le valutazioni dopo**, dal 9 al 14 novembre 2026 ([ricerca/45, «I documenti del giro»](ricerca/45-architettura-v3.md)):
 
 - [38](ricerca/38-autonomia-nella-trascrizione.md): i comportamenti autonomi della trascrizione di riferimento, scritti come requisiti.
 - [39](ricerca/39-autonomia-del-disegno-v2.md): quanto lavora da solo il disegno v2, voce per voce, e i suoi 15 colli di bottiglia.
@@ -58,6 +58,7 @@ L'idea è di Alberto Tuveri. La proposta, per i CEO Alessandro Serratt e Michele
 - [49](ricerca/49-instradamento-a-piu-motori.md): l'instradamento a più motori e la corsia T sui posti Claude Team.
 - [50](ricerca/50-agent-sdk-e-prova-a-copione.md): l'Agent SDK al 12 novembre e la sua prova con un modello a copione, senza chiave API.
 - [51](ricerca/51-modelli-open-weight-sul-computer-di-sviluppo.md): i modelli open-weight sul computer di sviluppo e il decisore che legge la probabilità della prima parola.
+- [52](ricerca/52-n8n-moda-elevenlabs.md): n8n Community Edition, Moda ed ElevenLabs, tre strumenti che l'azienda ha già, giudicati come le altre alternative; e che cosa sapere prima di installare n8n.
 
 ## Come sono scritti i documenti
 

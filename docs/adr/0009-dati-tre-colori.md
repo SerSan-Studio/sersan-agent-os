@@ -66,6 +66,14 @@ Ogni dato ha un colore. Una regola scritta nel codice del Cancello, il nostro es
 - I dati personali verso Claude Team vanno decisi nel parere e nella valutazione d'impatto entro la settimana 3 ([proposta §13](../../PRESENTAZIONE-CEO.md)).
 - Le sessioni degli agenti restano su disco 30 giorni di serie: i lavori con dati rossi non le salvano, e una cancellazione chiesta da un interessato arriva fino ai backup ([ricerca/36 §5.7](../../ricerca/36-architettura-v2.md)).
 
+## Revisione del 14 novembre 2026
+
+- La riga rossa dice «audio» senza distinguere. Si precisa:
+  - l'audio delle call, dei lead e di chi chiama Andrea resta rosso;
+  - lo script di un contenuto pubblico approvato e la sua voce sintetica, se non è clonata da una persona, sono verdi;
+  - le registrazioni della voce di una persona fatte per clonarla, e la voce clonata, restano nella riga rossa «audio» finché parere legale e valutazione d'impatto non decidono diversamente, con la stessa prudenza che vale per Claude Team. Fino ad allora gli agenti non le usano e il sistema non le carica su nessun servizio esterno. Per le registrazioni e i cloni che le persone gestiscono dal loro account, la proposta è di tenerli fermi fino al parere: lo decidono i founder ([ricerca/52 §8, domanda 9](../../ricerca/52-n8n-moda-elevenlabs.md)). Se il parere lo ammette, le gestisce solo la persona dal suo account, con il suo consenso scritto, e la lettura di uno script approvato con la voce già creata da un founder può entrare nell'Agente video, con l'eccezione di Michele.
+- ElevenLabs e Moda non sono fornitori del board: ricevono solo verde, salvo un'eccezione di Michele con il DPA letto e la rinuncia all'addestramento fatta ([ricerca/52 §5.3 e §6.3](../../ricerca/52-n8n-moda-elevenlabs.md)).
+
 ## Fonti
 
 - [Proposta 2.1: §4.11, §5.5, §5.6, §6.2, §9.1, §10, §11, §13, §14](../../PRESENTAZIONE-CEO.md)
@@ -75,3 +83,4 @@ Ogni dato ha un colore. Una regola scritta nel codice del Cancello, il nostro es
 - [ricerca/25 §2 (C24): Bedrock e il board](../../ricerca/25-board-michele-e-delta.md)
 - [ricerca/21: giudizio di compliance §3](../../ricerca/21-giudizio-compliance.md)
 - [ricerca/22 §3: i tre colori nel primo giro](../../ricerca/22-architettura-scelta.md)
+- [ricerca/52, n8n, Moda ed ElevenLabs: §5.3, §6.3 e §8](../../ricerca/52-n8n-moda-elevenlabs.md)

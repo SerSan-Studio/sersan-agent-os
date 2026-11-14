@@ -70,6 +70,13 @@
 - Le routine di Claude restano per l'uso personale: agiscono come la persona, partono al massimo una volta l'ora, sono in anteprima, dipendono dai limiti d'uso del posto e scavalcano il Cancello ([ricerca/41 §1.4 e §8.2](../../ricerca/41-novita-al-9-novembre.md); [ADR-0022](0022-eventi-e-sveglia-nel-motore.md)).
 - La regola che la logica del motore non dipende da n8n resta, ed è più forte: ora non ne dipende neanche l'avvio.
 
+## Revisione del 14 novembre 2026
+
+- La CVE-2026-21858 ora è verificata: CVSS 10, del 7 gennaio 2026, versioni da 1.65.0 a 1.120.x. La 2.x non è colpita ([ricerca/52 §1.4](../../ricerca/52-n8n-moda-elevenlabs.md)).
+- Gli avvisi continuano: 24 critici fra dicembre 2025 e maggio 2026, altri alti fino al 13 novembre 2026. La patch entro 14 giorni resta, con un controllo settimanale degli avvisi ([ricerca/52 §3.1](../../ricerca/52-n8n-moda-elevenlabs.md)).
+- La versione 2.x fissata è la 2.47.7 al 14 novembre 2026. La 3.0 stabile è annunciata per inizio dicembre; da allora la 2.x riceve correzioni di sicurezza per 12 mesi. Il passaggio alla 3.0 è una scelta a parte ([ricerca/52 §4](../../ricerca/52-n8n-moda-elevenlabs.md)).
+- L'azienda dispone di n8n Community Edition; l'installazione sul server, di Michele, è prevista per il 15 novembre 2026. Nella Community mancano oscuramento dei dati delle esecuzioni, registri di controllo, segreti esterni, SSO e condivisione: per questo la regola «nessun dato rosso nelle esecuzioni» resta, e le credenziali di n8n le tiene una persona ([ricerca/52 §3.1 e §4](../../ricerca/52-n8n-moda-elevenlabs.md)).
+
 ## Fonti
 
 - [Proposta 2.1: §2.3, §5.3, §10, §11, §14, appendice A (G5, K14)](../../PRESENTAZIONE-CEO.md)
@@ -80,3 +87,4 @@
 - [ricerca/27 §9: cosa Hermes porta e cosa duplica](../../ricerca/27-hermes-self-hosted.md)
 - [ricerca/35: giudizio del CEO §9](../../ricerca/35-giudizio-ceo.md), [giudizio del CPTO §2](../../ricerca/35-giudizio-cpto.md), [giudizio di sicurezza §2 e §3.2](../../ricerca/35-giudizio-sicurezza.md)
 - [Domande per Michele, n. 2](../../DOMANDE-PER-MICHELE.md)
+- [ricerca/52, n8n, Moda ed ElevenLabs: §1.4, §3.1, §3.7 e §4](../../ricerca/52-n8n-moda-elevenlabs.md)

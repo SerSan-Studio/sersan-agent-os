@@ -78,6 +78,16 @@
 - L'avvio lo decide il motore, dal suo registro, e passa dall'outbox del Cancello. Un'etichetta su una issue arriva come evento su `POST /eventi`, non come avvio da GitHub del compito ([ricerca/49 §1.2 e §3.5](../../ricerca/49-instradamento-a-piu-motori.md)).
 - Le obiezioni scritte sopra restano vere; ADR-0028 dice come la corsia T le contiene: nessun connettore, consegna solo come pull request, conto per posto, ripiego sulla corsia S.
 
+## Revisione del 14 novembre 2026
+
+- n8n resta facoltativo. Quando c'è, serve a tre cose: le pipeline del board, come i bandi della notte; le automazioni interne consigliate dal Mappatore processi, scelte da una persona e costruite da una persona; gli avvisi a senso unico dei suoi flussi. Chiama `POST /eventi` con il suo token, oppure scrive solo su sistemi interni con credenziali ristrette ([ricerca/52 §3.7](../../ricerca/52-n8n-moda-elevenlabs.md)).
+- La pagina delle modifiche incompatibili della 3.0 non elenca cambi dell'API pubblica; cambiano installazione (solo Docker), nodi tolti e impostazioni di sicurezza ([ricerca/52 §1.4](../../ricerca/52-n8n-moda-elevenlabs.md)).
+- Non serve alla sveglia, agli ingressi dall'esterno (il modulo del sito e Instantly chiamano direttamente `POST /eventi`), alle approvazioni, agli invii verso clienti e prospect. Per i dati rossi porta al massimo l'avviso che un dato è pronto, mai il dato.
+- Gli agenti non usano n8n: nessuna chiave della sua API e nessun accesso al server MCP dell'istanza, che può creare e modificare flussi.
+- Ogni flusso attivo ha una riga nel registro dei collegamenti, in git, con responsabile, innesco, colore dei dati e credenziali.
+- I flussi con dati gialli non salvano le esecuzioni.
+- Lo stop di emergenza vale anche per n8n: il motore rifiuta gli eventi con il suo token, e chi preme lo stop ferma il servizio con un comando sul server ([ricerca/52 §3.7](../../ricerca/52-n8n-moda-elevenlabs.md)).
+
 ## Fonti
 
 - [ricerca/45, architettura v3: «Decisione del gruppo di progetto», §1.2, §3.1, §6.3, §9.3, §11](../../ricerca/45-architettura-v3.md)
@@ -87,3 +97,4 @@
 - [ricerca/35, giudizio di sicurezza §2 e §3.2](../../ricerca/35-giudizio-sicurezza.md)
 - [ADR-0009](0009-dati-tre-colori.md); [ADR-0011](0011-n8n-orari-integrazioni.md), rivista da questa ADR; [ADR-0028](0028-instradamento-a-piu-motori.md), che rivede questa ADR
 - [ricerca/49, instradamento a più motori, §1.2, §3 e §3.5](../../ricerca/49-instradamento-a-piu-motori.md)
+- [ricerca/52, n8n, Moda ed ElevenLabs: §1.4 e §3.7](../../ricerca/52-n8n-moda-elevenlabs.md)

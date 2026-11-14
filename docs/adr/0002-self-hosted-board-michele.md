@@ -58,6 +58,12 @@ Tutto il sistema gira sul nostro server, in reti separate, dentro il board ([pro
 - **Rete, corrente e backup**: una sola linea internet; batterie usate e senza garanzia nell'UPS, il gruppo di continuità; firewall fuori supporto; backup ancora da completare. Le risposte: linea di riserva prima della fase 5 (decisione 13), test dell'UPS all'arrivo, domanda scritta all'ente di Cyber Essentials sul firewall, e nessun dato dei clienti sul server prima della verifica della settimana 21 ([proposta §13](../../PRESENTAZIONE-CEO.md)).
 - **Piano gratuito di Oracle**: Oracle si riprende le macchine che per 7 giorni restano sotto il 20% di CPU, rete e memoria ([ricerca/37 §3](../../ricerca/37-hardware-risposte-michele.md); [domande per Michele, n. 4](../../DOMANDE-PER-MICHELE.md)); un server a pagamento costerebbe 6,49 € al mese ([proposta §14, decisione 7](../../PRESENTAZIONE-CEO.md)).
 
+## Revisione del 14 novembre 2026
+
+- Due strumenti che l'azienda ha già in omaggio sono candidati a eccezione, come opzione: ElevenLabs per voce, musica ed effetti dei contenuti pubblici, e Moda per le grafiche con dati verdi, finché dura l'omaggio ([ricerca/52 §5.7 e §6.7](../../ricerca/52-n8n-moda-elevenlabs.md)). Non sono ancora approvate: le approva il gruppo di progetto con Michele, una per una, come dice questa ADR ([ricerca/52 §8, domanda 17](../../ricerca/52-n8n-moda-elevenlabs.md)).
+- Se approvata, ogni eccezione ha: solo dati verdi, salvo l'eccezione sul colore di ADR-0009; una chiave letta solo dallo strumento del motore, limitata dove il fornitore lo permette (ElevenLabs) e dietro un nostro filtro dove no (Moda); ricarica automatica spenta; consumo in più spento o, se non si può, fermato dallo strumento a crediti finiti; rinuncia all'addestramento; ogni file salvato nei nostri archivi; un responsabile; il costo a listino scritto accanto per quando l'omaggio finisce (ElevenLabs almeno 267,13 € al mese con Scale, il primo piano a più posti che la chiave di account di servizio richiede, o quanto si accorda con le vendite; per la musica Scale vale sotto i 10 dipendenti, e fra 10 e 49 serve Business, 884,47 € al mese; Moda 26,80 € al mese per posto, ma a listino non conviene e lo Studio torna alla strada di Claude Team).
+- n8n Community Edition sta nel board e gira sul server: non è un'eccezione.
+
 ## Fonti
 
 - [Proposta per i CEO, §1, §5.1, §5.2, §5.6, §6.1, §6.2, §7.1, §7.2, §11, §12, §13, §14, §15, appendici A e B](../../PRESENTAZIONE-CEO.md)
@@ -69,3 +75,4 @@ Tutto il sistema gira sul nostro server, in reti separate, dentro il board ([pro
 - [ricerca/35, giudizio di sicurezza §5](../../ricerca/35-giudizio-sicurezza.md)
 - [ricerca/36, architettura v2, intestazione, §4.1 e §6](../../ricerca/36-architettura-v2.md)
 - [ricerca/37, le risposte di Michele sull'hardware, §2 e §3](../../ricerca/37-hardware-risposte-michele.md)
+- [ricerca/52, n8n, Moda ed ElevenLabs: §5.7, §6.7 e §8](../../ricerca/52-n8n-moda-elevenlabs.md)

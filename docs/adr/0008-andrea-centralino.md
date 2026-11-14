@@ -62,6 +62,12 @@
 - Prima una voce sintetica; la voce clonata di un collega solo con la seconda GPU, il suo contratto separato e revocabile e il via del parere ([ricerca/45 §4.2](../../ricerca/45-architettura-v3.md); [ADR-0014](0014-seconda-gpu-blackwell.md)).
 - La linea di riserva va messa prima di Andrea ([ADR-0019](0019-linea-di-riserva.md)).
 
+## Revisione del 14 novembre 2026
+
+- L'azienda dispone di ElevenLabs senza costi, perché l'ha ricevuto in omaggio. La scelta non cambia: la voce di chi chiama è un dato rosso e resta in casa; gli agenti vocali di ElevenLabs e Reception la porterebbero negli USA ([ricerca/52 §5.4.2](../../ricerca/52-n8n-moda-elevenlabs.md)).
+- L'ultima riserva si precisa: se la voce italiana in casa non passa la prova d'ascolto, Andrea può usare la sola sintesi vocale di ElevenLabs per le sue risposte, con ascolto, trascrizione e registrazione sempre in casa. Al fornitore va solo il testo delle risposte, che può contenere dati rossi perché può ripetere ciò che dice chi chiama: prima della sintesi esterna un filtro locale ferma o oscura il rosso, come fa ADR-0009 per l'API, oppure le risposte si prendono da un elenco chiuso di frasi. Servono anche l'eccezione di Michele ([ADR-0002](0002-self-hosted-board-michele.md)) e una chiave di account di servizio come per i contenuti ([ricerca/52 §5.7](../../ricerca/52-n8n-moda-elevenlabs.md)). Il colore del testo delle risposte lo dice il parere legale.
+- La voce clonata di un collega resta solo in casa finché il parere non decide ([ricerca/52 §7.4](../../ricerca/52-n8n-moda-elevenlabs.md)). Su ElevenLabs la clonazione professionale la può fare solo la persona stessa.
+
 ## Fonti
 
 - [Proposta 2.1: §4.3, §5.1, §5.2, §5.6, §9.1, §9.3, §9.4, §11, §12.1, §13, §14, appendice A (G5, G6, K10)](../../PRESENTAZIONE-CEO.md)
@@ -70,3 +76,4 @@
 - [ricerca/33 §2.3: costi di numero e chiamate](../../ricerca/33-costi-v2.md)
 - [ricerca/36 §4.5: servizi nuovi e patch](../../ricerca/36-architettura-v2.md)
 - [Domande per Michele, n. 9 e 10](../../DOMANDE-PER-MICHELE.md)
+- [ricerca/52, n8n, Moda ed ElevenLabs: §5.4.2 e §5.7](../../ricerca/52-n8n-moda-elevenlabs.md)

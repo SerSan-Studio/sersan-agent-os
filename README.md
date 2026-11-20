@@ -59,6 +59,7 @@ L'idea è di Alberto Tuveri. La proposta, per i CEO Alessandro Serratt e Michele
 - [50](ricerca/50-agent-sdk-e-prova-a-copione.md): l'Agent SDK al 12 novembre e la sua prova con un modello a copione, senza chiave API.
 - [51](ricerca/51-modelli-open-weight-sul-computer-di-sviluppo.md): i modelli open-weight sul computer di sviluppo e il decisore che legge la probabilità della prima parola.
 - [52](ricerca/52-n8n-moda-elevenlabs.md): n8n Community Edition, Moda ed ElevenLabs, tre strumenti che l'azienda ha già, giudicati come le altre alternative; e che cosa sapere prima di installare n8n.
+- [53](ricerca/53-auto-ontology-strato-semantico.md): NVIDIA auto-ontology e il server MCP derivato, cioè uno strato semantico sopra le basi dati per dare numeri giusti agli agenti; perché non entrano ora, e la regola sui numeri che ne resta.
 
 ## Come sono scritti i documenti
 

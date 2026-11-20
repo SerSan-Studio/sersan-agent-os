@@ -75,7 +75,7 @@ Per la proposta SerSan Agent OS (versione 2.1), costruita sul tuo board dell'inf
 
 ## Dati e servizi del board
 
-25. Cos'è Sirius? E cosa fanno oggi mcp-enrich, mcp-memory e runner-dash?
+25. Cos'è Sirius? E cosa fanno oggi mcp-enrich, mcp-memory e runner-dash? **Aggiornamento del 20 novembre 2026.** Di Sirius ci servono anche tre cose: come esporta i dati, quante tabelle ha e con che nomi. Decidono se, quando l'esportazione arriva, conviene generare una bozza delle definizioni dei numeri con uno strumento come auto-ontology, su una copia con dati finti ([ricerca/53 §8](ricerca/53-auto-ontology-strato-semantico.md)).
 26. "Supabase, DB del prodotto" è il database di SersanOutreach? Se un giorno viene in casa, meglio PostgreSQL 17 per non tornare indietro di versione.
 27. Quale piano M365 e quale piano Jira abbiamo oggi? Chi è Global Administrator per i consensi di Graph?
 
@@ -121,6 +121,11 @@ Per i lavori di sviluppo lunghi il motore può far partire una sessione di Claud
 ### Strumenti che l'azienda ha già (14 novembre 2026)
 
 46. **Due eccezioni al board: ElevenLabs e Moda.** L'azienda li ha già, in omaggio. Il rapporto li ammette come opzione solo sui dati verdi: ElevenLabs per voce, musica ed effetti dei contenuti pubblici, Moda per le grafiche, finché dura l'omaggio ([ricerca/52 §5.7 e §6.7](ricerca/52-n8n-moda-elevenlabs.md); [ADR-0002, revisione del 14 novembre](docs/adr/0002-self-hosted-board-michele.md)). Le approvi, e a quali condizioni?
+
+### Numeri e strato semantico (20 novembre 2026)
+
+47. **Viste e ruoli per i numeri.** Quando una catena calcola un numero che nessuno strumento dà già, il rapporto 53 propone di definirlo una volta sola, con un nome, per esempio una vista nel PostgreSQL del sistema ([ricerca/53 §7](ricerca/53-auto-ontology-strato-semantico.md)). Le catene e i pannelli di Grafana possono leggere le stesse viste, con il ruolo per famiglia di agenti di [ricerca/29 §6.1](ricerca/29-conoscenza-task-e-documenti.md)? È il seguito della domanda 31, dove i ruoli separati del database restano.
+48. **La revisione proposta di ADR-0005.** Il rapporto 53 propone di precisare la regola «i numeri si calcolano dal codice sui dati». Un numero che uno strumento esistente dà già si prende da lì: per il CRM, il server MCP di lettura di SersanOutreach. Un numero nuovo si definisce una volta sola, con un nome. Gli agenti non scrivono SQL. I numeri rossi seguono la regola dei colori del router ([ricerca/53 §9.1](ricerca/53-auto-ontology-strato-semantico.md)). ADR-0005 la decidi tu, con il gruppo di progetto: la accetti? E chi tiene l'elenco dei numeri definiti con un nome?
 
 ## Note dalla ricerca, senza risposta richiesta
 
